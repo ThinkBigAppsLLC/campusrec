@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if (navigationView != null)
+        if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
     }
 
     @Override
@@ -45,56 +47,26 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         switch (id){
+            case R.id.nav_home:
+                break;
             case R.id.nav_status:
                 break;
+            case R.id.nav_calendar:
+                break;
+            case R.id.nav_im:
+                break;
             case R.id.nav_res:
-                break;
-            case R.id.nav_events:
-                break;
-            case R.id.nav_group:
-                break;
-            case R.id.nav_facebook:
-                break;
-            case R.id.nav_twitter:
-                break;
-            case R.id.nav_youtube:
-                break;
-            case R.id.nav_website:
                 break;
             case R.id.nav_contact:
                 break;
             default:
                 break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer != null)
             drawer.closeDrawer(GravityCompat.START);

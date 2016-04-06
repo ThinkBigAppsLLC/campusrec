@@ -4,8 +4,11 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-
-    <!-- Contact Us Page Resources -->
-    <string name="contact_us_header">Contact Us</string>
+    <!-- Nav Drawer Strings -->
+    <string name="nav_home">Home</string>
+    <string name="nav_status">Status</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_im">Intramural Sports</string>
+    <string name="nav_res">Reservations</string>
+    <string name="nav_contact">Contact Us</string>
 </resources>

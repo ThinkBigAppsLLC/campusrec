@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/contact_us_header"
+                android:text="@string/nav_contact"
                 android:id="@+id/contact_us_header"
                 android:layout_gravity="center_vertical"
                 android:textSize="14sp"
