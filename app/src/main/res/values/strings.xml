@@ -4,6 +4,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- Status Header Strings -->
+    <string-array name="status_headers">
+        <item>Leach Recreation Center</item>
+        <item>FSU Reservation</item>
+        <item>Fitness &amp; Movement Clinic</item>
+        <item>Rec SportsPlex</item>
+        <item>Main Campus Fields</item>
+        <item>Westside Courts</item>
+    </string-array>
+
     <!-- Nav Drawer Strings -->
     <string name="nav_home">Home</string>
     <string name="nav_status">Status</string>
