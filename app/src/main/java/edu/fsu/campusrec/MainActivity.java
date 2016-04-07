@@ -16,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,12 +28,17 @@ public class MainActivity extends AppCompatActivity
     private ContactFragment contactFrag;
     private StatusFragment statusFrag;
 
+    public static ArrayList<Facility> facilities;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        facilities = new ArrayList<>();
+        prepareListData();
 
         fManager = getSupportFragmentManager();
         if(hFrag == null)
@@ -122,5 +129,176 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private boolean checkOpen(Facility.Building bldg){
+        // TODO: ADD LOGIC HERE
+        return true;
+    }
+
+    private void prepareListData() {
+        ArrayList<Facility.opHours> facilityOpHours;
+        Facility.opHours.Hours open;
+        Facility.opHours.Hours close;
+        Facility.opHours opHours;
+
+        // ********************
+        // LEACH
+        // ********************
+
+        facilityOpHours = new ArrayList<>();
+
+        // LEACH SUNDAY
+        open = new Facility.opHours.Hours(11, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(9, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        // LEACH MONDAY - THURSDAY
+        open = new Facility.opHours.Hours(6, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(11, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        // LEACH FRIDAY
+        open = new Facility.opHours.Hours(11, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(10, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        // LEACH SATURDAY
+        open = new Facility.opHours.Hours(11, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(9, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        Facility leachRC = new Facility(Facility.Building.LEACH, R.drawable.leach_photo, facilityOpHours, checkOpen(Facility.Building.LEACH));
+        facilities.add(leachRC);
+
+        // ********************
+        // REZ
+        // ********************
+
+        facilityOpHours = new ArrayList<>();
+
+        // REZ SUNDAY
+        open = new Facility.opHours.Hours(12, 0, Facility.opHours.Hours.AMPM.PM);
+        close = new Facility.opHours.Hours(7, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        // REZ MONDAY - THURSDAY
+        open = new Facility.opHours.Hours(2, 0, Facility.opHours.Hours.AMPM.PM);
+        close = new Facility.opHours.Hours(7, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        // REZ FRIDAY/SATURDAY
+        open = new Facility.opHours.Hours(12, 0, Facility.opHours.Hours.AMPM.PM);
+        close = new Facility.opHours.Hours(7, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        Facility rez = new Facility(Facility.Building.REZ, R.drawable.rez_photo, facilityOpHours, checkOpen(Facility.Building.REZ));
+        facilities.add(rez);
+
+        // ********************
+        // FMC
+        // ********************
+
+        facilityOpHours = new ArrayList<>();
+
+        // SUNDAY
+        open = new Facility.opHours.Hours(8, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(5, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        // MONDAY - FRIDAY
+        open = new Facility.opHours.Hours(6, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(9, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        // SATURDAY
+        open = new Facility.opHours.Hours(8, 0, Facility.opHours.Hours.AMPM.AM);
+        close = new Facility.opHours.Hours(5, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+
+        Facility fmc = new Facility(Facility.Building.FMC, R.drawable.fmc_photo, facilityOpHours, checkOpen(Facility.Building.REZ));
+        facilities.add(fmc);
+
+        // ********************
+        // RSP
+        // ********************
+
+        facilityOpHours = new ArrayList<>();
+
+        // SUNDAY - THURSDAY
+        open = new Facility.opHours.Hours(5, 30, Facility.opHours.Hours.AMPM.PM);
+        close = new Facility.opHours.Hours(10, 30, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(open, close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        // FRI/SAT
+        opHours = new Facility.opHours(Facility.opHours.Special.EVENTS);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        Facility rsp = new Facility(Facility.Building.RSP, R.drawable.rsp_photo, facilityOpHours, checkOpen(Facility.Building.RSP));
+        facilities.add(rsp);
+
+        // ********************
+        // MCF
+        // ********************
+
+        facilityOpHours = new ArrayList<>();
+
+        // SUN
+        close = new Facility.opHours.Hours(9, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(close);
+        facilityOpHours.add(opHours);
+
+        // MON - FRI
+        close = new Facility.opHours.Hours(10, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(close);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+        facilityOpHours.add(opHours);
+
+        // SAT
+        close = new Facility.opHours.Hours(9, 0, Facility.opHours.Hours.AMPM.PM);
+        opHours = new Facility.opHours(close);
+        facilityOpHours.add(opHours);
+
+        Facility mcf = new Facility(Facility.Building.MCF, R.drawable.mcf_photo, facilityOpHours, checkOpen(Facility.Building.MCF));
+        facilities.add(mcf);
+
+        // ********************
+        // WSC
+        // ********************
+        Facility wsc = new Facility(Facility.Building.WSC, -1, facilityOpHours, checkOpen(Facility.Building.WSC));
+        facilities.add(wsc);
+
+
+    }
+
 
 }

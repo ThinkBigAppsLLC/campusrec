@@ -9,14 +9,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder> {
 
     private ArrayList<String> facilityList;
+    private ArrayList<String> statusList;
     private Context context;
 
     public interface OnItemClickListener {
@@ -43,8 +46,9 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
         }
     }
 
-    public StatusAdapter(ArrayList<String> bldgs, Context context) {
-        facilityList = bldgs;
+    public StatusAdapter(ArrayList<String> bldgs, ArrayList<String> statuses, Context context) {
+        this.facilityList = bldgs;
+        this.statusList = statuses;
         this.context = context;
     }
 
@@ -58,16 +62,15 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int pos) {
-        String tmp = facilityList.get(pos);
+        String name = facilityList.get(pos);
+        String stat = statusList.get(pos);
 
-        holder.bldgName.setText(tmp);
-
-        if(isCurrentlyOpen(pos)){
-            setOpen(holder.status);
-        }
-        else{
-            setClosed(holder.status);
-        }
+        holder.bldgName.setText(name);
+        holder.status.setText(stat);
+        if(stat.equalsIgnoreCase("open"))
+            holder.status.setTextColor(context.getResources().getColor(R.color.openText));
+        else
+            holder.status.setTextColor(context.getResources().getColor(R.color.colorAccent));
 
         holder.statusContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,20 +80,6 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
                 }
             }
         });
-    }
-
-    private boolean isCurrentlyOpen(int pos){
-        return true;
-    }
-
-    private void setOpen(TextView status){
-        status.setText("OPEN");
-        status.setTextColor(context.getResources().getColor(R.color.openText));
-    }
-
-    private void setClosed(TextView status){
-        status.setText("CLOSED");
-        status.setTextColor(context.getResources().getColor(R.color.colorAccent));
     }
 
     @Override

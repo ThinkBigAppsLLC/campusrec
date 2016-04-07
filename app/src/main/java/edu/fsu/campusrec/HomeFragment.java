@@ -30,30 +30,38 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+// TODO: FINISH CONVERING FACILITYLIST
+
 public class HomeFragment extends Fragment {
     private View viewContainer;
 
     private SliderLayout mainCarousel;
-    private ExpandableListView statusELV;
-    private ExpandableListAdapter statusLA;
-    private ArrayList<String> statusList;
-    private HashMap<String, List<String>> statusListChild;
     private CoordinatorLayout mCoord;
     private RecyclerView mRecyclerView;
     private StatusAdapter mStatusAdapter;
 
     public HomeFragment() { }
 
+    //************************************
+    // Lifecycle Methods
+    //************************************
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         viewContainer = inflater.inflate(R.layout.fragment_home, container, false);
-
-        prepareListData();
         mCoord = (CoordinatorLayout) getActivity().findViewById(R.id.main_coordinator_layout);
         mRecyclerView = (RecyclerView) viewContainer.findViewById(R.id.recycler_status);
-        mStatusAdapter = new StatusAdapter(statusList, getContext());
+
+        ArrayList<String> bldgNames = new ArrayList<>();
+        ArrayList<String> statuses = new ArrayList<>();
+        Facility fac;
+        for(int i = 0; i < MainActivity.facilities.size(); i++) {
+            fac = MainActivity.facilities.get(i);
+            bldgNames.add(fac.getName());
+            statuses.add(fac.getStatus());
+        }
+        mStatusAdapter = new StatusAdapter(bldgNames, statuses, getContext());
         LinearLayoutManager mRecyclerManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mRecyclerManager);
         mRecyclerView.setHasFixedSize(true);
@@ -84,18 +92,6 @@ public class HomeFragment extends Fragment {
             mainCarousel.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
             mainCarousel.setDuration(5000);
         }
-
-        // LIST VIEW
-/*
-        statusELV = (ExpandableListView) viewContainer.findViewById(R.id.status_list_view);
-        prepareListData();
-        statusLA = new ExpandableListAdapter(getContext(), statusList, statusListChild);
-        statusELV.setAdapter(statusLA);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            statusELV.setGroupIndicator(getContext().getDrawable(R.drawable.selector_status));
-        }
-*/
-
         return viewContainer;
     }
 
@@ -111,75 +107,7 @@ public class HomeFragment extends Fragment {
         super.onPause();
     }
 
-    //*************************************************************
-    // Helper Functions
-    //*************************************************************
-
-    private void prepareListData() {
-        String[] data = getResources().getStringArray(R.array.status_headers);
-        statusList = new ArrayList<>(Arrays.asList(data));
-        statusListChild = new HashMap<>();
-
-        List<String> leachHours = new ArrayList<>();
-        leachHours.add("S | 11.00a - 9.00p");
-        leachHours.add("M | 6.00a - 11.00p");
-        leachHours.add("T | 6.00a - 11.00p");
-        leachHours.add("W | 6.00a - 11.00p");
-        leachHours.add("T | 6.00a - 11.00p");
-        leachHours.add("F | 6.00a - 10.00p");
-        leachHours.add("S | 11.00a - 9.00p");
-
-        List<String> rezHours = new ArrayList<>();
-        rezHours.add("S | 12.00p - 7.00p");
-        rezHours.add("M | 2.00p - 7.00p");
-        rezHours.add("T | 2.00p - 7.00p");
-        rezHours.add("W | 2.00p - 7.00p");
-        rezHours.add("T | 2.00p - 7.00p");
-        rezHours.add("F | 12.00p - 7.00p");
-        rezHours.add("S | 12.00p - 7.00p");
-
-        List<String> fmcHours = new ArrayList<>();
-        fmcHours.add("S | 8.00a - 5.00p");
-        fmcHours.add("M | 6.00a - 9.00p");
-        fmcHours.add("T | 6.00a - 9.00p");
-        fmcHours.add("W | 6.00a - 9.00p");
-        fmcHours.add("T | 6.00a - 9.00p");
-        fmcHours.add("F | 6.00a - 9.00p");
-        fmcHours.add("S | 8.00a - 5.00p");
-
-        List<String> rspHours = new ArrayList<>();
-        rspHours.add("S | 5.30p - 10.30p");
-        rspHours.add("M | 5.30p - 10.30p");
-        rspHours.add("T | 5.30p - 10.30p");
-        rspHours.add("W | 5.30p - 10.30p");
-        rspHours.add("T | 5.30p - 10.30p");
-        rspHours.add("F | Special Events Only");
-        rspHours.add("S | Special Events Only");
-
-        List<String> mcfHours = new ArrayList<>();
-        mcfHours.add("S | until 9.00p");
-        mcfHours.add("M | until 10.00p");
-        mcfHours.add("T | until 10.00p");
-        mcfHours.add("W | until 10.00p");
-        mcfHours.add("T | until 10.00p");
-        mcfHours.add("F | until 10.00p");
-        mcfHours.add("S | until 9.00p");
-
-        List<String> wscHours = new ArrayList<>();
-        wscHours.add("S | until 9.00p");
-        wscHours.add("M | until 10.00p");
-        wscHours.add("T | until 10.00p");
-        wscHours.add("W | until 10.00p");
-        wscHours.add("T | until 10.00p");
-        wscHours.add("F | until 10.00p");
-        wscHours.add("S | until 9.00p");
-
-        statusListChild.put(statusList.get(0), leachHours);
-        statusListChild.put(statusList.get(1), rezHours);
-        statusListChild.put(statusList.get(2), fmcHours);
-        statusListChild.put(statusList.get(3), rspHours);
-        statusListChild.put(statusList.get(4), mcfHours);
-        statusListChild.put(statusList.get(5), wscHours);
-    }
-
+    //************************************
+    // Helper Methods
+    //************************************
 }

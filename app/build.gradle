@@ -30,4 +30,5 @@ dependencies {
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.android.support:percent:23.2.1'
     compile 'com.prolificinteractive:material-calendarview:1.2.0'
+    compile 'com.github.dexafree:materiallist:3.2.0'
 }
