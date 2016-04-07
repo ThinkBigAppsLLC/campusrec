@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.fsu.campusrec.MainActivity">
+    tools:context="edu.fsu.campusrec.MainActivity"
+    android:id="@+id/main_coordinator_layout">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +22,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <fragment android:name="edu.fsu.campusrec.HomeFragment"
+        android:id="@+id/home_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.design.widget.CoordinatorLayout>

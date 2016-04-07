@@ -21,4 +21,7 @@
     <string name="nav_im">Intramural Sports</string>
     <string name="nav_res">Reservations</string>
     <string name="nav_contact">Contact Us</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
