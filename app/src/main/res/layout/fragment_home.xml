@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/divider"
             android:layout_below="@+id/carousel_container"
-            android:background="@color/colorBackground"
+            android:background="@color/colorPrimary"
             android:elevation="4dp">
 
             <TextView
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Current"
                 android:paddingLeft="16dp"
-                android:textColor="@android:color/primary_text_light"
+                android:textColor="@android:color/primary_text_dark"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textSize="16sp"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status"
-                android:textColor="@android:color/primary_text_light"
+                android:textColor="@android:color/primary_text_dark"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textSize="16sp"
