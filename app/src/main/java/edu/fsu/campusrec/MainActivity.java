@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -68,9 +69,24 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i("BACK STACK", getSupportFragmentManager().getBackStackEntryCount() + "");
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if(getSupportFragmentManager().getBackStackEntryCount() == 1){
+                    getSupportFragmentManager().popBackStack();
+                    return false;
+                }
+                break;
+        }
+        return true;
+    }
+
 
     @Override
     public void onBackPressed() {
+        Log.i("DRAWER", getSupportFragmentManager().getBackStackEntryCount() + "");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
