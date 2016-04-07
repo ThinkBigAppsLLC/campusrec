@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity
         url_maps.put("Sunset at the Rez", "http://campusrec.fsu.edu/sites/default/files/4.13_Sunset_Rez_web_DR.jpg");
         for(String name : url_maps.keySet()){
             DefaultSliderView slider = new DefaultSliderView(this);
-            // initialize a SliderLayout
             slider.description(name)
                     .image(url_maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.CenterInside);
@@ -169,29 +168,58 @@ public class MainActivity extends AppCompatActivity
         statusListChild = new HashMap<>();
 
         List<String> leachHours = new ArrayList<>();
-        leachHours.add("M-Th | 6.00a - 11.00p");
+        leachHours.add("S | 11.00a - 9.00p");
+        leachHours.add("M | 6.00a - 11.00p");
+        leachHours.add("T | 6.00a - 11.00p");
+        leachHours.add("W | 6.00a - 11.00p");
+        leachHours.add("T | 6.00a - 11.00p");
         leachHours.add("F | 6.00a - 10.00p");
-        leachHours.add("Sat-Sun | 11.00a - 9.00p");
+        leachHours.add("S | 11.00a - 9.00p");
 
         List<String> rezHours = new ArrayList<>();
-        rezHours.add("M-Th | 2.00p - 7.00p");
-        rezHours.add("F-Sun | 12.00p - 7.00p");
+        rezHours.add("S | 12.00p - 7.00p");
+        rezHours.add("M | 2.00p - 7.00p");
+        rezHours.add("T | 2.00p - 7.00p");
+        rezHours.add("W | 2.00p - 7.00p");
+        rezHours.add("T | 2.00p - 7.00p");
+        rezHours.add("F | 12.00p - 7.00p");
+        rezHours.add("S | 12.00p - 7.00p");
 
         List<String> fmcHours = new ArrayList<>();
-        fmcHours.add("M-F | 6.00a - 9.00p");
-        fmcHours.add("Sat-Sun | 8.00a - 5.00p");
+        fmcHours.add("S | 8.00a - 5.00p");
+        fmcHours.add("M | 6.00a - 9.00p");
+        fmcHours.add("T | 6.00a - 9.00p");
+        fmcHours.add("W | 6.00a - 9.00p");
+        fmcHours.add("T | 6.00a - 9.00p");
+        fmcHours.add("F | 6.00a - 9.00p");
+        fmcHours.add("S | 8.00a - 5.00p");
 
         List<String> rspHours = new ArrayList<>();
-        rspHours.add("Sun-Th | 5.30p - 10.30p");
-        rspHours.add("F-Sat | Special Events Only");
+        rspHours.add("S | 5.30p - 10.30p");
+        rspHours.add("M | 5.30p - 10.30p");
+        rspHours.add("T | 5.30p - 10.30p");
+        rspHours.add("W | 5.30p - 10.30p");
+        rspHours.add("T | 5.30p - 10.30p");
+        rspHours.add("F | Special Events Only");
+        rspHours.add("S | Special Events Only");
 
         List<String> mcfHours = new ArrayList<>();
-        mcfHours.add("M-F | until 10.00p");
-        mcfHours.add("Sat-Sun | until 9.00p");
+        mcfHours.add("S | until 9.00p");
+        mcfHours.add("M | until 10.00p");
+        mcfHours.add("T | until 10.00p");
+        mcfHours.add("W | until 10.00p");
+        mcfHours.add("T | until 10.00p");
+        mcfHours.add("F | until 10.00p");
+        mcfHours.add("S | until 9.00p");
 
         List<String> wscHours = new ArrayList<>();
-        wscHours.add("M-F | until 10.00p");
-        wscHours.add("Sat-Sun | until 9.00p");
+        wscHours.add("S | until 9.00p");
+        wscHours.add("M | until 10.00p");
+        wscHours.add("T | until 10.00p");
+        wscHours.add("W | until 10.00p");
+        wscHours.add("T | until 10.00p");
+        wscHours.add("F | until 10.00p");
+        wscHours.add("S | until 9.00p");
 
         statusListChild.put(statusList.get(0), leachHours);
         statusListChild.put(statusList.get(1), rezHours);

@@ -1,19 +1,20 @@
 package edu.fsu.campusrec;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter{
     private Context context;
-    private List<String> listDataHeader; // header titles
-    // child data in format of header title, child title
+    private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
@@ -37,7 +38,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter{
     @Override
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-
         final String childText = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
@@ -48,8 +48,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter{
 
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.status_detail);
-
         txtListChild.setText(childText);
+
         return convertView;
     }
 

@@ -9,6 +9,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/status_detail"
-        android:text="HOURS"
-        android:textSize="12sp" />
+        android:text="HOURS" />
 </RelativeLayout>
