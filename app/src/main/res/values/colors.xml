@@ -6,4 +6,5 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorSecondaryBackground">#F5F5F5</color>
     <color name="colorPrimaryText">#292F33</color>
+    <color name="openText">#A1D490</color>
 </resources>

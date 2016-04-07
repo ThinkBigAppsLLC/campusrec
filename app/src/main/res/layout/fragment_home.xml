@@ -1,13 +1,76 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.fsu.campusrec.HomeFragment">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.fsu.campusrec.MainActivity"
+    android:id="@+id/coord" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/body">
 
-</FrameLayout>
+        <android.support.percent.PercentFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carousel_container"
+            android:layout_alignParentTop="true">
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/main_carousel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_widthPercent="100%"
+                app:layout_heightPercent="25.75%"
+                />
+        </android.support.percent.PercentFrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/divider"
+            android:layout_below="@+id/carousel_container"
+            android:background="@color/colorBackground"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current"
+                android:paddingLeft="16dp"
+                android:textColor="@android:color/primary_text_light"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:id="@+id/curr" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textColor="@android:color/primary_text_light"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:id="@+id/stat"
+                android:layout_toRightOf="@+id/curr" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_status"
+            android:background="@color/colorBackground"
+            android:scrollbars="vertical"
+            android:layout_below="@+id/divider" />
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

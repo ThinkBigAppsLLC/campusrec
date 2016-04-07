@@ -6,7 +6,8 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
     android:paddingRight="16dp"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:id="@+id/status_container">
 
 
     <TextView
@@ -16,18 +17,21 @@
         android:id="@+id/facility"
         android:typeface="sans"
         android:textSize="13sp"
-        android:textColor="@android:color/primary_text_light_nodisable" />
+        android:textColor="@android:color/primary_text_light_nodisable"
+        android:layout_centerVertical="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="STATUS"
         android:id="@+id/status"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:textColor="@android:color/secondary_text_light_nodisable"
         android:layout_alignTop="@+id/facility"
         android:layout_alignParentRight="false"
-        android:layout_toLeftOf="@+id/arrow_right" />
+        android:layout_toLeftOf="@+id/arrow_right"
+        android:paddingRight="8dp"
+        android:layout_centerVertical="true" />
 
     <ImageView
         android:layout_width="wrap_content"
