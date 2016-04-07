@@ -22,16 +22,29 @@ public class StatusFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_status, container, false);
         MaterialListView statusListView = (MaterialListView) v.findViewById(R.id.status_list);
 
-        for(String bldg : getResources().getStringArray(R.array.status_headers)) {
-            Card card = new Card.Builder(getContext())
-                    .withProvider(new CardProvider())
-                    .setLayout(R.layout.material_image_with_buttons_card)
-                    .setTitle(bldg)
-                    .setTitleColor(Color.WHITE)
-                    .setDescription("STATUS")
-                    .setDrawable(R.drawable.leach_photo)
-                    .endConfig()
-                    .build();
+        for(Facility fac : MainActivity.facilities) {
+            Card card;
+            if(fac.getPhoto() != -1) {
+                card = new Card.Builder(getContext())
+                        .withProvider(new CardProvider())
+                        .setLayout(R.layout.material_image_with_buttons_card)
+                        .setTitle(fac.getName())
+                        .setTitleColor(Color.WHITE)
+                        .setDescription(fac.getStatus())
+                        .setDrawable(fac.getPhoto())
+                        .endConfig()
+                        .build();
+            }
+            else{
+                card = new Card.Builder(getContext())
+                        .withProvider(new CardProvider())
+                        .setLayout(R.layout.material_image_with_buttons_card)
+                        .setTitle(fac.getName())
+                        .setTitleColor(Color.WHITE)
+                        .setDescription(fac.getStatus())
+                        .endConfig()
+                        .build();
+            }
             statusListView.getAdapter().add(card);
         }
         return v;
