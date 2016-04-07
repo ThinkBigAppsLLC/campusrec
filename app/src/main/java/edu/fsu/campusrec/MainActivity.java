@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity
     private HomeFragment hFrag;
     private ReservationFragment resFrag;
     private CalendarFragment calFrag;
+    private ContactFragment contactFrag;
+    private StatusFragment statusFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         fManager = getSupportFragmentManager();
-        hFrag = new HomeFragment();
+        if(hFrag == null)
+            hFrag = new HomeFragment();
+        if(calFrag == null)
+            calFrag = new CalendarFragment();
+        if(contactFrag == null)
+            contactFrag = new ContactFragment();
+        if(statusFrag == null)
+            statusFrag = new StatusFragment();
         FragmentTransaction fTransaction = fManager.beginTransaction();
         fTransaction.replace(R.id.frag_container, hFrag);
         fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -71,15 +81,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
-                if(hFrag == null)
-                    hFrag = new HomeFragment();
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle("CampusRec");
                 fTransaction.replace(R.id.frag_container, hFrag);
                 break;
             case R.id.nav_status:
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle("Status");
+                fTransaction.replace(R.id.frag_container, statusFrag);
                 break;
             case R.id.nav_calendar:
-                if(calFrag == null)
-                    calFrag = new CalendarFragment();
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle("Calendar");
                 fTransaction.replace(R.id.frag_container, calFrag);
                 break;
             case R.id.nav_im:
@@ -94,6 +107,9 @@ public class MainActivity extends AppCompatActivity
                 startActivity(browserIntent);
                 break;
             case R.id.nav_contact:
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle("Contact Us");
+                fTransaction.replace(R.id.frag_container, contactFrag);
                 break;
             default:
                 break;
