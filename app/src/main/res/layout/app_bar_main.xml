@@ -23,8 +23,9 @@
     </android.support.design.widget.AppBarLayout>
 
     <fragment android:name="edu.fsu.campusrec.HomeFragment"
-        android:id="@+id/home_fragment"
+        android:id="@+id/frag_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
 
 </android.support.design.widget.CoordinatorLayout>
