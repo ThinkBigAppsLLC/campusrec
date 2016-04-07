@@ -1,5 +1,6 @@
 package edu.fsu.campusrec;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -59,7 +60,9 @@ public class HomeFragment extends Fragment {
         prepareListData();
         statusLA = new ExpandableListAdapter(getContext(), statusList, statusListChild);
         statusELV.setAdapter(statusLA);
-        statusELV.setGroupIndicator(getContext().getDrawable(R.drawable.selector_status));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            statusELV.setGroupIndicator(getContext().getDrawable(R.drawable.selector_status));
+        }
 
         return viewContainer;
     }
