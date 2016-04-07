@@ -22,10 +22,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <fragment android:name="edu.fsu.campusrec.HomeFragment"
-        android:id="@+id/frag_container"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"/>
+        android:paddingTop="?attr/actionBarSize"
+        android:id="@+id/frag_container" />
+
 
 </android.support.design.widget.CoordinatorLayout>

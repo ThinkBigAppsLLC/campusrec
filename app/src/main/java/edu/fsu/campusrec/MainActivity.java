@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     private FragmentManager fManager;
     private HomeFragment hFrag;
     private ReservationFragment resFrag;
+    private CalendarFragment calFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         fManager = getSupportFragmentManager();
-        hFrag = (HomeFragment) fManager.findFragmentById(R.id.frag_container);
+        hFrag = new HomeFragment();
+        FragmentTransaction fTransaction = fManager.beginTransaction();
+        fTransaction.replace(R.id.frag_container, hFrag);
+        fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -61,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         FragmentTransaction fTransaction = fManager.beginTransaction();
         fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        Intent browserIntent;
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
@@ -71,14 +78,19 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_status:
                 break;
             case R.id.nav_calendar:
+                if(calFrag == null)
+                    calFrag = new CalendarFragment();
+                fTransaction.replace(R.id.frag_container, calFrag);
                 break;
             case R.id.nav_im:
+                browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.teamsideline.com/fsu"));
+                startActivity(browserIntent);
                 break;
             case R.id.nav_res:
 /*                if(resFrag == null)
                     resFrag = new ReservationFragment();
                 fTransaction.replace(R.id.frag_container, resFrag);*/
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fsucr.setmore.com/"));
+                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fsucr.setmore.com/"));
                 startActivity(browserIntent);
                 break;
             case R.id.nav_contact:
