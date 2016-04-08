@@ -15,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity
     private CalendarFragment calFrag;
     private ContactFragment contactFrag;
     private StatusFragment statusFrag;
+
+    public ActionBarDrawerToggle toggle;
 
     public static ArrayList<Facility> facilities;
 
@@ -55,8 +60,8 @@ public class MainActivity extends AppCompatActivity
         fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fTransaction.commit();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         if (drawer != null)
             drawer.setDrawerListener(toggle);
@@ -67,8 +72,30 @@ public class MainActivity extends AppCompatActivity
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
+        if (toolbar != null) {
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(statusFrag.getSliderState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                        statusFrag.closePanel();
+                    }
+                    else if(drawer != null){
+                        if(!drawer.isDrawerOpen(GravityCompat.START)){
+                            drawer.openDrawer(GravityCompat.START);
+                        }
+                    }
+                }
+            });
+        }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i("BACK STACK", getSupportFragmentManager().getBackStackEntryCount() + "");
@@ -82,11 +109,11 @@ public class MainActivity extends AppCompatActivity
         }
         return true;
     }
+*/
 
 
     @Override
     public void onBackPressed() {
-        Log.i("DRAWER", getSupportFragmentManager().getBackStackEntryCount() + "");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -95,7 +122,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         FragmentTransaction fTransaction = fManager.beginTransaction();
@@ -104,18 +130,27 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
-                if (getSupportActionBar() != null)
+                if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle("CampusRec");
+                    getSupportActionBar().setSubtitle(null);
+                    fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
                 fTransaction.replace(R.id.frag_container, hFrag);
                 break;
             case R.id.nav_status:
-                if (getSupportActionBar() != null)
+                if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle("Status");
+                    getSupportActionBar().setSubtitle(null);
+                    fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
                 fTransaction.replace(R.id.frag_container, statusFrag);
                 break;
             case R.id.nav_calendar:
-                if (getSupportActionBar() != null)
+                if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle("Calendar");
+                    getSupportActionBar().setSubtitle(null);
+                    fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
                 fTransaction.replace(R.id.frag_container, calFrag);
                 break;
             case R.id.nav_im:
@@ -130,8 +165,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(browserIntent);
                 break;
             case R.id.nav_contact:
-                if (getSupportActionBar() != null)
+                if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle("Contact Us");
+                    getSupportActionBar().setSubtitle(null);
+                    fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
                 fTransaction.replace(R.id.frag_container, contactFrag);
                 break;
             default:

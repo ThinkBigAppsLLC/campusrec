@@ -28,5 +28,4 @@
         android:paddingTop="?attr/actionBarSize"
         android:id="@+id/frag_container" />
 
-
 </android.support.design.widget.CoordinatorLayout>

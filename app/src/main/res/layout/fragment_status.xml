@@ -1,11 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.fsu.campusrec.StatusFragment">
+    android:gravity="bottom"
+    tools:context="edu.fsu.campusrec.StatusFragment"
+    android:id="@+id/sliding_up_layout"
+    sothree:umanoPanelHeight="68dp"
+    sothree:umanoShadowHeight="4dp">
 
     <com.dexafree.materialList.view.MaterialListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/status_list" />
-</FrameLayout>
+
+    <include
+        layout="@layout/fragment_status_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+<!--    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:id="@+id/status_detail"
+        android:text="The Awesome Sliding Up Panel"
+        android:textSize="16sp" />-->
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
