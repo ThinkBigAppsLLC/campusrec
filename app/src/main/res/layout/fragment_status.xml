@@ -18,11 +18,4 @@
         layout="@layout/fragment_status_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-<!--    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:id="@+id/status_detail"
-        android:text="The Awesome Sliding Up Panel"
-        android:textSize="16sp" />-->
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

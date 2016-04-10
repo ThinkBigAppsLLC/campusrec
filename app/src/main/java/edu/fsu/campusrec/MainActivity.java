@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -95,23 +96,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
     }
 
-/*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i("BACK STACK", getSupportFragmentManager().getBackStackEntryCount() + "");
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if(getSupportFragmentManager().getBackStackEntryCount() == 1){
-                    getSupportFragmentManager().popBackStack();
-                    return false;
-                }
-                break;
-        }
-        return true;
-    }
-*/
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -131,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         switch (id){
             case R.id.nav_home:
                 if (getSupportActionBar() != null) {
-                    getSupportActionBar().setTitle("CampusRec");
+                    getSupportActionBar().setTitle("Campus Rec");
                     getSupportActionBar().setSubtitle(null);
                     fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
@@ -185,7 +169,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     private boolean checkOpen(Facility.Building bldg){
-        // TODO: ADD LOGIC HERE
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_WEEK);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int min = cal.get(Calendar.MINUTE);
+
+        // TODO: Finish status logic
+
+        switch(bldg){
+            case LEACH:
+                break;
+            case REZ:
+                break;
+            case FMC:
+                break;
+            case RSP:
+                break;
+            case MCF:
+                break;
+            case WSC:
+                break;
+        }
         return true;
     }
 

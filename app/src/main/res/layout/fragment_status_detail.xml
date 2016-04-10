@@ -1,12 +1,179 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.emilsjolander.components.StickyScrollViewItems.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/header_image"
+            android:src="@drawable/fmc_photo"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="FACILITY NAME"
+            android:id="@+id/fac_name"
+            android:textColor="@color/abc_primary_text_material_dark"
+            android:layout_alignBottom="@+id/header_image"
+            android:textSize="24sp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hours_divider"
+            android:layout_below="@+id/header_image"
+            android:tag="sticky"
+            android:background="@color/colorBackground">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Operating"
+                android:paddingLeft="16dp"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:id="@+id/textView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hours"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:id="@+id/textView2"
+                android:layout_toRightOf="@+id/textView" />
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_floating_material_dark"
+                android:layout_below="@+id/textView"
+                android:layout_marginLeft="13dp"
+                android:id="@+id/divider1" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="HOURS GO HERE"
+            android:id="@+id/hours_info"
+            android:layout_below="@+id/hours_divider"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailsDivider"
+            android:tag="sticky"
+            android:layout_below="@+id/hours_info"
+            android:contextClickable="false"
+            android:background="@color/colorBackground">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detailed"
+                android:paddingLeft="16dp"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:id="@+id/textView4"
+                android:layout_toRightOf="@+id/textView3" />
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_floating_material_dark"
+                android:layout_below="@+id/textView3"
+                android:layout_marginLeft="13dp"
+                android:id="@+id/divider2" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:text="INFORMATION WOW"
+            android:id="@+id/details"
+            android:layout_below="@+id/detailsDivider"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact_divider"
+            android:tag="sticky"
+            android:layout_below="@+id/details"
+            android:background="@color/colorBackground">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact"
+                android:paddingLeft="16dp"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:id="@+id/header_contact" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Us"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:id="@+id/header_us"
+                android:layout_toRightOf="@+id/header_contact" />
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_floating_material_dark"
+                android:layout_below="@+id/header_contact"
+                android:layout_marginLeft="13dp"
+                android:id="@+id/divider3" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="600dp"
+            android:text="WEW LADS CONTACT US"
+            android:id="@+id/textView5"
+            android:layout_below="@+id/contact_divider"
+            android:paddingLeft="16dp" />
+    </RelativeLayout>
+</com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>

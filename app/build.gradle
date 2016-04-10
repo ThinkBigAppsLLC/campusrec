@@ -32,4 +32,5 @@ dependencies {
     compile 'com.prolificinteractive:material-calendarview:1.2.0'
     compile 'com.github.dexafree:materiallist:3.2.0'
     compile 'com.sothree.slidinguppanel:library:3.3.0'
+    compile 'se.emilsjolander:StickyScrollViewItems:1.1.0'
 }
