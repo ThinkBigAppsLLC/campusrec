@@ -14,7 +14,8 @@
             android:id="@+id/header_image"
             android:src="@drawable/fmc_photo"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:contentDescription="facility image" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,7 +27,20 @@
             android:layout_alignBottom="@+id/header_image"
             android:textSize="24sp"
             android:paddingBottom="16dp"
-            android:paddingLeft="16dp" />
+            android:paddingLeft="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STATUS"
+            android:id="@+id/status_detail"
+            android:textStyle="italic"
+            android:layout_alignBottom="@+id/header_image"
+            android:layout_alignRight="@+id/header_image"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/abc_primary_text_material_dark" />
 
         <RelativeLayout
             android:layout_width="match_parent"

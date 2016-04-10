@@ -12,6 +12,7 @@ public class Facility {
     private int photo;
     private ArrayList<opHours> hoursOfOperation;
     private boolean open;
+    private Building bldg;
 
     public enum Building {
         LEACH, REZ, FMC, RSP, MCF, WSC
@@ -38,12 +39,15 @@ public class Facility {
                 this.name = "Westside Courts";
                 break;
         }
+        this.bldg = bldg;
         this.photo = resPhoto;
         if (hOO.size() != 7)
             throw new IllegalArgumentException("Not enough days!");
         this.hoursOfOperation = hOO;
         this.open = open;
     }
+
+    public Building getBldg(){ return this.bldg;}
 
     public String getName(){
         return this.name;

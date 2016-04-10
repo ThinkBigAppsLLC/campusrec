@@ -178,16 +178,97 @@ public class MainActivity extends AppCompatActivity
 
         switch(bldg){
             case LEACH:
+                switch(day){
+                    case Calendar.SUNDAY:
+                    case Calendar.SATURDAY:
+                        if(hour < 11 || hour > 21)
+                            return false;
+                        break;
+                    case Calendar.MONDAY:
+                    case Calendar.TUESDAY:
+                    case Calendar.WEDNESDAY:
+                    case Calendar.THURSDAY:
+                        if(hour < 6 || hour > 23)
+                            return false;
+                        break;
+                    case Calendar.FRIDAY:
+                        if(hour < 6 || hour > 22)
+                            return false;
+                        break;
+                }
                 break;
             case REZ:
+                switch(day){
+                    case Calendar.FRIDAY:
+                    case Calendar.SATURDAY:
+                    case Calendar.SUNDAY:
+                        if(hour < 12 || hour > 19)
+                            return false;
+                        break;
+                    case Calendar.MONDAY:
+                    case Calendar.TUESDAY:
+                    case Calendar.WEDNESDAY:
+                    case Calendar.THURSDAY:
+                        if(hour < 14 || hour > 19)
+                            return false;
+                        break;
+                }
                 break;
             case FMC:
+                switch(day){
+                    case Calendar.FRIDAY:
+                    case Calendar.SATURDAY:
+                    case Calendar.SUNDAY:
+                        if(hour < 12 || hour > 19)
+                            return false;
+                        break;
+                    case Calendar.MONDAY:
+                    case Calendar.TUESDAY:
+                    case Calendar.WEDNESDAY:
+                    case Calendar.THURSDAY:
+                        if(hour < 14 || hour > 19)
+                            return false;
+                        break;
+                }
                 break;
             case RSP:
+                switch(day){
+                    case Calendar.FRIDAY:
+                    case Calendar.SATURDAY:
+                        return false;
+                    case Calendar.SUNDAY:
+                    case Calendar.MONDAY:
+                    case Calendar.TUESDAY:
+                    case Calendar.WEDNESDAY:
+                    case Calendar.THURSDAY:
+                        if(hour < 17 || hour > 22)
+                            return false;
+                        else if (hour == 17){
+                            if (min < 30)
+                                return false;
+                        }
+                        else if (hour == 22){
+                            if (min > 30)
+                                return false;
+                        }
+                        break;
+                }
                 break;
             case MCF:
-                break;
             case WSC:
+                switch(day){
+                    case Calendar.SATURDAY:
+                    case Calendar.SUNDAY:
+                        if(hour > 21)
+                            return false;
+                    case Calendar.MONDAY:
+                    case Calendar.TUESDAY:
+                    case Calendar.WEDNESDAY:
+                    case Calendar.THURSDAY:
+                    case Calendar.FRIDAY:
+                        if(hour > 22)
+                            return false;
+                }
                 break;
         }
         return true;
