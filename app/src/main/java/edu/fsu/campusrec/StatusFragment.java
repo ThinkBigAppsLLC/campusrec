@@ -85,6 +85,8 @@ public class StatusFragment extends Fragment {
         statusListView.addOnItemTouchListener(new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull Card card, int position) {
+                Log.i("position", position + "");
+                Log.i("FACILITY", MainActivity.facilities.get(position).getName());
                 slider.setPanelState(PanelState.EXPANDED);
             }
 
@@ -94,6 +96,7 @@ public class StatusFragment extends Fragment {
         return v;
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void setDetailSubtitle(){
         try {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Details");
@@ -111,6 +114,7 @@ public class StatusFragment extends Fragment {
             return PanelState.HIDDEN;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public void closePanel(){
         if (slider != null){
             slider.setPanelState(PanelState.HIDDEN);
