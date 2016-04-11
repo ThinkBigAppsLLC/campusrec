@@ -17,30 +17,41 @@
             android:scaleType="centerCrop"
             android:contentDescription="@string/placeholder" />
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/placeholder"
-            android:id="@+id/fac_name"
-            android:textColor="@color/abc_primary_text_material_dark"
-            android:layout_alignBottom="@+id/header_image"
-            android:textSize="24sp"
-            android:paddingBottom="16dp"
             android:paddingLeft="16dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder"
-            android:id="@+id/status_detail"
-            android:textStyle="italic"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
             android:layout_alignBottom="@+id/header_image"
-            android:layout_alignRight="@+id/header_image"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/abc_primary_text_material_dark" />
+            android:paddingTop="16dp"
+            android:background="@color/colorBackgroundFaded"
+            android:id="@+id/header_text_background"
+            android:tag="sticky" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/placeholder"
+                android:id="@+id/fac_name"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/status_detail"
+                android:textStyle="italic"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
