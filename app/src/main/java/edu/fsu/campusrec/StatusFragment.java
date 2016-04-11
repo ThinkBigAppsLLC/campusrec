@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,17 +32,34 @@ import com.dexafree.materialList.view.MaterialListView;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 
 public class StatusFragment extends Fragment {
+    private final static String LEACH_FMC_URL = "http://campusrec.fsu.edu/fitness/leach-fmc";
+
     private SlidingUpPanelLayout slider;
     public StatusFragment() { }
+    private View mainContainer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_status, container, false);
+        mainContainer = v;
         MaterialListView statusListView = (MaterialListView) v.findViewById(R.id.status_list);
 
         for(Facility fac : MainActivity.facilities) {
@@ -112,7 +131,7 @@ public class StatusFragment extends Fragment {
                 TextView status = (TextView) v.findViewById(R.id.status_detail);
                 TextView day;
                 TextView label;
-                //TextView details = (TextView) v.findViewById(R.id.details);
+                TextView details = (TextView) v.findViewById(R.id.details);
 
                 if(activeFac.getPhoto() != -1) {
                     header.setVisibility(View.VISIBLE);
@@ -179,7 +198,30 @@ public class StatusFragment extends Fragment {
                     setCurrentDayText(label, day);
                 }
 
-                // TODO: Get details from online
+                int det = -1;
+                switch(activeFac.getBldg()){
+                    case LEACH:
+                        det = R.string.details_leach;
+                        break;
+                    case REZ:
+                        det = R.string.details_rez;
+                        break;
+                    case FMC:
+                        det = R.string.details_fmc;
+                        break;
+                    case RSP:
+                        det = R.string.details_rsp;
+                        break;
+                    case MCF:
+                        det = R.string.details_mcf;
+                        break;
+                    case WSC:
+                        det = R.string.details_wsc;
+                        break;
+                }
+                if(det != -1)
+                    details.setText(Html.fromHtml(getContext().getString(det)));
+                //new GetDetails().execute(LEACH_FMC_URL);
 
                 slider.setPanelState(PanelState.EXPANDED);
             }
@@ -229,4 +271,40 @@ public class StatusFragment extends Fragment {
             ((MainActivity) getActivity()).toggle.syncState();
         }
     }
+
+    private class GetDetails extends AsyncTask<String, Void, String> {
+        private Facility.Building bldg;
+
+        public GetDetails(Facility.Building bldg){
+            this.bldg = bldg;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            StringBuilder result = new StringBuilder();
+            for (String url : urls) {
+                try {
+                    Document doc  = Jsoup.connect(url).get();
+                    Elements classElements = doc.getElementsByClass("even");
+                    Elements children = classElements.first().children();
+                    Element beginLeach = classElements.select("p:contains(The Bobby E. Leach)").first();
+                    int beginLeachIndex = classElements.first().children().indexOf(beginLeach);
+                    classElements.first().getElementsByIndexLessThan(beginLeachIndex).remove();
+                    for (Element tmp : classElements){
+                        if(tmp.hasText())
+                            result.append(tmp.toString());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return result.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ((TextView) mainContainer.findViewById(R.id.details)).setText(Html.fromHtml(result));
+        }
+    }
+
 }

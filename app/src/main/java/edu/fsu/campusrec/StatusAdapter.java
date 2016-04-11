@@ -1,6 +1,7 @@
 package edu.fsu.campusrec;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,10 +69,11 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
         holder.bldgName.setText(name);
         holder.status.setText(stat);
         if(stat.equalsIgnoreCase("open"))
-            holder.status.setTextColor(context.getResources().getColor(R.color.openText));
+            holder.status.setTextColor(ContextCompat.getColor(context,R.color.openText));
         else {
-            holder.status.setTextColor(context.getResources().getColor(R.color.colorAccent));
-            holder.statusContainer.setBackgroundColor(context.getResources().getColor(R.color.colorSecondaryBackground));
+            holder.bldgName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryTextFaded));
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.closedText));
+            holder.statusContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.colorSecondaryBackground));
         }
 
         holder.statusContainer.setOnClickListener(new View.OnClickListener() {

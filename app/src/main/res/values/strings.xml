@@ -6,6 +6,78 @@
 
     <string name="placeholder">PLACEHOLDER</string>
 
+    <!-- Detail Descriptions -->
+    <string name="details_leach">
+        <![CDATA[
+        <p>The Bobby E. Leach Student Recreation Center is a 120,000 square foot fitness facility located right in the heart of campus. Users are required to present current, valid FSUCard to access the facility.</p>
+        <h4>Cardio &amp; Strength Equipment</h4>
+        <p>Want to get a good cardiovascular workout? We have nearly 100 cardiovascular machines including treadmills, stair climbers, ellipticals, bikes, and rowers. Hit the weights with pieces from Hammer Strength, Cybex, LifeFitness, FreeMotion, and more! And, we have over 6,500 lbs of dumbbells! Dumbbell sets range from 3 pounds all the way up to 120 pounds in three areas of the gym to accommodate all patrons. You can also work out using over 60 plate-loaded machines and benches to train all muscle groups! You are sure to find equipment for a great workout.</p>
+        <h4>Sport Courts &amp; Indoor Track</h4>
+        <p>Hoop it up on the sport courts: Three regulation-size basketball courts on the upper level of the Leach Center. Courts 1 and 2 are available for pick-up basketball, while Court 3 is designated for other sports such as volleyball (see the Front Desk for equipment), table tennis, and badminton. Racquet sports enthusiasts can take advantage of our five racquetball &amp; squash courts for recreational matches anytime the Leach is open. Racquetball court reservations are available online through <a href="https://campusrec.fsu.edu/rc/FacilityScheduling/FacilitySearch.aspx" target="_blank">Rec Connect</a>.</p>
+        <p>It\'s guaranteed not to rain&#8230 when you\'re jogging or walking on our indoor track. The 1/10 mile oval overlooks the Leach Pool and Atrium areas from the third level of the facility.</p>
+        <h4>Leach Pool and Spa</h4>
+        <p>The Leach Pool is a 16-lane by 25-yard indoor swimming facility with two 1-meter and two 3-meter diving boards. A complete spa area is located just off the pool deck and is equipped with two whirlpools, two steam rooms, and a sauna. Visit our Aquatics pages for complete details.</p>
+        <h4>Fitness Programs and Services</h4>
+        <p>Students and members can take advantage of over 100 free group fitness classes offered weekly along with personal training provided by our NSCA-certified personal trainers. Our wellness staff offers a variety of comprehensive wellness services to help members develop healthy training and nutrition habits.</p>
+        <h4>Atrium Area</h4>
+        <p>Kick back after your workout in the spacious atrium area complete with plenty of seating and big-screen TVs for a true couch potato experience. Plus, you can get a smoothie or wrap and other healthy snacks at our snack bar adjacent to the Front Desk.</p>
+        ]]>
+    </string>
+    <string name="details_fmc">
+        <![CDATA[
+        <p>Campus Recreation\'s newest facility, the Fitness &amp; Movement Clinic (FMC) is located inside the University\'s Health &amp; Wellness Center. Opened in 2012, the FMC offers more than 12,000 square feet of space for strength and cardio training and also encompasses a private studio for small group training classes and space for wellness testing and consultation. Users are required to present current, valid FSUCard to access the facility.</p>
+        <h4>Cardio &amp; Strength Equipment</h4>
+        <p class="short">The FMC has new state-of-the-art equipment designed to maximize the effectiveness of your workout including:</p>
+        <ul>
+            <li><br>26 Precor cardio pieces with 15-inch touchscreen monitors</li>
+            <li><br>8 Woodway Treadmills, two of which are self-propelling</li>
+            <li><br>4 Cybex Body Arc Trainers</li>
+            <li><br>10 FreeMotion circuit pieces / 14 Life Fitness circuit pieces</li>
+            <li><br>10 Life Fitness cardio pieces with 15-inch LCD screen</li>
+            <li><br>10 FreeMotion circuit pieces / 14 Life Fitness circuit pieces</li>
+            <li><br>1 Life Fitness Four Station MultiJungle</li>
+            <li><br>3 TRX multimount stations</li>
+            <li><br>Assortment of dumbbells, barbells, kettlebells</li>
+        </ul>
+        <p>The majority of cardio machines at the FMC include screens complete with access to select cable TV channels and the Internet.</p>
+        ]]>
+    </string>
+    <string name="details_rsp">
+        <![CDATA[
+        <p>Winner of the 2010 NIRSA Outstanding Sports Facilities national award for excellence in recreational sports facilities, this 108-acre recreational sports fields facility on FSU\'s Southwest Campus encompasses 21 sports fields and additional activity spaces. Among the 21 fields are 12 multipurpose fields for IM flag football and rec soccer, 4 tournament fields for sport club activities such as rugby and lacrosse, and 5 separate softball diamonds. The Rec SportsPlex is a limited-access facility, providing space for the recreational activities of current FSU students, faculty, and staff during designated open hours only, weather permitting.</p>
+        ]]>
+    </string>
+    <string name="details_mcf">
+        <![CDATA[
+        <p>Formerly the Intramural Sports Complex, the Main Campus Fields provide students and staff recreational sports field space on FSU\'s main campus. The facility comprises 13 acres and encompasses 4 sports fields.  The Main Campus Fields is an open-access facility, providing space for the recreational activities of current FSU students, faculty, and staff during daylight hours, weather permitting. Evening hours with lighted fields are available on weekday nights during the fall and spring semesters.  Users may be required to present current, valid FSUCard during prime hours to access the facility.</p>
+        ]]>
+    </string>
+    <string name="details_wsc">
+        <![CDATA[
+        <p>Renovated in 2009, the Westside Courts (formerly known as the Salley Hall Courts) behind Salley Hall and near Fresh Food Company on the westside of FSU\'s Main Campus features 2 outdoor basketball courts, 2 outdoor tennis courts, and a sand volleyball court along with a new pavilion space with restrooms, water fountains, picnic tables, and an equipment checkout service. The Westside Courts is an open-access facility, providing space for the recreational activities of current FSU students, faculty, and staff during daylight hours, weather permitting. Evening hours with lighted courts are available on weekday nights during the fall and spring semesters.  Users may be required to present current, valid FSUCard during prime hours to access the facility.</p>
+        ]]>
+    </string>
+    <string name="details_rez">
+        <![CDATA[
+        <p class="lead">The Florida State University Reservation is a 73-acre facility, with 10 active acres, located on beautiful Lake Bradford. The "Rez" is located 1/4 mile from the airport and four miles from the Florida State campus. In our unique natural setting you can enjoy canoeing, kayaking, picnicking, swimming, sand volleyball, disc golf, and many other activities.</p>
+        <h4>Swim in Lake Bradford</h4>
+        <p>Take a dip in our guarded, designated swimming area. Children under age 15 must pass a swim test to swim in the deep water. Or, simply enjoy our sandy beach and catch some rays!</p>
+        <h4>Get on the Water</h4>
+        <p>Enjoy an hour of canoeing and kayaking on Lake Bradford or one of the three adjoining lakes. Or, try a stand-up paddleboard. Kayak, canoe and paddleboard rentals are available (FREE for FSU students). Go big with a sailboat, rentals also available from the Rez. Guests wishing to rent one of our sailboats must participate in one of our scheduled sailing clinics to ensure safe handling of equipment and to test skill proficiency prior to rentals. Sailing clinics are offered throughout our season.</p>
+        <h5>ATTENTION: When the combined air and water temperatures of the FSU Reservation are less than 100 degrees F, the water will be CLOSED. No waterfront rentals nor swimming will be allowed.</h5>
+        <h4>Enjoy Outdoor Games</h4>
+        <p>How about some sand volleyball, a game of horseshoes, cornhole or Spikeball, or a round of disc golf? It\'s all free with park admission. Two sand volleyball courts are available for patrons during normal waterfront hours. And, nine holes of disc golf wind their way throughout the property. Sports equipment is available for checkout at the Waterfront Office.</p>
+        <h4>Scale the Wall</h4>
+        <p>Climb our 40-foot climbing wall, part of the FSU Challenge Course. You must have closed toe shoes to climb the wall. The Climbing Wall is accessible during park hours each weekend. A small fee applies for non-FSU students and the general public.</p>
+        <h4>Stay in the Shade</h4>
+        <p>Get into the shade and take part in a game of table tennis in our rec hall, located adjacent to the waterfront. Table tennis balls and paddles can be checked out at the Waterfront Office.</p>
+        <h4>Rent a Pavilion</h4>
+        <p>Enjoy even more shade under our pavilions, available for reservation and rental by various groups. Enjoy food hot off the grill, a charcoal grill and picnic tables are available with each pavilion. Please bring your own charcoal and grill brush.Visit our <a href="http://campusrec.fsu.edu/outdoors/reservation/rentals">Facility Rentals</a> page for details.</p>
+        <h4>Prohibited Items</h4>
+        <p>Come out and relax by the lake but leave a few things at home: Alcohol and pets are not allowed at the Rez.</p>
+        ]]>
+    </string>
+
     <!-- Status Header Strings -->
     <string-array name="status_headers">
         <item>Leach Recreation Center</item>
