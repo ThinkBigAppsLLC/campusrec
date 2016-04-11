@@ -69,8 +69,10 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
         holder.status.setText(stat);
         if(stat.equalsIgnoreCase("open"))
             holder.status.setTextColor(context.getResources().getColor(R.color.openText));
-        else
+        else {
             holder.status.setTextColor(context.getResources().getColor(R.color.colorAccent));
+            holder.statusContainer.setBackgroundColor(context.getResources().getColor(R.color.colorSecondaryBackground));
+        }
 
         holder.statusContainer.setOnClickListener(new View.OnClickListener() {
             @Override
