@@ -110,4 +110,12 @@
     <string name="nav_im">Intramural Sports</string>
     <string name="nav_res">Reservations</string>
     <string name="nav_contact">Contact Us</string>
+
+    <!-- Contact Us Strings -->
+    <string name="label_crao">Campus Rec Administrative Offices</string>
+    <string name="label_lcfa">Leach Center | Fitness | Aquatics</string>
+    <string name="label_fmcw">Fitness &amp; Movement Clinic | Wellness</string>
+    <string name="label_imsp">Intramural Sports</string>
+    <string name="label_cssc">Competitive Sports Facilities | Sport Clubs</string>
+    <string name="label_rpcf">FSU Reservation | Outdoor Pursuits | FSU Challenge | Camp Flastacowo</string>
 </resources>

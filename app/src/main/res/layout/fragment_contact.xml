@@ -1,12 +1,146 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.emilsjolander.components.StickyScrollViewItems.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.fsu.campusrec.ContactFragment">
+    tools:context="edu.fsu.campusrec.ContactFragment"
+    android:background="@color/colorBackground">
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/placeholder" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_crao"
+            android:id="@+id/label_crao"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_crao"
+            android:layout_below="@+id/label_crao"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_lcfa"
+            android:id="@+id/label_lcfa"
+            android:layout_below="@+id/list_crao"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_lcfa"
+            android:layout_below="@+id/label_lcfa"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_fmcw"
+            android:id="@+id/label_fmcw"
+            android:layout_below="@+id/list_lcfa"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_fmcw"
+            android:layout_below="@+id/label_fmcw"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_imsp"
+            android:id="@+id/label_imsp"
+            android:layout_below="@+id/list_fmcw"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_imsp"
+            android:layout_below="@+id/label_imsp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_cssc"
+            android:id="@+id/label_cssc"
+            android:layout_below="@+id/list_imsp"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_cssc"
+            android:layout_below="@+id/label_cssc"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_rpcf"
+            android:id="@+id/label_rpcf"
+            android:layout_below="@+id/list_cssc"
+            android:textStyle="bold"
+            android:tag="sticky"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:background="@color/colorBackground" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_rocf"
+            android:layout_below="@+id/label_rpcf"
+            android:paddingBottom="8dp" />
+    </RelativeLayout>
+</com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
