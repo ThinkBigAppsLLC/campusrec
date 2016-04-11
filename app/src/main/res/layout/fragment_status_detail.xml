@@ -15,13 +15,15 @@
             android:src="@drawable/fmc_photo"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:contentDescription="facility image" />
+            android:contentDescription="@string/placeholder" />
+            <!-- TODO: Programmatically change contentDescription -->
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="FACILITY NAME"
+            android:text="@string/placeholder"
             android:id="@+id/fac_name"
             android:textColor="@color/abc_primary_text_material_dark"
             android:layout_alignBottom="@+id/header_image"
@@ -33,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="STATUS"
+            android:text="@string/placeholder"
             android:id="@+id/status_detail"
             android:textStyle="italic"
             android:layout_alignBottom="@+id/header_image"
@@ -53,7 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Operating"
+                android:text="@string/label_op"
                 android:paddingLeft="16dp"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
@@ -64,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hours"
+                android:text="@string/label_hours"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -81,30 +83,162 @@
                 android:id="@+id/divider1" />
         </RelativeLayout>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:text="HOURS GO HERE"
-            android:id="@+id/hours_info"
+            android:layout_height="match_parent"
+            android:id="@+id/hours_container"
             android:layout_below="@+id/hours_divider"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp" />
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_sun"
+                android:id="@+id/hours_sun_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_sun"
+                android:layout_alignTop="@+id/hours_sun_label"
+                android:layout_toRightOf="@+id/hours_sun_label"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_mon"
+                android:id="@+id/hours_mon_label"
+                android:layout_below="@+id/hours_sun_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_mon"
+                android:layout_alignTop="@+id/hours_mon_label"
+                android:layout_toRightOf="@+id/hours_mon_label"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tues"
+                android:id="@+id/hours_tues_label"
+                android:layout_below="@+id/hours_mon_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_tues"
+                android:layout_alignTop="@+id/hours_tues_label"
+                android:layout_toRightOf="@+id/hours_tues_label"
+                android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_wed"
+                android:id="@+id/hours_wed_label"
+                android:layout_below="@+id/hours_tues_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_wed"
+                android:layout_alignTop="@+id/hours_wed_label"
+                android:layout_toRightOf="@+id/hours_wed_label"
+                android:paddingLeft="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_thurs"
+                android:id="@+id/hours_thurs_label"
+                android:layout_below="@+id/hours_wed_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_thurs"
+                android:layout_alignTop="@+id/hours_thurs_label"
+                android:layout_toRightOf="@+id/hours_thurs_label"
+                android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_fri"
+                android:id="@+id/hours_fri_label"
+                android:layout_below="@+id/hours_thurs_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_fri"
+                android:layout_alignTop="@+id/hours_fri_label"
+                android:layout_toRightOf="@+id/hours_fri_label"
+                android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_sat"
+                android:id="@+id/hours_sat_label"
+                android:layout_below="@+id/hours_fri_label"
+                android:minEms="1"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:id="@+id/hours_sat"
+                android:layout_alignTop="@+id/hours_sat_label"
+                android:layout_toRightOf="@+id/hours_sat_label"
+                android:paddingLeft="8dp"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detailsDivider"
             android:tag="sticky"
-            android:layout_below="@+id/hours_info"
+            android:layout_below="@+id/hours_container"
             android:contextClickable="false"
             android:background="@color/colorBackground">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detailed"
+                android:text="@string/label_detailed"
                 android:paddingLeft="16dp"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
@@ -115,7 +249,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Information"
+                android:text="@string/label_info"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -134,8 +268,8 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:text="INFORMATION WOW"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
             android:id="@+id/details"
             android:layout_below="@+id/detailsDivider"
             android:paddingLeft="16dp"
@@ -154,7 +288,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact"
+                android:text="@string/label_contact"
                 android:paddingLeft="16dp"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
@@ -165,7 +299,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Us"
+                android:text="@string/label_us"
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -185,7 +319,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="600dp"
-            android:text="WEW LADS CONTACT US"
+            android:text="@string/placeholder"
             android:id="@+id/textView5"
             android:layout_below="@+id/contact_divider"
             android:paddingLeft="16dp" />

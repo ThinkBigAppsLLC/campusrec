@@ -4,6 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="placeholder">PLACEHOLDER</string>
+
     <!-- Status Header Strings -->
     <string-array name="status_headers">
         <item>Leach Recreation Center</item>
@@ -14,6 +16,21 @@
         <item>Westside Courts</item>
     </string-array>
 
+    <!-- Status Detail Strings -->
+    <string name="label_sun">S</string>
+    <string name="label_mon">M</string>
+    <string name="label_tues">T</string>
+    <string name="label_wed">W</string>
+    <string name="label_thurs">T</string>
+    <string name="label_fri">F</string>
+    <string name="label_sat">S</string>
+    <string name="label_op">Operating</string>
+    <string name="label_hours">Hours</string>
+    <string name="label_detailed">Detailed</string>
+    <string name="label_info">Information</string>
+    <string name="label_contact">Contact</string>
+    <string name="label_us">Us</string>
+
     <!-- Nav Drawer Strings -->
     <string name="nav_home">Home</string>
     <string name="nav_status">Status</string>
@@ -21,7 +38,4 @@
     <string name="nav_im">Intramural Sports</string>
     <string name="nav_res">Reservations</string>
     <string name="nav_contact">Contact Us</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

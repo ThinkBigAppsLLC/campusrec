@@ -2,7 +2,9 @@ package edu.fsu.campusrec;
 
 import android.widget.GridLayout;
 
+import java.text.Format;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Facility {
     private final String STATUS_OPEN = "OPEN";
@@ -64,39 +66,35 @@ public class Facility {
             return STATUS_CLOSED;
     }
 
-    public String getHours(){
-        String ret = "";
-        ret += "S | ";
-        ret += hoursOfOperation.get(0).toString();
-        ret += "M | ";
-        ret += hoursOfOperation.get(1).toString();
-        ret += "T | ";
-        ret += hoursOfOperation.get(2).toString();
-        ret += "W | ";
-        ret += hoursOfOperation.get(3).toString();
-        ret += "T | ";
-        ret += hoursOfOperation.get(4).toString();
-        ret += "F | ";
-        ret += hoursOfOperation.get(5).toString();
-        ret += "S | ";
-        ret += hoursOfOperation.get(6).toString();
-        return ret;
+    public HashMap<String, String> getHours(){
+        HashMap<String, String> opHours = new HashMap<>();
+        opHours.put("sun", this.hoursOfOperation.get(0).toString());
+        opHours.put("mon", this.hoursOfOperation.get(1).toString());
+        opHours.put("tues", this.hoursOfOperation.get(2).toString());
+        opHours.put("wed", this.hoursOfOperation.get(3).toString());
+        opHours.put("thurs", this.hoursOfOperation.get(4).toString());
+        opHours.put("fri", this.hoursOfOperation.get(5).toString());
+        opHours.put("sat", this.hoursOfOperation.get(6).toString());
+        return opHours;
     }
+
     public static class opHours {
         private Hours open;
         private Hours close;
         private Special spec;
         protected enum Special {
-            ALLDAY, EVENTS
+            ALLDAY, EVENTS, NONE
         }
 
         public opHours (Hours open, Hours close){
             this.open = open;
             this.close = close;
+            this.spec = Special.NONE;
         }
 
         public opHours (Hours close){
             this.close = close;
+            this.spec = Special.NONE;
         }
 
         public opHours (Special spec){
@@ -109,14 +107,16 @@ public class Facility {
                     return "Special Events Only";
                 case ALLDAY:
                     return "24 Hours";
-                default:
+                case NONE:
                     if(open == null)
                         return "until " + this.close.toString();
                     else
                         return this.open.toString() + " - " + this.close.toString();
             }
-
+            return null;
         }
+
+
 
         public static class Hours {
             private int hours;
@@ -143,7 +143,7 @@ public class Facility {
                 else
                     timeHalf = "p";
 
-                return this.hours + "." + this.minutes + timeHalf;
+                return String.format("%02d.%02d%s", this.hours, this.minutes, timeHalf);
             }
         }
     }
