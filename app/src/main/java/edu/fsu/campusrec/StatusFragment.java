@@ -117,6 +117,7 @@ public class StatusFragment extends Fragment {
                 if(activeFac.getPhoto() != -1) {
                     header.setVisibility(View.VISIBLE);
                     header.setImageResource(activeFac.getPhoto());
+                    header.setContentDescription(activeFac.getName());
                 }
                 else {
                     header.setVisibility(View.GONE);
@@ -129,7 +130,6 @@ public class StatusFragment extends Fragment {
 
                 // DAILY HOURS FACTORY
                 HashMap<String, String> opHours = activeFac.getHours();
-
                 day = (TextView) v.findViewById(R.id.hours_sun);
                 day.setText(opHours.get("sat"));
                 if(dayOfWeek == Calendar.SUNDAY) {

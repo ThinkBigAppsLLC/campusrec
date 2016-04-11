@@ -30,8 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-// TODO: FINISH CONVERING FACILITYLIST
-
 public class HomeFragment extends Fragment {
     private View viewContainer;
 

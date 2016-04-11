@@ -174,8 +174,6 @@ public class MainActivity extends AppCompatActivity
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         int min = cal.get(Calendar.MINUTE);
 
-        // TODO: Finish status logic
-
         switch(bldg){
             case LEACH:
                 switch(day){
