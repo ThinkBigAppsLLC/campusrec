@@ -6,6 +6,12 @@
 
     <string name="placeholder">PLACEHOLDER</string>
 
+    <!-- Home Dividers -->
+    <string name="label_current">Current</string>
+    <string name="label_status">Status</string>
+    <string name="label_rain">Rain</string>
+    <string name="label_line">LINE</string>
+
     <!-- Detail Descriptions -->
     <string name="details_leach">
         <![CDATA[
@@ -118,4 +124,8 @@
     <string name="label_imsp">Intramural Sports</string>
     <string name="label_cssc">Competitive Sports Facilities | Sport Clubs</string>
     <string name="label_rpcf">FSU Reservation | Outdoor Pursuits | FSU Challenge | Camp Flastacowo</string>
+
+    <!-- Twitter Resources -->
+    <string name="twitter_key">TNePIOUCkUVAzJqLdkbT1t7cx</string>
+    <string name="twitter_secret">tFAZ9FnUMcGkuUVeizjnfdFLEd24oK6Y5jxUq8oIHYrZEeU001</string>
 </resources>

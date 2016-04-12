@@ -9,69 +9,113 @@
     tools:context="edu.fsu.campusrec.MainActivity"
     android:id="@+id/coord" >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/hours">
-
-        <android.support.percent.PercentFrameLayout
+        android:layout_height="wrap_content">
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/main_carousel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/carousel_container"
-            android:layout_alignParentTop="true"
-            android:background="@android:color/black">
-
-            <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/main_carousel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_widthPercent="100%"
-                app:layout_heightPercent="25.75%"
-                />
-        </android.support.percent.PercentFrameLayout>
+            android:background="@android:color/black"
+            android:layout_height="150dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hours_divider"
-            android:layout_below="@+id/carousel_container"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp">
+            android:id="@+id/hours"
+            android:layout_below="@+id/main_carousel">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Current"
-                android:paddingLeft="16dp"
-                android:textColor="@android:color/primary_text_dark"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:id="@+id/curr" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status"
-                android:textColor="@android:color/primary_text_dark"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:id="@+id/stat"
-                android:layout_toRightOf="@+id/curr" />
+                android:id="@+id/hours_divider"
+                android:background="@color/colorPrimary"
+                android:elevation="1dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_current"
+                    android:paddingLeft="16dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:id="@+id/curr" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_status"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:id="@+id/stat"
+                    android:layout_toRightOf="@+id/curr" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_status"
+                android:background="@color/colorBackground"
+                android:scrollbars="vertical"
+                android:layout_below="@+id/hours_divider" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondaryBackground"
+                android:layout_below="@+id/recycler_status" />
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recycler_status"
-            android:background="@color/colorBackground"
-            android:scrollbars="vertical"
-            android:layout_below="@+id/hours_divider" />
+            android:layout_below="@+id/hours">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/divider_rainline"
+                android:background="@color/colorBackground"
+                android:elevation="1dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_rain"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="16sp"
+                    android:id="@+id/label_rain"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_line"
+                    android:textColor="@color/colorPrimaryText"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:id="@+id/label_line"
+                    android:layout_toRightOf="@+id/label_rain" />
+            </RelativeLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/tweet_rainline"
+                android:layout_below="@+id/divider_rainline"
+                android:nestedScrollingEnabled="false" />
+        </RelativeLayout>
     </RelativeLayout>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

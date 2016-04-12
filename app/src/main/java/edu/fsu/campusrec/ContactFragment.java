@@ -30,7 +30,7 @@ public class ContactFragment extends Fragment {
     public ContactFragment() { }
     private ArrayList<ArrayList<ContactAdapter.Contact>> contacts;
 
-    public class CustomLinearLayoutManager extends LinearLayoutManager {
+    public static class CustomLinearLayoutManager extends LinearLayoutManager {
         public CustomLinearLayoutManager(Context context) {
             super(context);
         }

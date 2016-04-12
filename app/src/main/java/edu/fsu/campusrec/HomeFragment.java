@@ -15,11 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +35,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
+    private final static String RAINLINE_USERNAME = "fsuimrainline";
+
     private View viewContainer;
 
     private SliderLayout mainCarousel;
@@ -60,7 +66,7 @@ public class HomeFragment extends Fragment {
             statuses.add(fac.getStatus());
         }
         mStatusAdapter = new StatusAdapter(bldgNames, statuses, getContext());
-        LinearLayoutManager mRecyclerManager = new LinearLayoutManager(getContext());
+        ContactFragment.CustomLinearLayoutManager mRecyclerManager = new ContactFragment.CustomLinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mRecyclerManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mStatusAdapter);
@@ -84,12 +90,23 @@ public class HomeFragment extends Fragment {
             DefaultSliderView slider = new DefaultSliderView(getContext());
             slider.description(name)
                     .image(url_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.CenterInside);
+                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop);
 
             mainCarousel.addSlider(slider);
             mainCarousel.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
             mainCarousel.setDuration(5000);
         }
+
+        UserTimeline userTimeline = new UserTimeline.Builder()
+                .screenName(RAINLINE_USERNAME)
+                .maxItemsPerRequest(1)
+                .build();
+
+        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getContext())
+                .setTimeline(userTimeline)
+                .build();
+        ((ListView) viewContainer.findViewById(R.id.tweet_rainline)).setAdapter(adapter);
+
         return viewContainer;
     }
 

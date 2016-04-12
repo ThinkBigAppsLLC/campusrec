@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 23
@@ -34,4 +49,7 @@ dependencies {
     compile 'com.sothree.slidinguppanel:library:3.3.0'
     compile 'se.emilsjolander:StickyScrollViewItems:1.1.0'
     compile 'org.jsoup:jsoup:1.8.3'
+    compile('com.twitter.sdk.android:twitter:1.13.0@aar') {
+        transitive = true;
+    }
 }

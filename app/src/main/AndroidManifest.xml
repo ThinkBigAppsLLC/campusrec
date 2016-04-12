@@ -24,6 +24,9 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ReservationFragment"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="aad39fed7430d676a80bfe3630bbc5382ce61fc6" />
     </application>
 
 </manifest>
