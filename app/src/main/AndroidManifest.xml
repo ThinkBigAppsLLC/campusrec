@@ -22,8 +22,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ReservationFragment"></activity>
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+            <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="aad39fed7430d676a80bfe3630bbc5382ce61fc6" />

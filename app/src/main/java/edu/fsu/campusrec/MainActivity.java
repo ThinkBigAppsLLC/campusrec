@@ -39,9 +39,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TwitterAuthConfig authConfig =
-                new TwitterAuthConfig(getString(R.string.twitter_key), getString(R.string.twitter_secret));
-        Fabric.with(this, new Twitter(authConfig));
+
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
