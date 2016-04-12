@@ -7,10 +7,6 @@
             android:icon="@drawable/home"
             android:title="@string/nav_home" />
         <item
-            android:id="@+id/nav_status"
-            android:icon="@drawable/status"
-            android:title="@string/nav_status" />
-        <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/events"
             android:title="@string/nav_calendar" />

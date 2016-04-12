@@ -8,12 +8,15 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
+import android.transition.Slide;
 import android.transition.TransitionInflater;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +86,13 @@ public class HomeFragment extends Fragment {
                 FragmentTransaction fTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fTransaction.add(R.id.frag_container, sFrag);
                 fTransaction.addToBackStack(null);
-                fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    sFrag.setEnterTransition(new Slide());
+                    sFrag.setExitTransition(new Slide());
+                }
+                else{
+                    fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                }
                 fTransaction.commit();
             }
         });

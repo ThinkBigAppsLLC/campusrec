@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View v) {
                     if(getSupportFragmentManager().getBackStackEntryCount() > 1){
-                        Log.i("FRAG MAN", "POPPING!");
                         getSupportFragmentManager().popBackStack();
                         restoreTitle();
                     }
@@ -139,14 +138,6 @@ public class MainActivity extends AppCompatActivity
                     fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 }
                 fTransaction.replace(R.id.frag_container, hFrag);
-                break;
-            case R.id.nav_status:
-                if (getSupportActionBar() != null) {
-                    getSupportActionBar().setTitle("Status");
-                    getSupportActionBar().setSubtitle(null);
-                    fManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }
-                fTransaction.replace(R.id.frag_container, statusFrag);
                 break;
             case R.id.nav_calendar:
                 if (getSupportActionBar() != null) {
