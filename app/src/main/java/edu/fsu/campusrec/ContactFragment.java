@@ -1,6 +1,8 @@
 package edu.fsu.campusrec;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -26,6 +29,7 @@ import java.util.concurrent.TimeoutException;
 
 public class ContactFragment extends Fragment {
     private static final String CONTACT_URL = "http://campusrec.fsu.edu/staff/contact-our-team";
+
 
     public ContactFragment() { }
     private ArrayList<ArrayList<ContactAdapter.Contact>> contacts;
@@ -65,6 +69,7 @@ public class ContactFragment extends Fragment {
         setRecyclerAdapter(contactRecycler, contacts.get(4));
         contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
         setRecyclerAdapter(contactRecycler, contacts.get(5));
+
 
         return v;
     }
@@ -119,4 +124,6 @@ public class ContactFragment extends Fragment {
         mRecyclerView.setLayoutManager(mRecyclerManager);
         mRecyclerView.setHasFixedSize(true);
     }
+
+
 }

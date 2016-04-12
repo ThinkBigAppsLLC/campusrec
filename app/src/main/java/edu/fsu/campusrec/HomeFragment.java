@@ -1,5 +1,7 @@
 package edu.fsu.campusrec;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -35,7 +37,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
-    private final static String RAINLINE_USERNAME = "fsuimrainline";
+    private static final String RAINLINE_USERNAME = "fsuimrainline";
+    private static final String RAINLINE_PHONE = "tel:8506457246";
 
     private View viewContainer;
 
@@ -106,6 +109,17 @@ public class HomeFragment extends Fragment {
                 .setTimeline(userTimeline)
                 .build();
         ((ListView) viewContainer.findViewById(R.id.tweet_rainline)).setAdapter(adapter);
+
+        ImageView rainlinePhone = (ImageView) viewContainer.findViewById(R.id.phone_rainline);
+        rainlinePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(RAINLINE_PHONE));
+                getContext().startActivity(intent);
+            }
+        });
+
 
         return viewContainer;
     }
