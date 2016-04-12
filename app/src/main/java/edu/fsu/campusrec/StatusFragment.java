@@ -182,7 +182,7 @@ public class StatusFragment extends Fragment {
 
     @Override
     public void onDestroy(){
-        //((MainActivity) getActivity()).restoreTitle();
+        ((MainActivity) getActivity()).restoreTitle();
         super.onDestroy();
     }
 

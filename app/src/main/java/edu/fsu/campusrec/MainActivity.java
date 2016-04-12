@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity
                 public void onClick(View v) {
                     if(getSupportFragmentManager().getBackStackEntryCount() > 1){
                         getSupportFragmentManager().popBackStack();
-                        restoreTitle();
                     }
                     else if(drawer != null){
                         if(!drawer.isDrawerOpen(GravityCompat.START)){
