@@ -43,23 +43,28 @@ public class ContactFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //createData();
+
         GetDetails task = new GetDetails();
         task.execute(CONTACT_URL);
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
-        RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
-        CustomLinearLayoutManager mRecyclerManager = new CustomLinearLayoutManager(getContext());
-        ContactAdapter contactAdapter;
         try {
-            task.get();
-            contactAdapter = new ContactAdapter(contacts.get(0), getContext());
-            contactRecycler.setAdapter(contactAdapter);
-            contactRecycler.setLayoutManager(mRecyclerManager);
-            contactRecycler.setHasFixedSize(true);
-        } catch (InterruptedException|ExecutionException e) {
+            task.get(7, TimeUnit.SECONDS);
+        } catch (InterruptedException|ExecutionException|TimeoutException e) {
             e.printStackTrace();
         }
 
+        RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
+        setRecyclerAdapter(contactRecycler, contacts.get(0));
+        contactRecycler = (RecyclerView) v.findViewById(R.id.list_lcfa);
+        setRecyclerAdapter(contactRecycler, contacts.get(1));
+        contactRecycler = (RecyclerView) v.findViewById(R.id.list_fmcw);
+        setRecyclerAdapter(contactRecycler, contacts.get(2));
+        contactRecycler = (RecyclerView) v.findViewById(R.id.list_imsp);
+        setRecyclerAdapter(contactRecycler, contacts.get(3));
+        contactRecycler = (RecyclerView) v.findViewById(R.id.list_cssc);
+        setRecyclerAdapter(contactRecycler, contacts.get(4));
+        contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
+        setRecyclerAdapter(contactRecycler, contacts.get(5));
 
         return v;
     }
@@ -89,7 +94,7 @@ public class ContactFragment extends Fragment {
                         name = fields.get(0).text();
                         title = fields.get(1).text();
                         phone = fields.get(2).text();
-                        email = fields.get(3).text();
+                        email = fields.get(3).text().trim();
                         tmpContact = new ContactAdapter.Contact(name, title, phone, email);
                         tmp.add(tmpContact);
                     }
@@ -106,4 +111,12 @@ public class ContactFragment extends Fragment {
         protected void onPostExecute(ArrayList<ArrayList<ContactAdapter.Contact>> result) { }
     }
 
+    private void setRecyclerAdapter(RecyclerView mRecyclerView, ArrayList<ContactAdapter.Contact> contacts){
+        CustomLinearLayoutManager mRecyclerManager = new CustomLinearLayoutManager(getContext());
+        ContactAdapter contactAdapter;
+        contactAdapter = new ContactAdapter(contacts, getContext());
+        mRecyclerView.setAdapter(contactAdapter);
+        mRecyclerView.setLayoutManager(mRecyclerManager);
+        mRecyclerView.setHasFixedSize(true);
+    }
 }

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder>{
+    private final static String EMAIL_URL = "https://fsu.qualtrics.com/jfe/form/SV_7ODV4dNaUcqyfEp";
 
     private ArrayList<Contact> contactList;
     private Context context;
@@ -105,17 +107,27 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             }
         });
 
-        holder.action_email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        if(!person.getEmail().equalsIgnoreCase("email")){
+            holder.action_email.setVisibility(View.INVISIBLE);
+        }
+        else {
+            holder.action_email.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Launches Browser
+                    Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse(EMAIL_URL));
+                    context.startActivity(browserIntent);
 
-                emailIntent.setType("plain/text");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{person.getEmail()});
+                    // Launches Email client
+/*                    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 
-                context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            }
-        });
+                    emailIntent.setType("plain/text");
+                    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{person.getEmail()});
+
+                    context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
+                }
+            });
+        }
     }
 
     @Override

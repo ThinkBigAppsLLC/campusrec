@@ -23,7 +23,8 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -32,12 +33,19 @@
             android:layout_below="@+id/label_crao"
             android:paddingBottom="8dp" />
 
+        <View android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/background_material_dark"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/list_crao"
+            android:id="@+id/divider_crao" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_lcfa"
             android:id="@+id/label_lcfa"
-            android:layout_below="@+id/list_crao"
             android:textStyle="bold"
             android:tag="sticky"
             android:paddingLeft="16dp"
@@ -45,7 +53,9 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_below="@+id/divider_crao"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -54,12 +64,19 @@
             android:layout_below="@+id/label_lcfa"
             android:paddingBottom="8dp" />
 
+        <View android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/background_material_dark"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/list_lcfa"
+            android:id="@+id/divider_lcfa" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_fmcw"
             android:id="@+id/label_fmcw"
-            android:layout_below="@+id/list_lcfa"
             android:textStyle="bold"
             android:tag="sticky"
             android:paddingLeft="16dp"
@@ -68,7 +85,9 @@
             android:paddingTop="8dp"
             android:textIsSelectable="false"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_below="@+id/divider_lcfa"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -77,12 +96,19 @@
             android:layout_below="@+id/label_fmcw"
             android:paddingBottom="8dp" />
 
+        <View android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/background_material_dark"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/list_fmcw"
+            android:id="@+id/divider_fmcw" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_imsp"
             android:id="@+id/label_imsp"
-            android:layout_below="@+id/list_fmcw"
             android:textStyle="bold"
             android:tag="sticky"
             android:paddingLeft="16dp"
@@ -90,7 +116,9 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_below="@+id/divider_fmcw"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -99,12 +127,19 @@
             android:layout_below="@+id/label_imsp"
             android:paddingBottom="8dp" />
 
+        <View android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/background_material_dark"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/list_imsp"
+            android:id="@+id/divider_imsp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_cssc"
             android:id="@+id/label_cssc"
-            android:layout_below="@+id/list_imsp"
             android:textStyle="bold"
             android:tag="sticky"
             android:paddingLeft="16dp"
@@ -112,7 +147,9 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_below="@+id/divider_imsp"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -121,12 +158,19 @@
             android:layout_below="@+id/label_cssc"
             android:paddingBottom="8dp" />
 
+        <View android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/background_material_dark"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/list_cssc"
+            android:id="@+id/divider_cssc" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_rpcf"
             android:id="@+id/label_rpcf"
-            android:layout_below="@+id/list_cssc"
             android:textStyle="bold"
             android:tag="sticky"
             android:paddingLeft="16dp"
@@ -134,7 +178,9 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_below="@+id/divider_cssc"
+            android:textColor="@color/colorPrimaryText" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
