@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/hours_divider"
-            android:layout_below="@+id/header_image"
+            android:layout_below="@+id/header_text_background"
             android:tag="sticky"
             android:background="@color/colorBackground">
 

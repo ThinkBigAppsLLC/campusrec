@@ -50,185 +50,130 @@ import java.util.HashMap;
 
 public class StatusFragment extends Fragment {
     private final static String LEACH_FMC_URL = "http://campusrec.fsu.edu/fitness/leach-fmc";
+    private Facility fac;
 
     private SlidingUpPanelLayout slider;
     public StatusFragment() { }
     private View mainContainer;
 
+    public static StatusFragment newInstance(Facility fac){
+        StatusFragment sFrag = new StatusFragment();
+        sFrag.setBuilding(fac);
+        return sFrag;
+    }
+
+    private void setBuilding(@NonNull Facility fac){
+        this.fac = fac;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_status, container, false);
+        final View v = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mainContainer = v;
-        MaterialListView statusListView = (MaterialListView) v.findViewById(R.id.status_list);
 
-        for(Facility fac : MainActivity.facilities) {
-            Card card;
-            int color;
-            if(fac.getStatus().equalsIgnoreCase("open")) {
-                color = ContextCompat.getColor(getContext(), R.color.openText);
-            }
-            else {
-                color = ContextCompat.getColor(getContext(), R.color.colorAccent);
-            }
-            if(fac.getPhoto() != -1) {
-                card = new Card.Builder(getContext())
-                        .withProvider(new CardProvider())
-                        .setLayout(R.layout.material_image_with_buttons_card)
-                        .setTitle(fac.getName())
-                        .setTitleColor(Color.WHITE)
-                        .setDescription(fac.getStatus())
-                        .setDescriptionColor(color)
-                        .setDrawable(fac.getPhoto())
-                        .endConfig()
-                        .build();
-            }
-            else{
-                card = new Card.Builder(getContext())
-                        .withProvider(new CardProvider())
-                        .setLayout(R.layout.material_image_with_buttons_card)
-                        .setTitle(fac.getName())
-                        .setTitleColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryText))
-                        .setDescription(fac.getStatus())
-                        .setDescriptionColor(color)
-                        .endConfig()
-                        .build();
-            }
-            statusListView.getAdapter().add(card);
+        // Change to active facility
+        if(fac == null)
+            return v;
+        Facility activeFac = fac;
+
+        ImageView header = (ImageView) v.findViewById(R.id.header_image);
+        TextView headerName = (TextView) v.findViewById(R.id.fac_name);
+        TextView status = (TextView) v.findViewById(R.id.status_detail);
+        TextView day;
+        TextView label;
+        TextView details = (TextView) v.findViewById(R.id.details);
+
+        if(activeFac.getPhoto() != -1) {
+            header.setVisibility(View.VISIBLE);
+            header.setImageResource(activeFac.getPhoto());
+            header.setContentDescription(activeFac.getName());
+        }
+        else {
+            header.setVisibility(View.GONE);
+        }
+        headerName.setText(activeFac.getName());
+        status.setText(activeFac.getStatus());
+
+        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+
+        // DAILY HOURS FACTORY
+        HashMap<String, String> opHours = activeFac.getHours();
+        day = (TextView) v.findViewById(R.id.hours_sun);
+        day.setText(opHours.get("sat"));
+        if(dayOfWeek == Calendar.SUNDAY) {
+            label = (TextView) v.findViewById(R.id.hours_sun_label);
+            setCurrentDayText(label, day);
         }
 
-        slider = (SlidingUpPanelLayout) v.findViewById(R.id.sliding_up_layout);
-        slider.setPanelState(PanelState.HIDDEN);
-        slider.setTouchEnabled(false);
-        slider.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
-            @Override
-            public void onPanelSlide(View panel, float slideOffset) { }
+        day = (TextView) v.findViewById(R.id.hours_mon);
+        day.setText(opHours.get("mon"));
+        if(dayOfWeek == Calendar.MONDAY) {
+            label = (TextView) v.findViewById(R.id.hours_mon_label);
+            setCurrentDayText(label, day);
+        }
 
-            @Override
-            public void onPanelStateChanged(View panel, PanelState previousState, PanelState newState) {
-                switch (newState){
-                    case EXPANDED:
-                        setDetailSubtitle();
-                        slider.setTouchEnabled(true);
-                        break;
-                    case COLLAPSED:
-                        closePanel();
-                        break;
-                }
-            }
-        });
+        day = (TextView) v.findViewById(R.id.hours_tues);
+        day.setText(opHours.get("tues"));
+        if(dayOfWeek == Calendar.TUESDAY) {
+            label = (TextView) v.findViewById(R.id.hours_tues_label);
+            setCurrentDayText(label, day);
+        }
 
-        statusListView.addOnItemTouchListener(new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            @SuppressWarnings("ConstantConditions")
-            public void onItemClick(@NonNull Card card, int position) {
-                Facility activeFac = MainActivity.facilities.get(position);
-                if(((AppCompatActivity) getActivity()).getSupportActionBar() != null)
-                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(activeFac.getName());
+        day = (TextView) v.findViewById(R.id.hours_wed);
+        day.setText(opHours.get("wed"));
+        if(dayOfWeek == Calendar.WEDNESDAY) {
+            label = (TextView) v.findViewById(R.id.hours_wed_label);
+            setCurrentDayText(label, day);
+        }
 
-                ImageView header = (ImageView) v.findViewById(R.id.header_image);
-                TextView headerName = (TextView) v.findViewById(R.id.fac_name);
-                TextView status = (TextView) v.findViewById(R.id.status_detail);
-                TextView day;
-                TextView label;
-                TextView details = (TextView) v.findViewById(R.id.details);
+        day = (TextView) v.findViewById(R.id.hours_thurs);
+        day.setText(opHours.get("thurs"));
+        if(dayOfWeek == Calendar.THURSDAY) {
+            label = (TextView) v.findViewById(R.id.hours_thurs_label);
+            setCurrentDayText(label, day);
+        }
 
-                if(activeFac.getPhoto() != -1) {
-                    header.setVisibility(View.VISIBLE);
-                    header.setImageResource(activeFac.getPhoto());
-                    header.setContentDescription(activeFac.getName());
-                }
-                else {
-                    header.setVisibility(View.GONE);
-                    headerName.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryText));
-                }
-                headerName.setText(activeFac.getName());
-                status.setText(activeFac.getStatus());
+        day = (TextView) v.findViewById(R.id.hours_fri);
+        day.setText(opHours.get("fri"));
+        if(dayOfWeek == Calendar.FRIDAY) {
+            label = (TextView) v.findViewById(R.id.hours_fri_label);
+            setCurrentDayText(label, day);
+        }
 
-                int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        day = (TextView) v.findViewById(R.id.hours_sat);
+        day.setText(opHours.get("sat"));
+        if(dayOfWeek == Calendar.SATURDAY) {
+            label = (TextView) v.findViewById(R.id.hours_sat_label);
+            setCurrentDayText(label, day);
+        }
 
-                // DAILY HOURS FACTORY
-                HashMap<String, String> opHours = activeFac.getHours();
-                day = (TextView) v.findViewById(R.id.hours_sun);
-                day.setText(opHours.get("sat"));
-                if(dayOfWeek == Calendar.SUNDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_sun_label);
-                    setCurrentDayText(label, day);
-                }
+        int det = -1;
+        switch(activeFac.getBldg()){
+            case LEACH:
+                det = R.string.details_leach;
+                break;
+            case REZ:
+                det = R.string.details_rez;
+                break;
+            case FMC:
+                det = R.string.details_fmc;
+                break;
+            case RSP:
+                det = R.string.details_rsp;
+                break;
+            case MCF:
+                det = R.string.details_mcf;
+                break;
+            case WSC:
+                det = R.string.details_wsc;
+                break;
+        }
+        details.setText(Html.fromHtml(getContext().getString(det)));
 
-                day = (TextView) v.findViewById(R.id.hours_mon);
-                day.setText(opHours.get("mon"));
-                if(dayOfWeek == Calendar.MONDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_mon_label);
-                    setCurrentDayText(label, day);
-                }
+        setActionBarTitle(activeFac.getName());
+        setDetailSubtitle();
 
-                day = (TextView) v.findViewById(R.id.hours_tues);
-                day.setText(opHours.get("tues"));
-                if(dayOfWeek == Calendar.TUESDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_tues_label);
-                    setCurrentDayText(label, day);
-                }
-
-                day = (TextView) v.findViewById(R.id.hours_wed);
-                day.setText(opHours.get("wed"));
-                if(dayOfWeek == Calendar.WEDNESDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_wed_label);
-                    setCurrentDayText(label, day);
-                }
-
-                day = (TextView) v.findViewById(R.id.hours_thurs);
-                day.setText(opHours.get("thurs"));
-                if(dayOfWeek == Calendar.THURSDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_thurs_label);
-                    setCurrentDayText(label, day);
-                }
-
-                day = (TextView) v.findViewById(R.id.hours_fri);
-                day.setText(opHours.get("fri"));
-                if(dayOfWeek == Calendar.FRIDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_fri_label);
-                    setCurrentDayText(label, day);
-                }
-
-                day = (TextView) v.findViewById(R.id.hours_sat);
-                day.setText(opHours.get("sat"));
-                if(dayOfWeek == Calendar.SATURDAY) {
-                    label = (TextView) v.findViewById(R.id.hours_sat_label);
-                    setCurrentDayText(label, day);
-                }
-
-                int det = -1;
-                switch(activeFac.getBldg()){
-                    case LEACH:
-                        det = R.string.details_leach;
-                        break;
-                    case REZ:
-                        det = R.string.details_rez;
-                        break;
-                    case FMC:
-                        det = R.string.details_fmc;
-                        break;
-                    case RSP:
-                        det = R.string.details_rsp;
-                        break;
-                    case MCF:
-                        det = R.string.details_mcf;
-                        break;
-                    case WSC:
-                        det = R.string.details_wsc;
-                        break;
-                }
-                if(det != -1)
-                    details.setText(Html.fromHtml(getContext().getString(det)));
-                //new GetDetails().execute(LEACH_FMC_URL);
-
-                slider.setPanelState(PanelState.EXPANDED);
-            }
-
-            @Override
-            public void onItemLongClick(@NonNull Card card, int position) {  }
-        });
         return v;
     }
 
@@ -238,6 +183,12 @@ public class StatusFragment extends Fragment {
         hours.setTextSize(15);
         hours.setTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
         hours.setTypeface(Typeface.DEFAULT_BOLD);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private void setActionBarTitle(String title){
+        if(((AppCompatActivity) getActivity()).getSupportActionBar() != null)
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -251,25 +202,10 @@ public class StatusFragment extends Fragment {
         }
     }
 
-    public PanelState getSliderState(){
-        if(slider != null)
-            return slider.getPanelState();
-        else
-            return PanelState.HIDDEN;
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    public void closePanel(){
-        if (slider != null){
-            slider.setPanelState(PanelState.HIDDEN);
-            slider.setTouchEnabled(false);
-            if(((AppCompatActivity) getActivity()).getSupportActionBar() != null){
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Status");
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(null);
-            }
-            ((MainActivity) getActivity()).toggle.syncState();
-        }
+    @Override
+    public void onDestroy(){
+        //((MainActivity) getActivity()).restoreTitle();
+        super.onDestroy();
     }
 
     private class GetDetails extends AsyncTask<String, Void, String> {

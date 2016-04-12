@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
@@ -77,10 +79,14 @@ public class HomeFragment extends Fragment {
         mStatusAdapter.setOnItemClickListener(new StatusAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Log.i("StatusAdapter", "You clicked!");
+                StatusFragment sFrag = StatusFragment.newInstance(MainActivity.facilities.get(position));
+                FragmentTransaction fTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fTransaction.add(R.id.frag_container, sFrag);
+                fTransaction.addToBackStack(null);
+                fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                fTransaction.commit();
             }
         });
-
 
         // CAROUSEL
         mainCarousel = (SliderLayout) viewContainer.findViewById(R.id.main_carousel);

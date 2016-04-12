@@ -86,8 +86,10 @@ public class MainActivity extends AppCompatActivity
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(statusFrag.getSliderState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
-                        statusFrag.closePanel();
+                    if(getSupportFragmentManager().getBackStackEntryCount() > 1){
+                        Log.i("FRAG MAN", "POPPING!");
+                        getSupportFragmentManager().popBackStack();
+                        restoreTitle();
                     }
                     else if(drawer != null){
                         if(!drawer.isDrawerOpen(GravityCompat.START)){
@@ -112,6 +114,15 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void restoreTitle(){
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setSubtitle(null);
+            getSupportActionBar().setTitle(getString(R.string.app_name));
+        }
+        toggle.syncState();
     }
 
     @Override
