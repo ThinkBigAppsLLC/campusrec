@@ -111,7 +111,7 @@
 
     <!-- Nav Drawer Strings -->
     <string name="nav_home">Home</string>
-    <string name="nav_status">Status</string>
+    <string name="nav_map">Map</string>
     <string name="nav_calendar">Calendar</string>
     <string name="nav_im">Intramural Sports</string>
     <string name="nav_res">Reservations</string>
@@ -128,4 +128,5 @@
     <!-- Twitter Resources -->
     <string name="twitter_key">TNePIOUCkUVAzJqLdkbT1t7cx</string>
     <string name="twitter_secret">tFAZ9FnUMcGkuUVeizjnfdFLEd24oK6Y5jxUq8oIHYrZEeU001</string>
+
 </resources>

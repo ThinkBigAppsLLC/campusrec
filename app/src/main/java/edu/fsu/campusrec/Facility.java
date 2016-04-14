@@ -1,5 +1,7 @@
 package edu.fsu.campusrec;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,12 +14,13 @@ public class Facility {
     private ArrayList<opHours> hoursOfOperation;
     private boolean open;
     private Building bldg;
+    private LatLng loc;
 
     public enum Building {
         LEACH, REZ, FMC, RSP, MCF, WSC
     }
 
-    public Facility(Building bldg, int resPhoto, ArrayList<opHours> hOO, boolean open) {
+    public Facility(Building bldg, int resPhoto, ArrayList<opHours> hOO, boolean open, LatLng loc) {
         switch (bldg) {
             case LEACH:
                 this.name = "Leach Recreation Center";
@@ -44,7 +47,10 @@ public class Facility {
             throw new IllegalArgumentException("Not enough days!");
         this.hoursOfOperation = hOO;
         this.open = open;
+        this.loc = loc;
     }
+
+    public LatLng getLoc(){ return this.loc; }
 
     public Building getBldg(){ return this.bldg;}
 

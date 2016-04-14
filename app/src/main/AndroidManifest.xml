@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.fsu.campusrec">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <permission
+        android:name="edu.fsu.campusrec.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+    <uses-permission  android:name="edu.fsu.campusrec.permission.MAPS_RECEIVE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +34,9 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="aad39fed7430d676a80bfe3630bbc5382ce61fc6" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAiWw9udah3K2Y7R1GSBGmMPE_cW7Aiaos"/>
     </application>
 
 </manifest>

@@ -14,13 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,10 +28,18 @@ public class MainActivity extends AppCompatActivity
     private CalendarFragment calFrag;
     private ContactFragment contactFrag;
     private StatusFragment statusFrag;
+    private MapFragment mapFrag;
 
     public ActionBarDrawerToggle toggle;
 
     public static ArrayList<Facility> facilities;
+
+    private static final LatLng LEACH_LATLNG = new LatLng(30.4419465, -84.3018533);
+    private static final LatLng REZ_LATLNG = new LatLng(30.4011161, -84.3369554);
+    private static final LatLng FMC_LATLNG = new LatLng(30.4417118, -84.299023);
+    private static final LatLng RSP_LATLNG = new LatLng(30.4198941, -84.3386871);
+    private static final LatLng MCF_LATLNG = new LatLng(30.4374131, -84.2992917);
+    private static final LatLng WSC_LATLNG = new LatLng(30.44692326, -84.30364251);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,8 @@ public class MainActivity extends AppCompatActivity
             contactFrag = new ContactFragment();
         if(statusFrag == null)
             statusFrag = new StatusFragment();
+        if(mapFrag == null)
+            mapFrag = new MapFragment();
         FragmentTransaction fTransaction = fManager.beginTransaction();
         fTransaction.replace(R.id.frag_container, hFrag);
         fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -148,6 +155,11 @@ public class MainActivity extends AppCompatActivity
                 fTransaction.replace(R.id.frag_container, resFrag);*/
                 browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fsucr.setmore.com/"));
                 startActivity(browserIntent);
+                break;
+            case R.id.nav_map:
+                if(mapFrag == null)
+                    mapFrag = new MapFragment();
+                fTransaction.replace(R.id.frag_container, mapFrag);
                 break;
             case R.id.nav_contact:
                 if (getSupportActionBar() != null) {
@@ -312,7 +324,12 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(open, close);
         facilityOpHours.add(opHours);
 
-        Facility leachRC = new Facility(Facility.Building.LEACH, R.drawable.leach_photo, facilityOpHours, checkOpen(Facility.Building.LEACH));
+        Facility leachRC = new Facility(
+                Facility.Building.LEACH,
+                R.drawable.leach_photo,
+                facilityOpHours,
+                checkOpen(Facility.Building.LEACH),
+                LEACH_LATLNG);
         facilities.add(leachRC);
 
         // ********************
@@ -343,7 +360,12 @@ public class MainActivity extends AppCompatActivity
         facilityOpHours.add(opHours);
         facilityOpHours.add(opHours);
 
-        Facility rez = new Facility(Facility.Building.REZ, R.drawable.rez_photo, facilityOpHours, checkOpen(Facility.Building.REZ));
+        Facility rez = new Facility(
+                Facility.Building.REZ,
+                R.drawable.rez_photo,
+                facilityOpHours,
+                checkOpen(Facility.Building.REZ),
+                REZ_LATLNG);
         facilities.add(rez);
 
         // ********************
@@ -374,7 +396,12 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(open, close);
         facilityOpHours.add(opHours);
 
-        Facility fmc = new Facility(Facility.Building.FMC, R.drawable.fmc_photo, facilityOpHours, checkOpen(Facility.Building.REZ));
+        Facility fmc = new Facility(
+                Facility.Building.FMC,
+                R.drawable.fmc_photo,
+                facilityOpHours,
+                checkOpen(Facility.Building.REZ),
+                FMC_LATLNG);
         facilities.add(fmc);
 
         // ********************
@@ -398,7 +425,13 @@ public class MainActivity extends AppCompatActivity
         facilityOpHours.add(opHours);
         facilityOpHours.add(opHours);
 
-        Facility rsp = new Facility(Facility.Building.RSP, R.drawable.rsp_photo, facilityOpHours, checkOpen(Facility.Building.RSP));
+        Facility rsp = new Facility(
+                Facility.Building.RSP,
+                R.drawable.rsp_photo,
+                facilityOpHours,
+                checkOpen(Facility.Building.RSP),
+                RSP_LATLNG
+        );
         facilities.add(rsp);
 
         // ********************
@@ -426,13 +459,25 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(close);
         facilityOpHours.add(opHours);
 
-        Facility mcf = new Facility(Facility.Building.MCF, R.drawable.mcf_photo, facilityOpHours, checkOpen(Facility.Building.MCF));
+        Facility mcf = new Facility(
+                Facility.Building.MCF,
+                R.drawable.mcf_photo,
+                facilityOpHours,
+                checkOpen(Facility.Building.MCF),
+                MCF_LATLNG
+        );
         facilities.add(mcf);
 
         // ********************
         // WSC
         // ********************
-        Facility wsc = new Facility(Facility.Building.WSC, -1, facilityOpHours, checkOpen(Facility.Building.WSC));
+        Facility wsc = new Facility(
+                Facility.Building.WSC,
+                -1,
+                facilityOpHours,
+                checkOpen(Facility.Building.WSC),
+                WSC_LATLNG
+        );
         facilities.add(wsc);
 
 
