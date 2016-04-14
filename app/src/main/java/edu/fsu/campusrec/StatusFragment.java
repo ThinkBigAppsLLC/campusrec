@@ -15,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,7 +28,6 @@ public class StatusFragment extends Fragment {
     private final static String LEACH_FMC_URL = "http://campusrec.fsu.edu/fitness/leach-fmc";
     private Facility fac;
 
-    private SlidingUpPanelLayout slider;
     public StatusFragment() { }
     private View mainContainer;
 

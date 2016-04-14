@@ -2,14 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="edu.fsu.campusrec.ContactFragment"
     android:background="@color/colorBackground">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/relLayout">
 
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:indicator="BallTrianglePath"
+            app:indicator_color="@color/colorPrimaryTextFaded"
+            android:layout_centerInParent="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -17,7 +27,7 @@
             android:text="@string/label_crao"
             android:id="@+id/label_crao"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
@@ -47,7 +57,7 @@
             android:text="@string/label_lcfa"
             android:id="@+id/label_lcfa"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
@@ -78,7 +88,7 @@
             android:text="@string/label_fmcw"
             android:id="@+id/label_fmcw"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="8dp"
@@ -110,7 +120,7 @@
             android:text="@string/label_imsp"
             android:id="@+id/label_imsp"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
@@ -141,7 +151,7 @@
             android:text="@string/label_cssc"
             android:id="@+id/label_cssc"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
@@ -170,9 +180,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_rpcf"
-            android:id="@+id/label_rpcf"
+            android:id="@+id/label_rocf"
             android:textStyle="bold"
-            android:tag="sticky"
+            android:tag="sticky-nonconstant"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
@@ -186,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/list_rocf"
-            android:layout_below="@+id/label_rpcf"
+            android:layout_below="@+id/label_rocf"
             android:paddingBottom="8dp" />
     </RelativeLayout>
 </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>

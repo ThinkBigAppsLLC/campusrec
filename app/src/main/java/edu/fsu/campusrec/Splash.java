@@ -1,15 +1,15 @@
 package edu.fsu.campusrec;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import com.crashlytics.android.Crashlytics;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import io.fabric.sdk.android.Fabric;
 
-public class Splash extends AppCompatActivity {
+public class Splash extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

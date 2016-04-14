@@ -17,12 +17,11 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class ContactFragment extends Fragment {
     private static final String CONTACT_URL = "http://campusrec.fsu.edu/staff/contact-our-team";
+
+    private View v;
 
 
     public ContactFragment() { }
@@ -45,30 +44,19 @@ public class ContactFragment extends Fragment {
         GetDetails task = new GetDetails();
         task.execute(CONTACT_URL);
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
-        try {
-            task.get(7, TimeUnit.SECONDS);
-        } catch (InterruptedException|ExecutionException|TimeoutException e) {
-            e.printStackTrace();
-        }
+        this.v = v;
 
-        RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
-        setRecyclerAdapter(contactRecycler, contacts.get(0));
-        contactRecycler = (RecyclerView) v.findViewById(R.id.list_lcfa);
-        setRecyclerAdapter(contactRecycler, contacts.get(1));
-        contactRecycler = (RecyclerView) v.findViewById(R.id.list_fmcw);
-        setRecyclerAdapter(contactRecycler, contacts.get(2));
-        contactRecycler = (RecyclerView) v.findViewById(R.id.list_imsp);
-        setRecyclerAdapter(contactRecycler, contacts.get(3));
-        contactRecycler = (RecyclerView) v.findViewById(R.id.list_cssc);
-        setRecyclerAdapter(contactRecycler, contacts.get(4));
-        contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
-        setRecyclerAdapter(contactRecycler, contacts.get(5));
-
-
+        setVisibilities(View.GONE);
+        
         return v;
     }
 
     private class GetDetails extends AsyncTask<String, Void, ArrayList<ArrayList<ContactAdapter.Contact>>> {
+        @Override
+        protected void onPreExecute(){
+
+        }
+
         @Override
         protected ArrayList<ArrayList<ContactAdapter.Contact>> doInBackground(String... urls) {
             ArrayList<ArrayList<ContactAdapter.Contact>> tmpContacts = new ArrayList<>();
@@ -107,7 +95,24 @@ public class ContactFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<ArrayList<ContactAdapter.Contact>> result) { }
+        protected void onPostExecute(ArrayList<ArrayList<ContactAdapter.Contact>> result) {
+            v.findViewById(R.id.loading).setVisibility(View.GONE);
+
+            setVisibilities(View.VISIBLE);
+
+            RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
+            setRecyclerAdapter(contactRecycler, contacts.get(0));
+            contactRecycler = (RecyclerView) v.findViewById(R.id.list_lcfa);
+            setRecyclerAdapter(contactRecycler, contacts.get(1));
+            contactRecycler = (RecyclerView) v.findViewById(R.id.list_fmcw);
+            setRecyclerAdapter(contactRecycler, contacts.get(2));
+            contactRecycler = (RecyclerView) v.findViewById(R.id.list_imsp);
+            setRecyclerAdapter(contactRecycler, contacts.get(3));
+            contactRecycler = (RecyclerView) v.findViewById(R.id.list_cssc);
+            setRecyclerAdapter(contactRecycler, contacts.get(4));
+            contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
+            setRecyclerAdapter(contactRecycler, contacts.get(5));
+        }
     }
 
     private void setRecyclerAdapter(RecyclerView mRecyclerView, ArrayList<ContactAdapter.Contact> contacts){
@@ -118,6 +123,24 @@ public class ContactFragment extends Fragment {
         mRecyclerView.setLayoutManager(mRecyclerManager);
         mRecyclerView.setHasFixedSize(true);
     }
-
-
+    
+    private void setVisibilities(int vis){
+        v.findViewById(R.id.label_crao).setVisibility(vis);
+        v.findViewById(R.id.label_lcfa).setVisibility(vis);
+        v.findViewById(R.id.label_fmcw).setVisibility(vis);
+        v.findViewById(R.id.label_imsp).setVisibility(vis);
+        v.findViewById(R.id.label_cssc).setVisibility(vis);
+        v.findViewById(R.id.label_rocf).setVisibility(vis);
+        v.findViewById(R.id.list_crao).setVisibility(vis);
+        v.findViewById(R.id.list_lcfa).setVisibility(vis);
+        v.findViewById(R.id.list_fmcw).setVisibility(vis);
+        v.findViewById(R.id.list_imsp).setVisibility(vis);
+        v.findViewById(R.id.list_cssc).setVisibility(vis);
+        v.findViewById(R.id.list_rocf).setVisibility(vis);
+        v.findViewById(R.id.divider_crao).setVisibility(vis);
+        v.findViewById(R.id.divider_lcfa).setVisibility(vis);
+        v.findViewById(R.id.divider_fmcw).setVisibility(vis);
+        v.findViewById(R.id.divider_imsp).setVisibility(vis);
+        v.findViewById(R.id.divider_cssc).setVisibility(vis);
+    }
 }
