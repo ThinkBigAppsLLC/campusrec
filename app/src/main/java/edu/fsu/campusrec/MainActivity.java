@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -85,8 +86,9 @@ public class MainActivity extends AppCompatActivity
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(getSupportFragmentManager().getBackStackEntryCount() > 1){
+                    if(getSupportFragmentManager().getBackStackEntryCount() > 0){
                         getSupportFragmentManager().popBackStack();
+                        restoreTitle();
                     }
                     else if(drawer != null){
                         if(!drawer.isDrawerOpen(GravityCompat.START)){
