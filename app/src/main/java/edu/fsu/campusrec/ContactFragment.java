@@ -63,7 +63,7 @@ public class ContactFragment extends Fragment {
             ArrayList<ContactAdapter.Contact> tmp;
 
             try {
-                Document doc  = Jsoup.connect(CONTACT_URL).get();
+                Document doc  = Jsoup.connect(CONTACT_URL).timeout(5000).get();
                 Elements tables = doc.select("thead");
                 for(Element table : tables){
                     tmp = new ArrayList<>();
@@ -89,6 +89,7 @@ public class ContactFragment extends Fragment {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                setVisibilities(View.GONE);
             }
             contacts = tmpContacts;
             return tmpContacts;
@@ -98,20 +99,25 @@ public class ContactFragment extends Fragment {
         protected void onPostExecute(ArrayList<ArrayList<ContactAdapter.Contact>> result) {
             v.findViewById(R.id.loading).setVisibility(View.GONE);
 
-            setVisibilities(View.VISIBLE);
-
-            RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
-            setRecyclerAdapter(contactRecycler, contacts.get(0));
-            contactRecycler = (RecyclerView) v.findViewById(R.id.list_lcfa);
-            setRecyclerAdapter(contactRecycler, contacts.get(1));
-            contactRecycler = (RecyclerView) v.findViewById(R.id.list_fmcw);
-            setRecyclerAdapter(contactRecycler, contacts.get(2));
-            contactRecycler = (RecyclerView) v.findViewById(R.id.list_imsp);
-            setRecyclerAdapter(contactRecycler, contacts.get(3));
-            contactRecycler = (RecyclerView) v.findViewById(R.id.list_cssc);
-            setRecyclerAdapter(contactRecycler, contacts.get(4));
-            contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
-            setRecyclerAdapter(contactRecycler, contacts.get(5));
+            try {
+                RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
+                setRecyclerAdapter(contactRecycler, contacts.get(0));
+                contactRecycler = (RecyclerView) v.findViewById(R.id.list_lcfa);
+                setRecyclerAdapter(contactRecycler, contacts.get(1));
+                contactRecycler = (RecyclerView) v.findViewById(R.id.list_fmcw);
+                setRecyclerAdapter(contactRecycler, contacts.get(2));
+                contactRecycler = (RecyclerView) v.findViewById(R.id.list_imsp);
+                setRecyclerAdapter(contactRecycler, contacts.get(3));
+                contactRecycler = (RecyclerView) v.findViewById(R.id.list_cssc);
+                setRecyclerAdapter(contactRecycler, contacts.get(4));
+                contactRecycler = (RecyclerView) v.findViewById(R.id.list_rocf);
+                setRecyclerAdapter(contactRecycler, contacts.get(5));
+                setVisibilities(View.VISIBLE);
+            } catch (IndexOutOfBoundsException ioobe){
+                ioobe.printStackTrace();
+                setVisibilities(View.GONE);
+                v.findViewById(R.id.notAvailableText).setVisibility(View.VISIBLE);
+            }
         }
     }
 

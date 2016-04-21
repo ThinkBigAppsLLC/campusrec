@@ -12,6 +12,17 @@
         android:layout_height="match_parent"
         android:id="@+id/relLayout">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_available"
+            android:id="@+id/notAvailableText"
+            android:textColor="@color/colorPrimaryTextFaded"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:paddingTop="20dp" />
+
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/loading"
             android:layout_width="wrap_content"
@@ -19,7 +30,11 @@
             android:visibility="visible"
             app:indicator="BallTrianglePath"
             app:indicator_color="@color/colorPrimaryTextFaded"
-            android:layout_centerInParent="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="false"
+            android:elevation="1dp"
+            android:paddingTop="100dp"
+            android:layout_marginTop="100dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -198,5 +213,6 @@
             android:id="@+id/list_rocf"
             android:layout_below="@+id/label_rocf"
             android:paddingBottom="8dp" />
+
     </RelativeLayout>
 </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>

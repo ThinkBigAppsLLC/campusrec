@@ -117,6 +117,7 @@
     <string name="nav_contact">Contact Us</string>
 
     <!-- Contact Us Strings -->
+    <string name="not_available">This information is currently unavailable.</string>
     <string name="label_crao">Campus Rec Administrative Offices</string>
     <string name="label_lcfa">Leach Center | Fitness | Aquatics</string>
     <string name="label_fmcw">Fitness &amp; Movement Clinic | Wellness</string>
