@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity
 
     public static ArrayList<Facility> facilities;
 
+    //**************************************
+    //  ACTIVITY LIFECYCLE
+    //**************************************
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         if (drawer != null)
-            drawer.setDrawerListener(toggle);
+            drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -99,6 +103,10 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
     }
 
+    //**************************************
+    // NAVIGATION METHODS
+    //**************************************
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,15 +115,6 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    public void restoreTitle(){
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            getSupportActionBar().setSubtitle(null);
-            getSupportActionBar().setTitle(getString(R.string.app_name));
-        }
-        toggle.syncState();
     }
 
     @Override
@@ -170,6 +169,19 @@ public class MainActivity extends AppCompatActivity
         if (drawer != null)
             drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //**************************************
+    // HELPER FUNCTIONS
+    //**************************************
+
+    public void restoreTitle(){
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setSubtitle(null);
+            getSupportActionBar().setTitle(getString(R.string.app_name));
+        }
+        toggle.syncState();
     }
 
     private boolean checkOpen(Facility.Building bldg){
