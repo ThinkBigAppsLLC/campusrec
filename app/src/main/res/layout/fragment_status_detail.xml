@@ -155,7 +155,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/hours_container"
+            android:id="@+id/container_hours"
             android:layout_below="@+id/divider_hours"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
@@ -299,7 +299,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/divider_details"
             android:tag="sticky"
-            android:layout_below="@+id/hours_container"
+            android:layout_below="@+id/container_hours"
             android:contextClickable="false"
             android:background="@color/colorBackground">
 

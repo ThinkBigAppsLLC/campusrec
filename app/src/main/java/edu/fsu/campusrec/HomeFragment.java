@@ -7,6 +7,7 @@ package edu.fsu.campusrec;
  */
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -97,7 +98,82 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageView fb = (ImageView) viewContainer.findViewById(R.id.connect_facebook);
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri fbUri;
+                PackageManager packageManager = getContext().getPackageManager();
+                try {
+                    int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+                    // Newer versions
+                    if (versionCode >= 3002850) {
+                        fbUri = FacilityData.CR_FACEBOOK_NEW;
+                    } else { //older versions of fb app
+                        fbUri = FacilityData.CR_FACEBOOK_OLD;
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    fbUri = FacilityData.CR_FACEBOOK_WEB;
+                }
 
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+                facebookIntent.setData(fbUri);
+                startActivity(facebookIntent);
+            }
+        });
+
+        ImageView tw = (ImageView) viewContainer.findViewById(R.id.connect_twitter);
+        tw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri twUri;
+                PackageManager packageManager = getContext().getPackageManager();
+                try {
+                    packageManager.getPackageInfo("com.twitter.android", 0);
+                    twUri = FacilityData.CR_TWITTER;
+                } catch (PackageManager.NameNotFoundException e) {
+                    twUri = FacilityData.CR_TWITTER_WEB;
+                }
+                Intent twIntent = new Intent(Intent.ACTION_VIEW);
+                twIntent.setData(twUri);
+                startActivity(twIntent);
+            }
+        });
+
+        ImageView ig = (ImageView) viewContainer.findViewById(R.id.connect_instagram);
+        ig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri igUri;
+                Intent igIntent = new Intent(Intent.ACTION_VIEW);
+                PackageManager packageManager = getContext().getPackageManager();
+                try {
+                    packageManager.getPackageInfo("com.instagram.android", 0);
+                    igIntent.setPackage("com.instagram.android");
+                } catch (PackageManager.NameNotFoundException e) { }
+                igUri = FacilityData.CR_INSTAGRAM;
+                igIntent.setData(igUri);
+                startActivity(igIntent);
+            }
+        });
+
+        ImageView yt = (ImageView) viewContainer.findViewById(R.id.connect_youtube);
+        yt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri ytUri;
+                Intent ytIntent = new Intent(Intent.ACTION_VIEW);
+                PackageManager packageManager = getContext().getPackageManager();
+                try {
+                    packageManager.getPackageInfo("com.google.android.youtube", 0);
+                    ytIntent.setPackage("com.google.android.youtube");
+                } catch (PackageManager.NameNotFoundException e) { }
+                ytUri = FacilityData.CR_YOUTUBE;
+                ytIntent.setData(ytUri);
+                startActivity(ytIntent);
+            }
+        });
+        
         return viewContainer;
     }
 
@@ -110,8 +186,4 @@ public class HomeFragment extends Fragment {
     public void onPause(){
         super.onPause();
     }
-
-    //************************************
-    // Helper Methods
-    //************************************
 }

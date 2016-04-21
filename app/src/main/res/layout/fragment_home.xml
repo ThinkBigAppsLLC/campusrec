@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.fsu.campusrec.MainActivity"
     android:id="@+id/coord" >
@@ -20,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hours_container"
+            android:id="@+id/container_hours"
             android:layout_alignParentTop="true">
 
             <RelativeLayout
@@ -62,17 +63,20 @@
                 android:background="@color/colorBackground"
                 android:scrollbars="vertical"
                 android:layout_below="@+id/divider_hours" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorSecondaryBackground"
-                android:layout_below="@+id/recycler_status" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSecondaryBackground"
+            android:layout_below="@+id/container_hours"
+            android:id="@+id/divider_hours" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/hours_container">
+            android:layout_below="@+id/divider_hours"
+            android:id="@+id/container_rainline">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,6 +124,81 @@
                 android:layout_below="@+id/divider_rainline"
                 android:nestedScrollingEnabled="false" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/container_rainline"
+            android:id="@+id/container_connect" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_connect"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="20sp"
+                android:id="@+id/label_connect"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/colorBackground"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ribbon_connect"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_below="@+id/label_connect"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/connect_facebook"
+                    android:src="@drawable/facebook_box"
+                    android:contentDescription="@string/desc_fb"
+                    android:clickable="true"
+                    android:onClick="launchFacebook"
+                    android:background="?attr/selectableItemBackground"
+                    android:layout_marginRight="8dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/connect_twitter"
+                    android:src="@drawable/twitter_box"
+                    android:contentDescription="@string/desc_tw"
+                    android:layout_toRightOf="@+id/connect_facebook"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/connect_instagram"
+                    android:src="@drawable/instagram"
+                    android:contentDescription="@string/desc_ig"
+                    android:layout_toRightOf="@+id/connect_twitter"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/connect_youtube"
+                    android:src="@drawable/youtube"
+                    android:contentDescription="@string/desc_yt"
+                    android:layout_toRightOf="@+id/connect_instagram"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
     </RelativeLayout>
     </ScrollView>
 

@@ -11,6 +11,7 @@
     <string name="label_status">Status</string>
     <string name="label_rain">Rain</string>
     <string name="label_line">LINE</string>
+    <string name="label_connect">Connect</string>
 
     <!-- Detail Descriptions -->
     <string name="details_leach">
@@ -135,5 +136,9 @@
     <string name="desc_directions">Direction Arrow - Get Directions Action</string>
     <string name="desc_right_arrow">Right Arrow - Expand Action</string>
     <string name="desc_logo">CampusRec Cirle Arrow Logo</string>
+    <string name="desc_fb">Facebook</string>
+    <string name="desc_tw">Twitter</string>
+    <string name="desc_ig">Instagram</string>
+    <string name="desc_yt">YouTube</string>
 
 </resources>

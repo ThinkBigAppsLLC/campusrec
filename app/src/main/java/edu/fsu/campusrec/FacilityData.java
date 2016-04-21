@@ -5,6 +5,8 @@ package edu.fsu.campusrec;
  * Abstract data container class designed to hold hardcoded, constant data
  */
 
+import android.net.Uri;
+
 import com.google.android.gms.maps.model.LatLng;
 
 public abstract class FacilityData {
@@ -46,4 +48,19 @@ public abstract class FacilityData {
 
     public static final String RAINLINE_USERNAME = "fsuimrainline";
     public static final String RAINLINE_PHONE = "tel:8506457246";
+
+    //**************************************
+    //  SOCIAL MEDIA LINKS
+    //**************************************
+    public static final Uri CR_FACEBOOK_WEB = Uri.parse("https://www.facebook.com/fsucampusrec");
+    public static final Uri CR_FACEBOOK_OLD = Uri.parse("fb://page/fsucampusrec");
+    public static final Uri CR_FACEBOOK_NEW = Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/fsucampusrec");
+
+    public static final Uri CR_TWITTER_WEB = Uri.parse("https://twitter.com/FSUCampusRec");
+    public static final Uri CR_TWITTER = Uri.parse("twitter://user?user_id=605880659");
+
+    public static final Uri CR_INSTAGRAM = Uri.parse("https://www.instagram.com/_u/fsucampusrec/");
+
+    public static final Uri CR_YOUTUBE = Uri.parse("https://www.youtube.com/user/FSUCampusRec");
+
 }
