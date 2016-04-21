@@ -21,14 +21,14 @@
             android:layout_height="1dp"
             android:background="@color/colorBackgroundFaded"
             android:layout_below="@+id/map"
-            android:id="@+id/topDivider"
+            android:id="@+id/top_divider"
             android:alpha=".3" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/contactRibbon"
-            android:layout_below="@+id/topDivider"
+            android:id="@+id/ribbon_phone"
+            android:layout_below="@+id/top_divider"
             android:tag="sticky"
             android:elevation="1dp"
             android:paddingLeft="16dp"
@@ -40,14 +40,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/directionRibbon"
+                android:id="@+id/ribbon_direction"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/direction"
+                    android:id="@+id/icon_direction"
                     android:src="@drawable/directions"
                     android:layout_centerVertical="true"
                     android:paddingRight="8dp"
@@ -57,8 +57,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_directions"
-                    android:id="@+id/directionLabel"
-                    android:layout_toRightOf="@+id/direction"
+                    android:id="@+id/label_direction"
+                    android:layout_toRightOf="@+id/icon_direction"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -66,18 +66,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/placeholder"
-                    android:id="@+id/directionAddress"
+                    android:id="@+id/direction"
                     android:textSize="13sp"
-                    android:layout_toRightOf="@+id/direction"
-                    android:layout_below="@+id/directionLabel" />
+                    android:layout_toRightOf="@+id/icon_direction"
+                    android:layout_below="@+id/label_direction" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorBackgroundFaded"
-                android:layout_below="@+id/directionRibbon"
-                android:id="@+id/divider"
+                android:layout_below="@+id/ribbon_direction"
+                android:id="@+id/divider_contact"
                 android:alpha=".3"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
@@ -85,15 +85,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phoneRibbon"
+                android:id="@+id/ribbon_phone"
                 android:background="?attr/selectableItemBackground"
-                android:layout_below="@+id/divider"
+                android:layout_below="@+id/divider_contact"
                 android:clickable="true">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/phone"
+                    android:id="@+id/icon_phone"
                     android:src="@drawable/phone"
                     android:layout_centerVertical="true"
                     android:paddingRight="8dp"
@@ -103,8 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_call"
-                    android:id="@+id/phoneLabel"
-                    android:layout_toRightOf="@+id/phone"
+                    android:id="@+id/label_phone"
+                    android:layout_toRightOf="@+id/icon_phone"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -112,10 +112,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/placeholder"
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/phone"
                     android:textSize="13sp"
-                    android:layout_toRightOf="@+id/phone"
-                    android:layout_below="@+id/phoneLabel" />
+                    android:layout_toRightOf="@+id/icon_phone"
+                    android:layout_below="@+id/label_phone" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -123,8 +123,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hours_divider"
-            android:layout_below="@+id/contactRibbon"
+            android:id="@+id/divider_hours"
+            android:layout_below="@+id/ribbon_phone"
             android:tag="sticky"
             android:background="@color/colorBackground"
             android:paddingLeft="16dp"
@@ -138,7 +138,7 @@
                 android:text="@string/label_op"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="20sp"
-                android:id="@+id/textView" />
+                android:id="@+id/label_operating" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,8 +147,8 @@
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:id="@+id/textView2"
-                android:layout_toRightOf="@+id/textView" />
+                android:id="@+id/label_hours"
+                android:layout_toRightOf="@+id/label_operating" />
 
         </RelativeLayout>
 
@@ -156,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/hours_container"
-            android:layout_below="@+id/hours_divider"
+            android:layout_below="@+id/divider_hours"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="8dp">
@@ -297,7 +297,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/detailsDivider"
+            android:id="@+id/divider_details"
             android:tag="sticky"
             android:layout_below="@+id/hours_container"
             android:contextClickable="false"
@@ -312,7 +312,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textSize="20sp"
-                android:id="@+id/textView3" />
+                android:id="@+id/label_detailed" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -323,8 +323,8 @@
                 android:paddingBottom="8dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:id="@+id/textView4"
-                android:layout_toRightOf="@+id/textView3" />
+                android:id="@+id/label_info"
+                android:layout_toRightOf="@+id/label_detailed" />
 
         </RelativeLayout>
 
@@ -333,7 +333,7 @@
             android:layout_height="wrap_content"
             android:text="@string/placeholder"
             android:id="@+id/details"
-            android:layout_below="@+id/detailsDivider"
+            android:layout_below="@+id/divider_details"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:textColor="@color/colorPrimaryText" />

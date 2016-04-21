@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/not_available"
-            android:id="@+id/notAvailableText"
+            android:id="@+id/not_available_text"
             android:textColor="@color/colorPrimaryTextFaded"
             android:layout_centerHorizontal="true"
             android:textSize="16sp"

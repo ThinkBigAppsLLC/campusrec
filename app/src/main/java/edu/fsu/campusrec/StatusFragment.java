@@ -9,7 +9,6 @@ package edu.fsu.campusrec;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,12 +32,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -152,9 +145,9 @@ public class StatusFragment extends Fragment
             setCurrentDayText(label, day);
         }
 
-        TextView adr = (TextView) v.findViewById(R.id.directionAddress);
+        TextView adr = (TextView) v.findViewById(R.id.direction);
         adr.setText(fac.getAddress());
-        RelativeLayout directionRibbon = (RelativeLayout) v.findViewById(R.id.directionRibbon);
+        RelativeLayout directionRibbon = (RelativeLayout) v.findViewById(R.id.ribbon_direction);
         directionRibbon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,9 +165,9 @@ public class StatusFragment extends Fragment
         });
 
         if(fac.getNumber() != null){
-            TextView phone = (TextView) v.findViewById(R.id.phoneNumber);
+            TextView phone = (TextView) v.findViewById(R.id.phone);
             phone.setText(fac.getNumber());
-            RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.phoneRibbon);
+            RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.ribbon_phone);
             phoneRibbon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -186,8 +179,8 @@ public class StatusFragment extends Fragment
 
         }
         else{
-            v.findViewById(R.id.divider).setVisibility(View.GONE);
-            v.findViewById(R.id.phoneRibbon).setVisibility(View.GONE);
+            v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
+            v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
         }
 
         // Set Details
@@ -282,7 +275,7 @@ public class StatusFragment extends Fragment
         this.fac = fac;
     }
 
-    private class GetDetails extends AsyncTask<String, Void, String> {
+/*    private class GetDetails extends AsyncTask<String, Void, String> {
         private Facility.Building bldg;
 
         public GetDetails(Facility.Building bldg){
@@ -315,6 +308,6 @@ public class StatusFragment extends Fragment
         protected void onPostExecute(String result) {
             ((TextView) mainContainer.findViewById(R.id.details)).setText(Html.fromHtml(result));
         }
-    }
+    }*/
 
 }

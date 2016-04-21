@@ -134,5 +134,6 @@
     <string name="desc_email">Email - Email Action</string>
     <string name="desc_directions">Direction Arrow - Get Directions Action</string>
     <string name="desc_right_arrow">Right Arrow - Expand Action</string>
+    <string name="desc_logo">CampusRec Cirle Arrow Logo</string>
 
 </resources>

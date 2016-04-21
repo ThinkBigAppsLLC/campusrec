@@ -73,7 +73,7 @@ public class ContactFragment extends Fragment {
                 Elements tables = doc.select("thead");
                 for(Element table : tables){
                     tmp = new ArrayList<>();
-                    ContactAdapter.Contact tmpContact = null;
+                    ContactAdapter.Contact tmpContact;
                     String name;
                     String title;
                     String phone;
@@ -104,7 +104,6 @@ public class ContactFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<ArrayList<ContactAdapter.Contact>> result) {
             v.findViewById(R.id.loading).setVisibility(View.GONE);
-
             try {
                 RecyclerView contactRecycler = (RecyclerView) v.findViewById(R.id.list_crao);
                 setRecyclerAdapter(contactRecycler, contacts.get(0));
@@ -122,7 +121,7 @@ public class ContactFragment extends Fragment {
             } catch (IndexOutOfBoundsException ioobe){
                 ioobe.printStackTrace();
                 setVisibilities(View.GONE);
-                v.findViewById(R.id.notAvailableText).setVisibility(View.VISIBLE);
+                v.findViewById(R.id.not_available_text).setVisibility(View.VISIBLE);
             }
         }
     }

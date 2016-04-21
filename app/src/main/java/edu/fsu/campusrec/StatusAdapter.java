@@ -40,8 +40,8 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
 
         public ViewHolder(View v){
             super(v);
-            bldgName = (TextView) v.findViewById(R.id.facility);
-            status = (TextView) v.findViewById(R.id.status);
+            bldgName = (TextView) v.findViewById(R.id.label_facility);
+            status = (TextView) v.findViewById(R.id.label_status);
             rightArrow = (ImageView) v.findViewById(R.id.arrow_right);
             statusContainer = (RelativeLayout) v.findViewById(R.id.status_container);
         }
@@ -62,7 +62,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int pos) {
+    public void onBindViewHolder(final ViewHolder holder, final int pos) {
         String name = facilityList.get(pos);
         String stat = statusList.get(pos);
 
@@ -80,7 +80,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 if (mItemClickListener != null) {
-                    mItemClickListener.onItemClick(view, pos);
+                    mItemClickListener.onItemClick(view, holder.getAdapterPosition());
                 }
             }
         });
