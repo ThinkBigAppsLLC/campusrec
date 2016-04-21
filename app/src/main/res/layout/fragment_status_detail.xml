@@ -45,7 +45,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder"
+                    android:text="@string/label_directions"
                     android:id="@+id/directionLabel"
                     android:layout_toRightOf="@+id/direction"
                     android:textSize="13sp"

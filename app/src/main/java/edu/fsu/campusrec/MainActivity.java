@@ -14,8 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -32,13 +30,6 @@ public class MainActivity extends AppCompatActivity
     public ActionBarDrawerToggle toggle;
 
     public static ArrayList<Facility> facilities;
-
-    private static final LatLng LEACH_LATLNG = new LatLng(30.4419465, -84.3018533);
-    private static final LatLng REZ_LATLNG = new LatLng(30.4011161, -84.3369554);
-    private static final LatLng FMC_LATLNG = new LatLng(30.4417118, -84.299023);
-    private static final LatLng RSP_LATLNG = new LatLng(30.4198941, -84.3386871);
-    private static final LatLng MCF_LATLNG = new LatLng(30.4374131, -84.2992917);
-    private static final LatLng WSC_LATLNG = new LatLng(30.44692326, -84.30364251);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -321,7 +312,10 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.LEACH,
                 facilityOpHours,
                 checkOpen(Facility.Building.LEACH),
-                LEACH_LATLNG);
+                FacilityData.LEACH_LATLNG,
+                FacilityData.LEACH_ADDRESS,
+                FacilityData.LEACH_NUMBER
+        );
         facilities.add(leachRC);
 
         // ********************
@@ -356,7 +350,10 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.REZ,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
-                REZ_LATLNG);
+                FacilityData.REZ_LATLNG,
+                FacilityData.REZ_ADDRESS,
+                FacilityData.REZ_NUMBER
+        );
         facilities.add(rez);
 
         // ********************
@@ -391,7 +388,10 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.FMC,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
-                FMC_LATLNG);
+                FacilityData.FMC_LATLNG,
+                FacilityData.FMC_ADDRESS,
+                FacilityData.FMC_NUMBER
+        );
         facilities.add(fmc);
 
         // ********************
@@ -419,7 +419,9 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.RSP,
                 facilityOpHours,
                 checkOpen(Facility.Building.RSP),
-                RSP_LATLNG
+                FacilityData.RSP_LATLNG,
+                FacilityData.RSP_ADDRESS,
+                FacilityData.RSP_NUMBER
         );
         facilities.add(rsp);
 
@@ -452,7 +454,8 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.MCF,
                 facilityOpHours,
                 checkOpen(Facility.Building.MCF),
-                MCF_LATLNG
+                FacilityData.MCF_LATLNG,
+                FacilityData.MCF_ADDRESS
         );
         facilities.add(mcf);
 
@@ -463,12 +466,9 @@ public class MainActivity extends AppCompatActivity
                 Facility.Building.WSC,
                 facilityOpHours,
                 checkOpen(Facility.Building.WSC),
-                WSC_LATLNG
+                FacilityData.WSC_LATLNG,
+                FacilityData.WSC_ADDRESS
         );
         facilities.add(wsc);
-
-
     }
-
-
 }

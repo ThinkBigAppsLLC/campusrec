@@ -106,6 +106,7 @@
     <string name="label_hours">Hours</string>
     <string name="label_detailed">Detailed</string>
     <string name="label_info">Information</string>
+    <string name="label_directions">DIRECTIONS</string>
 
     <!-- Nav Drawer Strings -->
     <string name="nav_home">Home</string>

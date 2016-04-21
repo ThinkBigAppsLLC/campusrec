@@ -14,12 +14,21 @@ public class Facility {
     private boolean open;
     private Building bldg;
     private LatLng loc;
+    private String address;
+    private String mainPhone;
 
     public enum Building {
         LEACH, REZ, FMC, RSP, MCF, WSC
     }
 
-    public Facility(Building bldg, ArrayList<opHours> hOO, boolean open, LatLng loc) {
+    public Facility(
+            Building bldg,
+            ArrayList<opHours> hOO,
+            boolean open,
+            LatLng loc,
+            String adr,
+            String phoneNum
+    ) {
         switch (bldg) {
             case LEACH:
                 this.name = "Leach Recreation Center";
@@ -46,6 +55,45 @@ public class Facility {
         this.hoursOfOperation = hOO;
         this.open = open;
         this.loc = loc;
+        this.address = adr;
+        this.mainPhone = phoneNum;
+    }
+
+    public Facility(
+            Building bldg,
+            ArrayList<opHours> hOO,
+            boolean open,
+            LatLng loc,
+            String adr
+    ) {
+        switch (bldg) {
+            case LEACH:
+                this.name = "Leach Recreation Center";
+                break;
+            case REZ:
+                this.name = "FSU Reservation";
+                break;
+            case FMC:
+                this.name = "Fitness & Movement Clinic";
+                break;
+            case RSP:
+                this.name = "Rec SportsPlex";
+                break;
+            case MCF:
+                this.name = "Main Campus Fields";
+                break;
+            case WSC:
+                this.name = "Westside Courts";
+                break;
+        }
+        this.bldg = bldg;
+        if (hOO.size() != 7)
+            throw new IllegalArgumentException("Not enough days!");
+        this.hoursOfOperation = hOO;
+        this.open = open;
+        this.loc = loc;
+        this.address = adr;
+        this.mainPhone = null;
     }
 
     public LatLng getLoc(){ return this.loc; }
@@ -61,6 +109,14 @@ public class Facility {
             return STATUS_OPEN;
         else
             return STATUS_CLOSED;
+    }
+
+    public String getAddress(){
+        return this.address;
+    }
+
+    public String getNumber(){
+        return this.mainPhone;
     }
 
     public HashMap<String, String> getHours(){
