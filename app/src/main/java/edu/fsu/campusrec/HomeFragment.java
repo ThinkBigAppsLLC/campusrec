@@ -15,22 +15,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HomeFragment extends Fragment {
     private static final String RAINLINE_USERNAME = "fsuimrainline";
     private static final String RAINLINE_PHONE = "tel:8506457246";
 
     private View viewContainer;
-
-    private SliderLayout mainCarousel;
     private CoordinatorLayout mCoord;
     private RecyclerView mRecyclerView;
     private StatusAdapter mStatusAdapter;
@@ -80,24 +74,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // CAROUSEL
-        mainCarousel = (SliderLayout) viewContainer.findViewById(R.id.main_carousel);
-        HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("OGA at the Rez", "http://campusrec.fsu.edu/sites/default/files/4.16_RezYoga_AJ_0.jpg");
-        url_maps.put("April Outdoor Pursuits", "http://campusrec.fsu.edu/sites/default/files/4.1_April_OP_web_DR.jpg");
-        url_maps.put("Drop It Like It's Hot", "http://campusrec.fsu.edu/sites/default/files/4.7_drop-it-hot_web_ER.jpg");
-        url_maps.put("Sunset at the Rez", "http://campusrec.fsu.edu/sites/default/files/4.13_Sunset_Rez_web_DR.jpg");
-        for(String name : url_maps.keySet()){
-            DefaultSliderView slider = new DefaultSliderView(getContext());
-            slider.description(name)
-                    .image(url_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop);
-
-            mainCarousel.addSlider(slider);
-            mainCarousel.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
-            mainCarousel.setDuration(5000);
-        }
-
         UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName(RAINLINE_USERNAME)
                 .maxItemsPerRequest(1)
@@ -125,12 +101,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        mainCarousel.startAutoCycle();
     }
 
     @Override
     public void onPause(){
-        mainCarousel.stopAutoCycle();
         super.onPause();
     }
 

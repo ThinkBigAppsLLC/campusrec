@@ -106,12 +106,9 @@
     <string name="label_hours">Hours</string>
     <string name="label_detailed">Detailed</string>
     <string name="label_info">Information</string>
-    <string name="label_contact">Contact</string>
-    <string name="label_us">Us</string>
 
     <!-- Nav Drawer Strings -->
     <string name="nav_home">Home</string>
-    <string name="nav_map">Map</string>
     <string name="nav_calendar">Calendar</string>
     <string name="nav_im">Intramural Sports</string>
     <string name="nav_res">Reservations</string>

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +13,15 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,12 +32,22 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class StatusFragment extends Fragment {
+public class StatusFragment extends Fragment
+        implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener  {
     private final static String LEACH_FMC_URL = "http://campusrec.fsu.edu/fitness/leach-fmc";
+
+    private MapView map;
+    private GoogleMap gMap;
     private Facility fac;
+    private View mainContainer;
+
+    //*****************************************
+    // Constructors
+    //*****************************************
 
     public StatusFragment() { }
-    private View mainContainer;
 
     public static StatusFragment newInstance(Facility fac){
         StatusFragment sFrag = new StatusFragment();
@@ -37,8 +55,18 @@ public class StatusFragment extends Fragment {
         return sFrag;
     }
 
-    private void setBuilding(@NonNull Facility fac){
-        this.fac = fac;
+    //*****************************************
+    // Fragment Lifecycle
+    //*****************************************
+
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
@@ -52,23 +80,13 @@ public class StatusFragment extends Fragment {
             return v;
         Facility activeFac = fac;
 
-        ImageView header = (ImageView) v.findViewById(R.id.header_image);
-        TextView headerName = (TextView) v.findViewById(R.id.fac_name);
-        TextView status = (TextView) v.findViewById(R.id.status_detail);
+        map = (MapView) v.findViewById(R.id.map);
+        map.onCreate(savedInstanceState);
+        map.getMapAsync(this);
+
         TextView day;
         TextView label;
         TextView details = (TextView) v.findViewById(R.id.details);
-
-        if(activeFac.getPhoto() != -1) {
-            header.setVisibility(View.VISIBLE);
-            header.setImageResource(activeFac.getPhoto());
-            header.setContentDescription(activeFac.getName());
-        }
-        else {
-            header.setVisibility(View.GONE);
-        }
-        headerName.setText(activeFac.getName());
-        status.setText(activeFac.getStatus());
 
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
@@ -147,10 +165,52 @@ public class StatusFragment extends Fragment {
         details.setText(Html.fromHtml(getContext().getString(det)));
 
         setActionBarTitle(activeFac.getName());
-        setDetailSubtitle();
+        setDetailSubtitle(activeFac.getStatus());
 
         return v;
     }
+
+    @Override
+    public void onDestroy(){
+        ((MainActivity) getActivity()).restoreTitle();
+        super.onDestroy();
+    }
+
+    //*****************************************
+    // Google Api Client Required Methods
+    //*****************************************
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    //*****************************************
+    // Google Maps Api Required Methods
+    //*****************************************
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.gMap = googleMap;
+        gMap.getUiSettings().setMapToolbarEnabled(false);
+        gMap.addMarker(new MarkerOptions().position(fac.getLoc()));
+        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fac.getLoc(), 15));
+        map.onResume();
+    }
+
+    //*****************************************
+    // Helper Functions
+    //*****************************************
 
     private void setCurrentDayText(TextView label, TextView hours){
         label.setTextSize(15);
@@ -167,9 +227,9 @@ public class StatusFragment extends Fragment {
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void setDetailSubtitle(){
+    private void setDetailSubtitle(String status){
         try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Details");
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(status);
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         catch (NullPointerException npe){
@@ -177,10 +237,8 @@ public class StatusFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroy(){
-        ((MainActivity) getActivity()).restoreTitle();
-        super.onDestroy();
+    private void setBuilding(@NonNull Facility fac){
+        this.fac = fac;
     }
 
     private class GetDetails extends AsyncTask<String, Void, String> {

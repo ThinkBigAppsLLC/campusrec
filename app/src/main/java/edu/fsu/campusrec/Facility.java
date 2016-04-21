@@ -10,7 +10,6 @@ public class Facility {
     private final String STATUS_CLOSED = "CLOSED";
 
     private String name;
-    private int photo;
     private ArrayList<opHours> hoursOfOperation;
     private boolean open;
     private Building bldg;
@@ -20,7 +19,7 @@ public class Facility {
         LEACH, REZ, FMC, RSP, MCF, WSC
     }
 
-    public Facility(Building bldg, int resPhoto, ArrayList<opHours> hOO, boolean open, LatLng loc) {
+    public Facility(Building bldg, ArrayList<opHours> hOO, boolean open, LatLng loc) {
         switch (bldg) {
             case LEACH:
                 this.name = "Leach Recreation Center";
@@ -42,7 +41,6 @@ public class Facility {
                 break;
         }
         this.bldg = bldg;
-        this.photo = resPhoto;
         if (hOO.size() != 7)
             throw new IllegalArgumentException("Not enough days!");
         this.hoursOfOperation = hOO;
@@ -56,10 +54,6 @@ public class Facility {
 
     public String getName(){
         return this.name;
-    }
-
-    public int getPhoto(){
-        return this.photo;
     }
 
     public String getStatus(){
@@ -118,7 +112,6 @@ public class Facility {
             }
             return null;
         }
-
 
 
         public static class Hours {

@@ -11,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity
     private CalendarFragment calFrag;
     private ContactFragment contactFrag;
     private StatusFragment statusFrag;
-    private MapFragment mapFrag;
 
     public ActionBarDrawerToggle toggle;
 
@@ -62,8 +60,6 @@ public class MainActivity extends AppCompatActivity
             contactFrag = new ContactFragment();
         if(statusFrag == null)
             statusFrag = new StatusFragment();
-        if(mapFrag == null)
-            mapFrag = new MapFragment();
         FragmentTransaction fTransaction = fManager.beginTransaction();
         fTransaction.replace(R.id.frag_container, hFrag);
         fTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -157,11 +153,6 @@ public class MainActivity extends AppCompatActivity
                 fTransaction.replace(R.id.frag_container, resFrag);*/
                 browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fsucr.setmore.com/"));
                 startActivity(browserIntent);
-                break;
-            case R.id.nav_map:
-                if(mapFrag == null)
-                    mapFrag = new MapFragment();
-                fTransaction.replace(R.id.frag_container, mapFrag);
                 break;
             case R.id.nav_contact:
                 if (getSupportActionBar() != null) {
@@ -328,7 +319,6 @@ public class MainActivity extends AppCompatActivity
 
         Facility leachRC = new Facility(
                 Facility.Building.LEACH,
-                R.drawable.leach_photo,
                 facilityOpHours,
                 checkOpen(Facility.Building.LEACH),
                 LEACH_LATLNG);
@@ -364,7 +354,6 @@ public class MainActivity extends AppCompatActivity
 
         Facility rez = new Facility(
                 Facility.Building.REZ,
-                R.drawable.rez_photo,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
                 REZ_LATLNG);
@@ -400,7 +389,6 @@ public class MainActivity extends AppCompatActivity
 
         Facility fmc = new Facility(
                 Facility.Building.FMC,
-                R.drawable.fmc_photo,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
                 FMC_LATLNG);
@@ -429,7 +417,6 @@ public class MainActivity extends AppCompatActivity
 
         Facility rsp = new Facility(
                 Facility.Building.RSP,
-                R.drawable.rsp_photo,
                 facilityOpHours,
                 checkOpen(Facility.Building.RSP),
                 RSP_LATLNG
@@ -463,7 +450,6 @@ public class MainActivity extends AppCompatActivity
 
         Facility mcf = new Facility(
                 Facility.Building.MCF,
-                R.drawable.mcf_photo,
                 facilityOpHours,
                 checkOpen(Facility.Building.MCF),
                 MCF_LATLNG
@@ -475,7 +461,6 @@ public class MainActivity extends AppCompatActivity
         // ********************
         Facility wsc = new Facility(
                 Facility.Building.WSC,
-                -1,
                 facilityOpHours,
                 checkOpen(Facility.Building.WSC),
                 WSC_LATLNG

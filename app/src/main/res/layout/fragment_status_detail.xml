@@ -1,75 +1,119 @@
 <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/header_image"
-            android:src="@drawable/fmc_photo"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/placeholder" />
+            android:layout_height="150dp"
+            map:mapType="normal"
+            map:liteMode="true"/>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/contactRibbon"
+            android:layout_below="@+id/map"
+            android:tag="sticky"
+            android:elevation="1dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:layout_alignBottom="@+id/header_image"
-            android:paddingTop="16dp"
-            android:background="@color/colorBackgroundFaded"
-            android:id="@+id/header_text_background"
-            android:tag="sticky" >
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/colorSecondaryBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/placeholder"
-                android:id="@+id/fac_name"
-                android:textColor="@color/abc_primary_text_material_dark"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true" />
+                android:id="@+id/directionRibbon"
+                android:layout_marginBottom="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/direction"
+                    android:src="@drawable/directions"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder"
+                    android:id="@+id/directionLabel"
+                    android:layout_toRightOf="@+id/direction"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder"
+                    android:id="@+id/directionAddress"
+                    android:textSize="13sp"
+                    android:layout_toRightOf="@+id/direction"
+                    android:layout_below="@+id/directionLabel" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/placeholder"
-                android:id="@+id/status_detail"
-                android:textStyle="italic"
-                android:textColor="@color/abc_primary_text_material_dark"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:id="@+id/phoneRibbon"
+                android:layout_below="@+id/directionRibbon">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone"
+                    android:src="@drawable/phone"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder"
+                    android:id="@+id/phoneLabel"
+                    android:layout_toRightOf="@+id/phone"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder"
+                    android:id="@+id/phoneNumber"
+                    android:textSize="13sp"
+                    android:layout_toRightOf="@+id/phone"
+                    android:layout_below="@+id/phoneLabel" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/hours_divider"
-            android:layout_below="@+id/header_text_background"
+            android:layout_below="@+id/contactRibbon"
             android:tag="sticky"
-            android:background="@color/colorBackground">
+            android:background="@color/colorBackground"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_op"
-                android:paddingLeft="16dp"
                 android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:id="@+id/textView" />
 
             <TextView
@@ -77,19 +121,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_hours"
                 android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:id="@+id/textView2"
                 android:layout_toRightOf="@+id/textView" />
 
-            <View android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background_floating_material_dark"
-                android:layout_below="@+id/textView"
-                android:layout_marginLeft="13dp"
-                android:id="@+id/divider1" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -99,7 +135,6 @@
             android:layout_below="@+id/hours_divider"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingTop="8dp"
             android:paddingBottom="8dp">
 
             <TextView
@@ -108,7 +143,7 @@
                 android:text="@string/label_sun"
                 android:id="@+id/hours_sun_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -127,7 +162,7 @@
                 android:id="@+id/hours_mon_label"
                 android:layout_below="@+id/hours_sun_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -146,7 +181,7 @@
                 android:id="@+id/hours_tues_label"
                 android:layout_below="@+id/hours_mon_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -165,7 +200,7 @@
                 android:id="@+id/hours_wed_label"
                 android:layout_below="@+id/hours_tues_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -184,7 +219,7 @@
                 android:id="@+id/hours_thurs_label"
                 android:layout_below="@+id/hours_wed_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -203,7 +238,7 @@
                 android:id="@+id/hours_fri_label"
                 android:layout_below="@+id/hours_thurs_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -222,7 +257,7 @@
                 android:id="@+id/hours_sat_label"
                 android:layout_below="@+id/hours_fri_label"
                 android:minEms="1"
-                android:textAlignment="viewEnd"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -252,7 +287,7 @@
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:id="@+id/textView3" />
 
             <TextView
@@ -262,17 +297,11 @@
                 android:textColor="@color/colorPrimaryText"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:id="@+id/textView4"
                 android:layout_toRightOf="@+id/textView3" />
 
-            <View android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background_floating_material_dark"
-                android:layout_below="@+id/textView3"
-                android:layout_marginLeft="13dp"
-                android:id="@+id/divider2" />
         </RelativeLayout>
 
         <TextView
@@ -283,55 +312,7 @@
             android:layout_below="@+id/detailsDivider"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
             android:textColor="@color/colorPrimaryText" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/contact_divider"
-            android:tag="sticky"
-            android:layout_below="@+id/details"
-            android:background="@color/colorBackground">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_contact"
-                android:paddingLeft="16dp"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:id="@+id/header_contact" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_us"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:id="@+id/header_us"
-                android:layout_toRightOf="@+id/header_contact" />
-
-            <View android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background_floating_material_dark"
-                android:layout_below="@+id/header_contact"
-                android:layout_marginLeft="13dp"
-                android:id="@+id/divider3" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="600dp"
-            android:text="@string/placeholder"
-            android:id="@+id/textView5"
-            android:layout_below="@+id/contact_divider"
-            android:paddingLeft="16dp" />
     </RelativeLayout>
 </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
