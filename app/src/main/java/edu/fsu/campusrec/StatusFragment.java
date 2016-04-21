@@ -1,5 +1,11 @@
 package edu.fsu.campusrec;
 
+/**
+ * Status Detail Module
+ * Used to hold detailed information about each facility
+ * Accessed from the quick-status list.
+ */
+
 
 import android.content.Intent;
 import android.net.Uri;

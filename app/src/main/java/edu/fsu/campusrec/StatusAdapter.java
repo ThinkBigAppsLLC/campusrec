@@ -1,5 +1,10 @@
 package edu.fsu.campusrec;
 
+/**
+ * Status Adapter
+ * Used to populate Quick-Status list on the Homepage
+ */
+
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;

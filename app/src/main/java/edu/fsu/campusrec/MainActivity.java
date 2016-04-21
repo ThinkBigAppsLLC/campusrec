@@ -1,5 +1,12 @@
 package edu.fsu.campusrec;
 
+/**
+ * Main Activity
+ * Holds Fragment transactions
+ * Populates static Facility data
+ * Handles menu and action bar responses.
+ */
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

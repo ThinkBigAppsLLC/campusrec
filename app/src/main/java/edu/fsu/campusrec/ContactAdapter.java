@@ -1,5 +1,10 @@
 package edu.fsu.campusrec;
 
+/**
+ * Contact Adapter Module
+ * Adapter class to apply contact data to Recycler layout
+ */
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -113,14 +118,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
                     // Launches Browser
                     Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse(EMAIL_URL));
                     context.startActivity(browserIntent);
-
-                    // Launches Email client
-/*                    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-
-                    emailIntent.setType("plain/text");
-                    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{person.getEmail()});
-
-                    context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
                 }
             });
         }

@@ -1,5 +1,11 @@
 package edu.fsu.campusrec;
 
+/**
+ * Contact Module
+ * Dynamically retrieves CampusRec staff contact data and displays it in Recycler View.
+ * Used with ContactAdapter
+ */
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;

@@ -1,5 +1,10 @@
 package edu.fsu.campusrec;
 
+/**
+ * Facility
+ * Data structure class designed to represent a facility
+ */
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;

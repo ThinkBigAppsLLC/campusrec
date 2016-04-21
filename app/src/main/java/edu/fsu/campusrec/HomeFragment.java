@@ -1,5 +1,11 @@
 package edu.fsu.campusrec;
 
+/**
+ * Home Module
+ * Holds quick-status list of facilities
+ * Holds latest Rainline tweet
+ */
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;

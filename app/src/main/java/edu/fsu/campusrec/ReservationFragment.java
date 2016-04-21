@@ -1,5 +1,10 @@
 package edu.fsu.campusrec;
 
+/**
+ * Reservation Module
+ * Currently unused - current functionality in launching external web intent
+ */
+
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,8 +20,7 @@ public class ReservationFragment extends Fragment {
 
     private WebView webView;
 
-    public ReservationFragment() {
-    }
+    public ReservationFragment() { }
 
 
     @Override

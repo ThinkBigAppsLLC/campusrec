@@ -1,5 +1,9 @@
 package edu.fsu.campusrec;
 
+/**
+ * FacilityData
+ * Abstract data container class designed to hold hardcoded, constant data
+ */
 
 import com.google.android.gms.maps.model.LatLng;
 

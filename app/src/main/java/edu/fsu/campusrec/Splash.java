@@ -1,8 +1,14 @@
 package edu.fsu.campusrec;
 
+/**
+ * Splash Activity
+ * Used to display initial splash.
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.crashlytics.android.Crashlytics;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;

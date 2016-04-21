@@ -1,5 +1,10 @@
 package edu.fsu.campusrec;
 
+/**
+ * Calendar Module
+ * Holds all Calendar/Group Event Handling
+ * Currently empty - waiting for client data
+ */
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,21 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CalendarFragment extends Fragment {
 
 
-    public CalendarFragment() {
-
-    }
+    public CalendarFragment() {    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
 
