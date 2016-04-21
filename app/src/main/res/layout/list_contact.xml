@@ -32,7 +32,8 @@
         android:src="@drawable/phone"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/action_email"
-        android:paddingRight="16dp" />
+        android:paddingRight="16dp"
+        android:background="?attr/selectableItemBackground"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,5 +42,6 @@
         android:src="@drawable/email"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="false"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="?attr/selectableItemBackground"/>
 </RelativeLayout>
