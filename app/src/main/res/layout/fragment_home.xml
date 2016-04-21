@@ -38,7 +38,7 @@
                     android:textColor="@color/colorPrimaryText"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:id="@+id/curr" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                     android:textColor="@color/colorPrimaryText"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:id="@+id/stat"
                     android:layout_toRightOf="@+id/curr" />
@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/label_rain"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:id="@+id/label_rain"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp" />
@@ -98,7 +98,7 @@
                     android:textColor="@color/colorPrimaryText"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:id="@+id/label_line"
                     android:layout_toRightOf="@+id/label_rain" />

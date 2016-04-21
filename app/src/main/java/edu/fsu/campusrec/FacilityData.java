@@ -18,8 +18,8 @@ public abstract class FacilityData {
     public static final String MCF_ADDRESS = "1001 W. St. Augustine Street, Tallahassee, 32306";
     public static final String WSC_ADDRESS = "240 Hull Drive, Tallahassee, 32306";
 
-    public static final String LEACH_NUMBER = "850-644-0548";
-    public static final String REZ_NUMBER = "850-644-6892";
-    public static final String FMC_NUMBER = "850-645-0601";
-    public static final String RSP_NUMBER = "850-645-7246";
+    public static final String LEACH_NUMBER = "850.644.0548";
+    public static final String REZ_NUMBER = "850.644.6892";
+    public static final String FMC_NUMBER = "850.645.0601";
+    public static final String RSP_NUMBER = "850.645.7246";
 }
