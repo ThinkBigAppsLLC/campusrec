@@ -8,22 +8,29 @@
     android:background="@color/colorSecondaryBackground"
     android:id="@+id/contact_container">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/placeholder"
-        android:id="@+id/label_name"
-        android:textSize="13sp"
-        android:layout_alignParentTop="false" />
+        android:id="@+id/container_label"
+        android:layout_toLeftOf="@+id/action_call">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/placeholder"
-        android:id="@+id/label_title"
-        android:textSize="13sp"
-        android:layout_below="@+id/label_name" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/placeholder"
+            android:id="@+id/label_name"
+            android:textSize="13sp"
+            android:layout_alignParentTop="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:id="@+id/label_title"
+            android:textSize="13sp"
+            android:layout_below="@+id/label_name" />
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"
