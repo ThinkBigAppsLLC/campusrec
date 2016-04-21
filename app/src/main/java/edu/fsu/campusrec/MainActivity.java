@@ -176,18 +176,18 @@ public class MainActivity extends AppCompatActivity
                 switch(day){
                     case Calendar.SUNDAY:
                     case Calendar.SATURDAY:
-                        if(hour < 11 || hour > 21)
+                        if(hour < 11 || hour > 20)
                             return false;
                         break;
                     case Calendar.MONDAY:
                     case Calendar.TUESDAY:
                     case Calendar.WEDNESDAY:
                     case Calendar.THURSDAY:
-                        if(hour < 6 || hour > 23)
+                        if(hour < 6 || hour > 22)
                             return false;
                         break;
                     case Calendar.FRIDAY:
-                        if(hour < 6 || hour > 22)
+                        if(hour < 6 || hour > 21)
                             return false;
                         break;
                 }
@@ -197,31 +197,31 @@ public class MainActivity extends AppCompatActivity
                     case Calendar.FRIDAY:
                     case Calendar.SATURDAY:
                     case Calendar.SUNDAY:
-                        if(hour < 12 || hour > 19)
+                        if(hour < 12 || hour > 18)
                             return false;
                         break;
                     case Calendar.MONDAY:
                     case Calendar.TUESDAY:
                     case Calendar.WEDNESDAY:
                     case Calendar.THURSDAY:
-                        if(hour < 14 || hour > 19)
+                        if(hour < 14 || hour > 18)
                             return false;
                         break;
                 }
                 break;
             case FMC:
                 switch(day){
-                    case Calendar.FRIDAY:
                     case Calendar.SATURDAY:
                     case Calendar.SUNDAY:
-                        if(hour < 12 || hour > 19)
+                        if(hour < 8 || hour > 16)
                             return false;
                         break;
                     case Calendar.MONDAY:
                     case Calendar.TUESDAY:
                     case Calendar.WEDNESDAY:
                     case Calendar.THURSDAY:
-                        if(hour < 14 || hour > 19)
+                    case Calendar.FRIDAY:
+                        if(hour < 6 || hour > 20)
                             return false;
                         break;
                 }
@@ -254,14 +254,14 @@ public class MainActivity extends AppCompatActivity
                 switch(day){
                     case Calendar.SATURDAY:
                     case Calendar.SUNDAY:
-                        if(hour > 21)
+                        if(hour > 20)
                             return false;
                     case Calendar.MONDAY:
                     case Calendar.TUESDAY:
                     case Calendar.WEDNESDAY:
                     case Calendar.THURSDAY:
                     case Calendar.FRIDAY:
-                        if(hour > 22)
+                        if(hour > 21)
                             return false;
                 }
                 break;
