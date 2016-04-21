@@ -13,13 +13,22 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             map:mapType="normal"
-            map:liteMode="true"/>
+            map:liteMode="true"
+            android:elevation="1dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackgroundFaded"
+            android:layout_below="@+id/map"
+            android:id="@+id/topDivider"
+            android:alpha=".3" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/contactRibbon"
-            android:layout_below="@+id/map"
+            android:layout_below="@+id/topDivider"
             android:tag="sticky"
             android:elevation="1dp"
             android:paddingLeft="16dp"
@@ -31,8 +40,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/directionRibbon"
-                android:layout_marginBottom="8dp">
+                android:id="@+id/directionRibbon">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -61,11 +69,21 @@
                     android:layout_below="@+id/directionLabel" />
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackgroundFaded"
+                android:layout_below="@+id/directionRibbon"
+                android:id="@+id/divider"
+                android:alpha=".3"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/phoneRibbon"
-                android:layout_below="@+id/directionRibbon">
+                android:layout_below="@+id/divider">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -78,7 +96,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder"
+                    android:text="@string/label_call"
                     android:id="@+id/phoneLabel"
                     android:layout_toRightOf="@+id/phone"
                     android:textSize="13sp"

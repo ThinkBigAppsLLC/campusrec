@@ -1,7 +1,6 @@
 package edu.fsu.campusrec;
 
 
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -80,6 +79,7 @@ public class StatusFragment extends Fragment
             return v;
         Facility activeFac = fac;
 
+        // Create MapView
         map = (MapView) v.findViewById(R.id.map);
         map.onCreate(savedInstanceState);
         map.getMapAsync(this);
@@ -141,6 +141,19 @@ public class StatusFragment extends Fragment
             setCurrentDayText(label, day);
         }
 
+        TextView adr = (TextView) v.findViewById(R.id.directionAddress);
+        adr.setText(fac.getAddress());
+
+        if(fac.getNumber() != null){
+            TextView phone = (TextView) v.findViewById(R.id.phoneNumber);
+            phone.setText(fac.getNumber());
+        }
+        else{
+            v.findViewById(R.id.divider).setVisibility(View.GONE);
+            v.findViewById(R.id.phoneRibbon).setVisibility(View.GONE);
+        }
+
+        // Set Details
         int det = -1;
         switch(activeFac.getBldg()){
             case LEACH:
@@ -164,8 +177,8 @@ public class StatusFragment extends Fragment
         }
         details.setText(Html.fromHtml(getContext().getString(det)));
 
+        // Set TopBar Title
         setActionBarTitle(activeFac.getName());
-        setDetailSubtitle(activeFac.getStatus());
 
         return v;
     }
@@ -217,23 +230,14 @@ public class StatusFragment extends Fragment
         label.setTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
         hours.setTextSize(15);
         hours.setTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
-        hours.setTypeface(Typeface.DEFAULT_BOLD);
+        //hours.setTypeface(Typeface.DEFAULT_BOLD);
     }
 
     @SuppressWarnings("ConstantConditions")
     private void setActionBarTitle(String title){
-        if(((AppCompatActivity) getActivity()).getSupportActionBar() != null)
+        if(((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    private void setDetailSubtitle(String status){
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(status);
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        catch (NullPointerException npe){
-            npe.printStackTrace();
         }
     }
 
