@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +22,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -35,16 +32,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class StatusFragment extends Fragment
-        implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener  {
+public class StatusFragment extends Fragment implements OnMapReadyCallback {
     private final static String LEACH_FMC_URL = "http://campusrec.fsu.edu/fitness/leach-fmc";
 
     private MapView map;
-    private GoogleMap gMap;
     private Facility fac;
-    private View mainContainer;
 
     //*****************************************
     // Constructors
@@ -76,7 +68,6 @@ public class StatusFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        mainContainer = v;
 
         // Change to active facility
         if(fac == null)
@@ -220,31 +211,11 @@ public class StatusFragment extends Fragment
     }
 
     //*****************************************
-    // Google Api Client Required Methods
-    //*****************************************
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    //*****************************************
     // Google Maps Api Required Methods
     //*****************************************
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        this.gMap = googleMap;
+    public void onMapReady(GoogleMap gMap) {
         gMap.getUiSettings().setMapToolbarEnabled(false);
         gMap.addMarker(new MarkerOptions().position(fac.getLoc()));
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fac.getLoc(), 15));

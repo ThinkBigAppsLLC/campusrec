@@ -23,14 +23,19 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
     private ArrayList<String> statusList;
     private Context context;
 
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
+    //**************************************
+    // CONSTRUCTOR
+    //**************************************
+
+    public StatusAdapter(ArrayList<String> bldgs, ArrayList<String> statuses, Context context) {
+        this.facilityList = bldgs;
+        this.statusList = statuses;
+        this.context = context;
     }
 
-    private OnItemClickListener mItemClickListener;
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mItemClickListener = listener;
-    }
+    //**************************************
+    // VIEW HOLDER FUNCTIONS
+    //**************************************
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView bldgName;
@@ -45,12 +50,6 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
             rightArrow = (ImageView) v.findViewById(R.id.arrow_right);
             statusContainer = (RelativeLayout) v.findViewById(R.id.status_container);
         }
-    }
-
-    public StatusAdapter(ArrayList<String> bldgs, ArrayList<String> statuses, Context context) {
-        this.facilityList = bldgs;
-        this.statusList = statuses;
-        this.context = context;
     }
 
     @Override
@@ -89,5 +88,18 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return facilityList.size();
+    }
+
+    //**************************************
+    // CLICK LISTENER INTERFACE FUNCTIONS
+    //**************************************
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    private OnItemClickListener mItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mItemClickListener = listener;
     }
 }

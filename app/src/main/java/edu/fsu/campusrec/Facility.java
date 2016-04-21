@@ -26,6 +26,9 @@ public class Facility {
         LEACH, REZ, FMC, RSP, MCF, WSC
     }
 
+    //**************************************
+    //  CONSTRUCTORS
+    //**************************************
     public Facility(
             Building bldg,
             ArrayList<opHours> hOO,
@@ -101,6 +104,10 @@ public class Facility {
         this.mainPhone = null;
     }
 
+    //**************************************
+    //  GETTERS
+    //**************************************
+
     public LatLng getLoc(){ return this.loc; }
 
     public Building getBldg(){ return this.bldg;}
@@ -135,6 +142,10 @@ public class Facility {
         opHours.put("sat", this.hoursOfOperation.get(6).toString());
         return opHours;
     }
+
+    //**************************************
+    //  INNER CLASSES
+    //**************************************
 
     public static class opHours {
         private Hours open;

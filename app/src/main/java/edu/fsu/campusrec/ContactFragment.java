@@ -33,6 +33,7 @@ public class ContactFragment extends Fragment {
     public ContactFragment() { }
     private ArrayList<ArrayList<ContactAdapter.Contact>> contacts;
 
+    // A CustomLinearLayoutManager used to disable scrollability
     public static class CustomLinearLayoutManager extends LinearLayoutManager {
         public CustomLinearLayoutManager(Context context) {
             super(context);
@@ -51,18 +52,12 @@ public class ContactFragment extends Fragment {
         task.execute(CONTACT_URL);
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
         this.v = v;
-
         setVisibilities(View.GONE);
-        
         return v;
     }
 
+    // ASYNCTASK - grabs the contact details and populates the tables with them.
     private class GetDetails extends AsyncTask<String, Void, ArrayList<ArrayList<ContactAdapter.Contact>>> {
-        @Override
-        protected void onPreExecute(){
-
-        }
-
         @Override
         protected ArrayList<ArrayList<ContactAdapter.Contact>> doInBackground(String... urls) {
             ArrayList<ArrayList<ContactAdapter.Contact>> tmpContacts = new ArrayList<>();
@@ -126,6 +121,8 @@ public class ContactFragment extends Fragment {
         }
     }
 
+    // Creates a new unscrollable CustomLinearLayoutManager and sets the passed-in Adapter to the
+    // passed-in recycler view.
     private void setRecyclerAdapter(RecyclerView mRecyclerView, ArrayList<ContactAdapter.Contact> contacts){
         CustomLinearLayoutManager mRecyclerManager = new CustomLinearLayoutManager(getContext());
         ContactAdapter contactAdapter;
@@ -134,7 +131,8 @@ public class ContactFragment extends Fragment {
         mRecyclerView.setLayoutManager(mRecyclerManager);
         mRecyclerView.setHasFixedSize(true);
     }
-    
+
+    // Sets the visibilities of each table & their headers
     private void setVisibilities(int vis){
         v.findViewById(R.id.label_crao).setVisibility(vis);
         v.findViewById(R.id.label_lcfa).setVisibility(vis);
