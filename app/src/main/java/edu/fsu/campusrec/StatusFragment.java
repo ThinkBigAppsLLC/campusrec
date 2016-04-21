@@ -1,6 +1,8 @@
 package edu.fsu.campusrec;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -20,6 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.jsoup.Jsoup;
@@ -143,10 +148,36 @@ public class StatusFragment extends Fragment
 
         TextView adr = (TextView) v.findViewById(R.id.directionAddress);
         adr.setText(fac.getAddress());
+        RelativeLayout directionRibbon = (RelativeLayout) v.findViewById(R.id.directionRibbon);
+        directionRibbon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng loc = fac.getLoc();
+                Uri directionUri = Uri.parse("google.navigation:q=" + loc.latitude + "," + loc.longitude);
+                Intent directionIntent = new Intent(Intent.ACTION_VIEW, directionUri);
+                directionIntent.setPackage("com.google.android.apps.maps");
+                if (directionIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(directionIntent);
+                }
+                else {
+                    Log.i("Direction onClick", "You cannot handle this Intent.");
+                }
+            }
+        });
 
         if(fac.getNumber() != null){
             TextView phone = (TextView) v.findViewById(R.id.phoneNumber);
             phone.setText(fac.getNumber());
+            RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.phoneRibbon);
+            phoneRibbon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + fac.getNumber().replaceAll("\\.", "")));
+                    getContext().startActivity(intent);
+                }
+            });
+
         }
         else{
             v.findViewById(R.id.divider).setVisibility(View.GONE);

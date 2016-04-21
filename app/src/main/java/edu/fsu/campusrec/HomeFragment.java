@@ -21,9 +21,6 @@ import com.twitter.sdk.android.tweetui.UserTimeline;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private static final String RAINLINE_USERNAME = "fsuimrainline";
-    private static final String RAINLINE_PHONE = "tel:8506457246";
-
     private View viewContainer;
     private CoordinatorLayout mCoord;
     private RecyclerView mRecyclerView;
@@ -75,7 +72,7 @@ public class HomeFragment extends Fragment {
         });
 
         UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName(RAINLINE_USERNAME)
+                .screenName(FacilityData.RAINLINE_USERNAME)
                 .maxItemsPerRequest(1)
                 .build();
 
@@ -89,7 +86,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(RAINLINE_PHONE));
+                intent.setData(Uri.parse(FacilityData.RAINLINE_PHONE));
                 getContext().startActivity(intent);
             }
         });

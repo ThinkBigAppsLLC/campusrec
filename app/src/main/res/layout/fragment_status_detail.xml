@@ -40,7 +40,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/directionRibbon">
+                android:id="@+id/directionRibbon"
+                android:clickable="true">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -83,7 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/phoneRibbon"
-                android:layout_below="@+id/divider">
+                android:layout_below="@+id/divider"
+                android:clickable="true">
 
                 <ImageView
                     android:layout_width="wrap_content"

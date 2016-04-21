@@ -22,4 +22,7 @@ public abstract class FacilityData {
     public static final String REZ_NUMBER = "850.644.6892";
     public static final String FMC_NUMBER = "850.645.0601";
     public static final String RSP_NUMBER = "850.645.7246";
+
+    public static final String RAINLINE_USERNAME = "fsuimrainline";
+    public static final String RAINLINE_PHONE = "tel:8506457246";
 }
