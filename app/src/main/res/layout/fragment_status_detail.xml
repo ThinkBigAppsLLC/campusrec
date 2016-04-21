@@ -50,7 +50,8 @@
                     android:id="@+id/direction"
                     android:src="@drawable/directions"
                     android:layout_centerVertical="true"
-                    android:paddingRight="8dp" />
+                    android:paddingRight="8dp"
+                    android:contentDescription="@string/desc_directions" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,7 +96,8 @@
                     android:id="@+id/phone"
                     android:src="@drawable/phone"
                     android:layout_centerVertical="true"
-                    android:paddingRight="8dp" />
+                    android:paddingRight="8dp"
+                    android:contentDescription="@string/desc_call" />
 
                 <TextView
                     android:layout_width="wrap_content"

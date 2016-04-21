@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FACILITY NAME"
+        android:text="@string/placeholder"
         android:id="@+id/facility"
         android:typeface="sans"
         android:textSize="13sp"
@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="STATUS"
+        android:text="@string/placeholder"
         android:id="@+id/status"
         android:textSize="13sp"
         android:textColor="@android:color/secondary_text_light_nodisable"
@@ -39,6 +39,7 @@
         android:id="@+id/arrow_right"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/arrow_right" />
+        android:src="@drawable/arrow_right"
+        android:contentDescription="@string/desc_right_arrow" />
 
 </RelativeLayout>

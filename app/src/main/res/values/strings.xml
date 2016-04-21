@@ -129,4 +129,10 @@
     <string name="twitter_key">TNePIOUCkUVAzJqLdkbT1t7cx</string>
     <string name="twitter_secret">tFAZ9FnUMcGkuUVeizjnfdFLEd24oK6Y5jxUq8oIHYrZEeU001</string>
 
+    <!-- Content Descriptions -->
+    <string name="desc_call">Phone - Call Action</string>
+    <string name="desc_email">Email - Email Action</string>
+    <string name="desc_directions">Direction Arrow - Get Directions Action</string>
+    <string name="desc_right_arrow">Right Arrow - Expand Action</string>
+
 </resources>
