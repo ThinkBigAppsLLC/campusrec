@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
+import java.util.EnumSet;
 import java.util.HashMap;
 
 public class StatusFragment extends Fragment implements OnMapReadyCallback {
@@ -72,7 +72,6 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
         // Change to active facility
         if(fac == null)
             return v;
-        Facility activeFac = fac;
 
         // Create MapView
         map = (MapView) v.findViewById(R.id.map);
@@ -81,12 +80,11 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
 
         TextView day;
         TextView label;
-        TextView details = (TextView) v.findViewById(R.id.details);
 
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
         // DAILY HOURS FACTORY
-        HashMap<String, String> opHours = activeFac.getHours();
+        HashMap<String, String> opHours = fac.getHours();
         day = (TextView) v.findViewById(R.id.hours_sun);
         day.setText(opHours.get("sat"));
         if(dayOfWeek == Calendar.SUNDAY) {
@@ -167,14 +165,13 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
                     getContext().startActivity(intent);
                 }
             });
-
         }
         else{
             v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
             v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
         }
 
-        // Set Details
+/*        // Set Details
         int det = -1;
         switch(activeFac.getBldg()){
             case LEACH:
@@ -196,10 +193,42 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
                 det = R.string.details_wsc;
                 break;
         }
-        details.setText(Html.fromHtml(getContext().getString(det)));
+        details.setText(Html.fromHtml(getContext().getString(det)));*/
+
+        EnumSet<FacilityData.Amenities> amens = fac.getAmenities();
+
+        for (FacilityData.Amenities amen : amens) {
+            switch (amen){
+                case WIFI:
+                    v.findViewById(R.id.container_wifi).setVisibility(View.VISIBLE);
+                    break;
+                case RESERVE:
+                    v.findViewById(R.id.container_reserve).setVisibility(View.VISIBLE);
+                    break;
+                case EQUIPMENT:
+                    v.findViewById(R.id.container_equipment).setVisibility(View.VISIBLE);
+                    break;
+                case RUN:
+                    v.findViewById(R.id.container_run).setVisibility(View.VISIBLE);
+                    break;
+                case BIKE:
+                    v.findViewById(R.id.container_bike).setVisibility(View.VISIBLE);
+                    break;
+                case SWIM:
+                    v.findViewById(R.id.container_swim).setVisibility(View.VISIBLE);
+                    break;
+                case ROW:
+                    v.findViewById(R.id.container_row).setVisibility(View.VISIBLE);
+                    break;
+                case FIELD:
+                    v.findViewById(R.id.container_field).setVisibility(View.VISIBLE);
+                    break;
+            }
+
+        }
 
         // Set TopBar Title
-        setActionBarTitle(activeFac.getName());
+        setActionBarTitle(fac.getName());
 
         return v;
     }

@@ -11,6 +11,17 @@ import com.google.android.gms.maps.model.LatLng;
 
 public abstract class FacilityData {
 
+    public enum Amenities {
+        WIFI,
+        RESERVE,
+        EQUIPMENT,
+        RUN,
+        BIKE,
+        SWIM,
+        ROW,
+        FIELD,
+    }
+
     //**************************************
     //  LOCATIONS
     //**************************************

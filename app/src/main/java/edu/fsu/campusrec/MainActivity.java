@@ -23,6 +23,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.EnumSet;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -290,6 +291,7 @@ public class MainActivity extends AppCompatActivity
 
     private void prepareListData() {
         ArrayList<Facility.opHours> facilityOpHours;
+        EnumSet<FacilityData.Amenities> amen;
         Facility.opHours.Hours open;
         Facility.opHours.Hours close;
         Facility.opHours opHours;
@@ -327,13 +329,22 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(open, close);
         facilityOpHours.add(opHours);
 
+        amen = EnumSet.of(
+                FacilityData.Amenities.EQUIPMENT,
+                FacilityData.Amenities.RUN,
+                FacilityData.Amenities.SWIM,
+                FacilityData.Amenities.WIFI,
+                FacilityData.Amenities.RESERVE
+        );
+
         Facility leachRC = new Facility(
                 Facility.Building.LEACH,
                 facilityOpHours,
                 checkOpen(Facility.Building.LEACH),
                 FacilityData.LEACH_LATLNG,
                 FacilityData.LEACH_ADDRESS,
-                FacilityData.LEACH_NUMBER
+                FacilityData.LEACH_NUMBER,
+                amen
         );
         facilities.add(leachRC);
 
@@ -365,13 +376,22 @@ public class MainActivity extends AppCompatActivity
         facilityOpHours.add(opHours);
         facilityOpHours.add(opHours);
 
+        amen = EnumSet.of(
+                FacilityData.Amenities.ROW,
+                FacilityData.Amenities.RUN,
+                FacilityData.Amenities.SWIM,
+                FacilityData.Amenities.BIKE,
+                FacilityData.Amenities.RESERVE
+        );
+
         Facility rez = new Facility(
                 Facility.Building.REZ,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
                 FacilityData.REZ_LATLNG,
                 FacilityData.REZ_ADDRESS,
-                FacilityData.REZ_NUMBER
+                FacilityData.REZ_NUMBER,
+                amen
         );
         facilities.add(rez);
 
@@ -403,13 +423,22 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(open, close);
         facilityOpHours.add(opHours);
 
+        amen = EnumSet.of(
+                FacilityData.Amenities.EQUIPMENT,
+                FacilityData.Amenities.RUN,
+                FacilityData.Amenities.FIELD,
+                FacilityData.Amenities.WIFI,
+                FacilityData.Amenities.RESERVE
+        );
+
         Facility fmc = new Facility(
                 Facility.Building.FMC,
                 facilityOpHours,
                 checkOpen(Facility.Building.REZ),
                 FacilityData.FMC_LATLNG,
                 FacilityData.FMC_ADDRESS,
-                FacilityData.FMC_NUMBER
+                FacilityData.FMC_NUMBER,
+                amen
         );
         facilities.add(fmc);
 
@@ -434,13 +463,20 @@ public class MainActivity extends AppCompatActivity
         facilityOpHours.add(opHours);
         facilityOpHours.add(opHours);
 
+        amen = EnumSet.of(
+                FacilityData.Amenities.FIELD,
+                FacilityData.Amenities.WIFI,
+                FacilityData.Amenities.RESERVE
+        );
+
         Facility rsp = new Facility(
                 Facility.Building.RSP,
                 facilityOpHours,
                 checkOpen(Facility.Building.RSP),
                 FacilityData.RSP_LATLNG,
                 FacilityData.RSP_ADDRESS,
-                FacilityData.RSP_NUMBER
+                FacilityData.RSP_NUMBER,
+                amen
         );
         facilities.add(rsp);
 
@@ -469,12 +505,19 @@ public class MainActivity extends AppCompatActivity
         opHours = new Facility.opHours(close);
         facilityOpHours.add(opHours);
 
+        amen = EnumSet.of(
+                FacilityData.Amenities.FIELD,
+                FacilityData.Amenities.RESERVE
+        );
+
         Facility mcf = new Facility(
                 Facility.Building.MCF,
                 facilityOpHours,
                 checkOpen(Facility.Building.MCF),
                 FacilityData.MCF_LATLNG,
-                FacilityData.MCF_ADDRESS
+                FacilityData.MCF_ADDRESS,
+                null,
+                amen
         );
         facilities.add(mcf);
 
@@ -486,7 +529,9 @@ public class MainActivity extends AppCompatActivity
                 facilityOpHours,
                 checkOpen(Facility.Building.WSC),
                 FacilityData.WSC_LATLNG,
-                FacilityData.WSC_ADDRESS
+                FacilityData.WSC_ADDRESS,
+                null,
+                amen
         );
         facilities.add(wsc);
     }

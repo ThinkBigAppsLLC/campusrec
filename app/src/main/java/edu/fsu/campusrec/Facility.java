@@ -8,6 +8,7 @@ package edu.fsu.campusrec;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 
 public class Facility {
@@ -16,6 +17,7 @@ public class Facility {
 
     private String name;
     private ArrayList<opHours> hoursOfOperation;
+    private EnumSet<FacilityData.Amenities> amenities;
     private boolean open;
     private Building bldg;
     private LatLng loc;
@@ -35,7 +37,8 @@ public class Facility {
             boolean open,
             LatLng loc,
             String adr,
-            String phoneNum
+            String phoneNum,
+            EnumSet<FacilityData.Amenities> amen
     ) {
         switch (bldg) {
             case LEACH:
@@ -65,43 +68,7 @@ public class Facility {
         this.loc = loc;
         this.address = adr;
         this.mainPhone = phoneNum;
-    }
-
-    public Facility(
-            Building bldg,
-            ArrayList<opHours> hOO,
-            boolean open,
-            LatLng loc,
-            String adr
-    ) {
-        switch (bldg) {
-            case LEACH:
-                this.name = "Leach Recreation Center";
-                break;
-            case REZ:
-                this.name = "FSU Reservation";
-                break;
-            case FMC:
-                this.name = "Fitness & Movement Clinic";
-                break;
-            case RSP:
-                this.name = "Rec SportsPlex";
-                break;
-            case MCF:
-                this.name = "Main Campus Fields";
-                break;
-            case WSC:
-                this.name = "Westside Courts";
-                break;
-        }
-        this.bldg = bldg;
-        if (hOO.size() != 7)
-            throw new IllegalArgumentException("Not enough days!");
-        this.hoursOfOperation = hOO;
-        this.open = open;
-        this.loc = loc;
-        this.address = adr;
-        this.mainPhone = null;
+        this.amenities = amen;
     }
 
     //**************************************
@@ -141,6 +108,10 @@ public class Facility {
         opHours.put("fri", this.hoursOfOperation.get(5).toString());
         opHours.put("sat", this.hoursOfOperation.get(6).toString());
         return opHours;
+    }
+
+    public EnumSet<FacilityData.Amenities> getAmenities () {
+        return this.amenities;
     }
 
     //**************************************

@@ -27,7 +27,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ribbon_phone"
+            android:id="@+id/ribbon_contact"
             android:layout_below="@+id/top_divider"
             android:tag="sticky"
             android:elevation="1dp"
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/divider_hours"
-            android:layout_below="@+id/ribbon_phone"
+            android:layout_below="@+id/ribbon_contact"
             android:tag="sticky"
             android:background="@color/colorBackground"
             android:paddingLeft="16dp"
@@ -297,46 +297,252 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/divider_details"
+            android:id="@+id/section_amenities"
             android:tag="sticky"
             android:layout_below="@+id/container_hours"
             android:contextClickable="false"
             android:background="@color/colorBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_detailed"
-                android:paddingLeft="16dp"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="20sp"
-                android:id="@+id/label_detailed" />
+                android:id="@+id/header_amenities">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_amenities"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="20sp"
+                    android:id="@+id/label_amenities"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_info"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:id="@+id/label_info"
-                android:layout_toRightOf="@+id/label_detailed" />
+                android:orientation="vertical"
+                android:id="@+id/container_amenities"
+                android:layout_below="@+id/header_amenities"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="@dimen/padding_amenities_list_top_bot"
+                android:paddingBottom="@dimen/padding_amenities_list_top_bot">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_wifi"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_wifi"
+                        android:src="@drawable/wifi"
+                        android:contentDescription="@string/label_wifi" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_wifi"
+                        android:id="@+id/label_wifi"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_wifi"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_reserve"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_reserve"
+                        android:src="@drawable/reserve"
+                        android:contentDescription="@string/label_reserve" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_reserve"
+                        android:id="@+id/label_reserve"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_reserve"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_equipment"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_equipment"
+                        android:src="@drawable/equipment"
+                        android:contentDescription="@string/label_equipment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_equipment"
+                        android:id="@+id/label_equipment"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_equipment"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_run"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_run"
+                        android:src="@drawable/run"
+                        android:contentDescription="@string/label_run" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_run"
+                        android:id="@+id/label_run"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_run"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_bike"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_bike"
+                        android:src="@drawable/bike"
+                        android:contentDescription="@string/label_bike" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_bike"
+                        android:id="@+id/label_bike"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_bike"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_swim"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_swim"
+                        android:src="@drawable/swim"
+                        android:contentDescription="@string/label_swim" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_swim"
+                        android:id="@+id/label_swim"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_swim"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_row"
+                    android:layout_marginBottom="@dimen/padding_amenities_list_top_bot"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_row"
+                        android:src="@drawable/row"
+                        android:contentDescription="@string/label_row" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_row"
+                        android:id="@+id/label_row"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_row"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/container_field"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_field"
+                        android:src="@drawable/field"
+                        android:contentDescription="@string/label_field" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_field"
+                        android:id="@+id/label_field"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_field"
+                        android:paddingLeft="16dp"
+                        android:textSize="@dimen/ts_amen"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder"
-            android:id="@+id/details"
-            android:layout_below="@+id/divider_details"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="@color/colorPrimaryText" />
 
     </RelativeLayout>
 </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>

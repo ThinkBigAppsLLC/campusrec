@@ -105,8 +105,16 @@
     <string name="label_sat">S</string>
     <string name="label_op">Operating</string>
     <string name="label_hours">Hours</string>
-    <string name="label_detailed">Detailed</string>
-    <string name="label_info">Information</string>
+    <string name="label_amenities">Amenities</string>
+    <string name="label_wifi">Wi-Fi Enabled</string>
+    <string name="label_reserve">Reservations</string>
+    <string name="label_equipment">Exercise Equipment</string>
+    <string name="label_run">Running/Walking</string>
+    <string name="label_bike">Biking</string>
+    <string name="label_swim">Swimming</string>
+    <string name="label_row">Aquatic Craft</string>
+    <string name="label_field">Group Sports</string>
+
     <string name="label_directions">DIRECTIONS</string>
     <string name="label_call">CALL</string>
 

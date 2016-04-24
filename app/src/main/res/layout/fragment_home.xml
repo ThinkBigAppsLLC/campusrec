@@ -12,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,8 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/divider_hours"
-                android:background="@color/colorBackground"
-                android:elevation="1dp">
+                android:background="@color/colorBackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,26 +65,19 @@
                 android:layout_below="@+id/divider_hours" />
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorSecondaryBackground"
-            android:layout_below="@+id/container_hours"
-            android:id="@+id/divider_hours" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/divider_hours"
-            android:id="@+id/container_rainline">
+            android:id="@+id/container_rainline"
+            android:layout_below="@+id/container_hours">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/divider_rainline"
                 android:background="@color/colorBackground"
-                android:elevation="1dp"
                 android:paddingLeft="16dp"
-                android:paddingRight="16dp">
+                android:paddingRight="16dp"
+                android:focusable="false">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,7 +115,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tweet_rainline"
                 android:layout_below="@+id/divider_rainline"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                android:isScrollContainer="false"/>
         </RelativeLayout>
 
         <RelativeLayout
