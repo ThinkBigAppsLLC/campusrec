@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.UserTimeline;
@@ -98,7 +99,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView fb = (ImageView) viewContainer.findViewById(R.id.connect_facebook);
+        RelativeLayout fb = (RelativeLayout) viewContainer.findViewById(R.id.ribbon_fb);
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +123,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView tw = (ImageView) viewContainer.findViewById(R.id.connect_twitter);
+        RelativeLayout tw = (RelativeLayout) viewContainer.findViewById(R.id.ribbon_tw);
         tw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +141,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView ig = (ImageView) viewContainer.findViewById(R.id.connect_instagram);
+        RelativeLayout ig = (RelativeLayout) viewContainer.findViewById(R.id.ribbon_ig);
         ig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +158,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView yt = (ImageView) viewContainer.findViewById(R.id.connect_youtube);
+        RelativeLayout yt = (RelativeLayout) viewContainer.findViewById(R.id.ribbon_yt);
         yt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

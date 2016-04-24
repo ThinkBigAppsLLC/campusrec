@@ -137,59 +137,131 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:background="@color/colorBackground"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:id="@+id/ribbon_connect"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_below="@+id/label_connect"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                android:layout_below="@+id/label_connect">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/connect_facebook"
-                    android:src="@drawable/facebook_box"
-                    android:contentDescription="@string/desc_fb"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ribbon_fb"
+                    android:paddingBottom="@dimen/padding_standard_sep"
                     android:clickable="true"
-                    android:onClick="launchFacebook"
                     android:background="?attr/selectableItemBackground"
-                    android:layout_marginRight="8dp" />
+                    android:paddingTop="@dimen/padding_standard_sep">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/connect_twitter"
-                    android:src="@drawable/twitter_box"
-                    android:contentDescription="@string/desc_tw"
-                    android:layout_toRightOf="@+id/connect_facebook"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_fb"
+                        android:src="@drawable/facebook_box"
+                        android:contentDescription="@string/desc_fb"
+                        android:clickable="false"
+                        android:onClick="launchFacebook"
+                        android:layout_centerVertical="true" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/connect_instagram"
-                    android:src="@drawable/instagram"
-                    android:contentDescription="@string/desc_ig"
-                    android:layout_toRightOf="@+id/connect_twitter"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username_fb_yt"
+                        android:id="@+id/label_fb"
+                        android:layout_toRightOf="@+id/icon_fb"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="@dimen/padding_standard_all"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/connect_youtube"
-                    android:src="@drawable/youtube"
-                    android:contentDescription="@string/desc_yt"
-                    android:layout_toRightOf="@+id/connect_instagram"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp" />
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ribbon_tw"
+                    android:paddingTop="@dimen/padding_standard_sep"
+                    android:paddingBottom="@dimen/padding_standard_sep"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_tw"
+                        android:src="@drawable/twitter_box"
+                        android:contentDescription="@string/desc_tw"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username_tw_ig"
+                        android:id="@+id/label_tw"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_tw"
+                        android:paddingLeft="@dimen/padding_standard_all"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ribbon_ig"
+                    android:paddingTop="@dimen/padding_standard_sep"
+                    android:paddingBottom="@dimen/padding_standard_sep"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_ig"
+                        android:src="@drawable/instagram"
+                        android:contentDescription="@string/desc_ig" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username_tw_ig"
+                        android:id="@+id/label_ig"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_ig"
+                        android:paddingLeft="@dimen/padding_standard_all"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ribbon_yt"
+                    android:paddingTop="@dimen/padding_standard_sep"
+                    android:paddingBottom="@dimen/padding_standard_sep"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/icon_yt"
+                        android:src="@drawable/youtube"
+                        android:contentDescription="@string/desc_yt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username_fb_yt"
+                        android:id="@+id/label_yt"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/icon_yt"
+                        android:paddingLeft="@dimen/padding_standard_all"
+                        android:textColor="@color/colorPrimaryText" />
+                </RelativeLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 

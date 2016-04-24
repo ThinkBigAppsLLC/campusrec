@@ -114,7 +114,6 @@
     <string name="label_swim">Swimming</string>
     <string name="label_row">Aquatic Craft</string>
     <string name="label_field">Group Sports</string>
-
     <string name="label_directions">DIRECTIONS</string>
     <string name="label_call">CALL</string>
 
@@ -148,5 +147,9 @@
     <string name="desc_tw">Twitter</string>
     <string name="desc_ig">Instagram</string>
     <string name="desc_yt">YouTube</string>
+
+    <!-- Connect Usernames -->
+    <string name="username_fb_yt">FSUCampusRec</string>
+    <string name="username_tw_ig">\@fsucampusrec</string>
 
 </resources>

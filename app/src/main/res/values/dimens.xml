@@ -10,5 +10,6 @@
     <dimen name="ts_amen">16sp</dimen>
 
     <dimen name="padding_standard_all">16dp</dimen>
+    <dimen name="padding_standard_sep">8dp</dimen>
     <dimen name="padding_amenities_list_top_bot">8dp</dimen>
 </resources>
