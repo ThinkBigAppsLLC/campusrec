@@ -169,7 +169,6 @@
                         android:src="@drawable/facebook_box"
                         android:contentDescription="@string/desc_fb"
                         android:clickable="false"
-                        android:onClick="launchFacebook"
                         android:layout_centerVertical="true" />
 
                     <TextView
