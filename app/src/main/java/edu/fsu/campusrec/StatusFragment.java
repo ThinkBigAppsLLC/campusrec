@@ -153,7 +153,11 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        if(fac.getNumber() != null){
+        if(fac.getNumber() == null || MainActivity.canCall()){
+            v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
+            v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
+        }
+        else{
             TextView phone = (TextView) v.findViewById(R.id.phone);
             phone.setText(fac.getNumber());
             RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.ribbon_phone);
@@ -166,34 +170,6 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
                 }
             });
         }
-        else{
-            v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
-            v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
-        }
-
-/*        // Set Details
-        int det = -1;
-        switch(activeFac.getBldg()){
-            case LEACH:
-                det = R.string.details_leach;
-                break;
-            case REZ:
-                det = R.string.details_rez;
-                break;
-            case FMC:
-                det = R.string.details_fmc;
-                break;
-            case RSP:
-                det = R.string.details_rsp;
-                break;
-            case MCF:
-                det = R.string.details_mcf;
-                break;
-            case WSC:
-                det = R.string.details_wsc;
-                break;
-        }
-        details.setText(Html.fromHtml(getContext().getString(det)));*/
 
         EnumSet<FacilityData.Amenities> amens = fac.getAmenities();
 

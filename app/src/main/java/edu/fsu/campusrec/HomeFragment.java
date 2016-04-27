@@ -90,14 +90,20 @@ public class HomeFragment extends Fragment {
         ((ListView) viewContainer.findViewById(R.id.tweet_rainline)).setAdapter(adapter);
 
         ImageView rainlinePhone = (ImageView) viewContainer.findViewById(R.id.phone_rainline);
-        rainlinePhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(FacilityData.RAINLINE_PHONE));
-                getContext().startActivity(intent);
-            }
-        });
+        if(MainActivity.canCall()) {
+            rainlinePhone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse(FacilityData.RAINLINE_PHONE));
+                    getContext().startActivity(intent);
+                }
+            });
+        }
+        else{
+            rainlinePhone.setVisibility(View.GONE);
+        }
+
 
         RelativeLayout fb = (RelativeLayout) viewContainer.findViewById(R.id.ribbon_fb);
         fb.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +157,9 @@ public class HomeFragment extends Fragment {
                 try {
                     packageManager.getPackageInfo("com.instagram.android", 0);
                     igIntent.setPackage("com.instagram.android");
-                } catch (PackageManager.NameNotFoundException e) { }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
                 igUri = FacilityData.CR_INSTAGRAM;
                 igIntent.setData(igUri);
                 startActivity(igIntent);
@@ -168,7 +176,9 @@ public class HomeFragment extends Fragment {
                 try {
                     packageManager.getPackageInfo("com.google.android.youtube", 0);
                     ytIntent.setPackage("com.google.android.youtube");
-                } catch (PackageManager.NameNotFoundException e) { }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
                 ytUri = FacilityData.CR_YOUTUBE;
                 ytIntent.setData(ytUri);
                 startActivity(ytIntent);

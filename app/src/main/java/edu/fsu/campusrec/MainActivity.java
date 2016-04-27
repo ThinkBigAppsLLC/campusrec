@@ -7,6 +7,7 @@ package edu.fsu.campusrec;
  * Handles menu and action bar responses.
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -28,6 +30,7 @@ import java.util.EnumSet;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static boolean canCall;
     private FragmentManager fManager;
     private HomeFragment hFrag;
     private ReservationFragment resFrag;
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TelephonyManager tm= (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        canCall = (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE);
 
         facilities = new ArrayList<>();
         prepareListData();
@@ -175,6 +181,10 @@ public class MainActivity extends AppCompatActivity
     //**************************************
     // HELPER FUNCTIONS
     //**************************************
+
+    public static boolean canCall(){
+        return canCall;
+    }
 
     public void restoreTitle(){
         if(getSupportActionBar() != null) {
