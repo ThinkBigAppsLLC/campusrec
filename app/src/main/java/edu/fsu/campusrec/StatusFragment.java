@@ -7,10 +7,12 @@ package edu.fsu.campusrec;
  */
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -149,20 +151,25 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        if(fac.getNumber().isEmpty() || !MainActivity.canCall()){
+        if(fac.getNumber() == null|| !MainActivity.canCall()){
             v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
             v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
         }
         else{
             TextView phone = (TextView) v.findViewById(R.id.phone);
             phone.setText(fac.getNumber());
-            RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.ribbon_phone);
+            final RelativeLayout phoneRibbon = (RelativeLayout) v.findViewById(R.id.ribbon_phone);
             phoneRibbon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + fac.getNumber().replaceAll("\\.", "")));
-                    getContext().startActivity(intent);
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + fac.getNumber().replaceAll("\\.", "")));
+                        getContext().startActivity(intent);
+                    }
+                    catch (ActivityNotFoundException anfe){
+                        Snackbar.make(phoneRibbon, "Your device cannot handle phone calls.", Snackbar.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
