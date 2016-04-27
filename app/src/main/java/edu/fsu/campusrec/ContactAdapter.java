@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +22,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder>{
-    private final static String EMAIL_URL = "https://fsu.qualtrics.com/jfe/form/SV_7ODV4dNaUcqyfEp";
-
     private ArrayList<Contact> contactList;
     private Context context;
 
@@ -94,7 +93,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int pos) {
+    public void onBindViewHolder(final ViewHolder holder, final int pos) {
         final Contact person = contactList.get(pos);
         holder.name_label.setText(person.getName());
         holder.title_label.setText(person.getTitle());
@@ -102,9 +101,18 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         holder.action_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(person.getPhone()));
-                context.startActivity(intent);
+                if(MainActivity.canCall()) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse(person.getPhone()));
+                    context.startActivity(intent);
+                }
+                else {
+                    Snackbar.make(
+                            holder.action_phone,
+                            "Your device cannot handle phone calling.",
+                            Snackbar.LENGTH_INDEFINITE
+                    ).show();
+                }
             }
         });
 
@@ -116,7 +124,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     // Launches Browser
-                    Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse(EMAIL_URL));
+                    Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse(FacilityData.EMAIL_URL));
                     context.startActivity(browserIntent);
                 }
             });

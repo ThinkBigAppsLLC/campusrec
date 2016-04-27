@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,13 +146,10 @@ public class StatusFragment extends Fragment implements OnMapReadyCallback {
                 if (directionIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(directionIntent);
                 }
-                else {
-                    Log.i("Direction onClick", "You cannot handle this Intent.");
-                }
             }
         });
 
-        if(fac.getNumber() == null || MainActivity.canCall()){
+        if(fac.getNumber().isEmpty() || !MainActivity.canCall()){
             v.findViewById(R.id.divider_contact).setVisibility(View.GONE);
             v.findViewById(R.id.ribbon_phone).setVisibility(View.GONE);
         }

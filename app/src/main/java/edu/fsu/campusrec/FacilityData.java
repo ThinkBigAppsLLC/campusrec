@@ -74,4 +74,11 @@ public abstract class FacilityData {
 
     public static final Uri CR_YOUTUBE = Uri.parse("https://www.youtube.com/user/FSUCampusRec");
 
+    //**************************************
+    //  EMAIL LINKS
+    //**************************************
+    public final static String EMAIL_URL = "https://fsu.qualtrics.com/jfe/form/SV_7ODV4dNaUcqyfEp";
+
+
+
 }

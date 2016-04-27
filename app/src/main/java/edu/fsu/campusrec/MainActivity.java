@@ -20,6 +20,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity
 
         TelephonyManager tm= (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         canCall = (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE);
+        Log.i("CanCall", canCall + "");
 
         facilities = new ArrayList<>();
         prepareListData();

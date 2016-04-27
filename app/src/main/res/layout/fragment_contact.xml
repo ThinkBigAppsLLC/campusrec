@@ -1,218 +1,226 @@
-<com.emilsjolander.components.StickyScrollViewItems.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="edu.fsu.campusrec.ContactFragment"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinator_contact"
+    >
 
-
-    <RelativeLayout
+    <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/relLayout">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/not_available"
-            android:id="@+id/not_available_text"
-            android:textColor="@color/colorPrimaryTextFaded"
-            android:layout_centerHorizontal="true"
-            android:textSize="16sp"
-            android:visibility="gone"
-            android:paddingTop="20dp" />
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:indicator="BallTrianglePath"
-            app:indicator_color="@color/colorPrimaryTextFaded"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentEnd="false"
-            android:elevation="1dp"
-            android:paddingTop="100dp"
-            android:layout_marginTop="100dp" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_crao"
-            android:id="@+id/label_crao"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:textColor="@color/colorPrimaryText" />
+            android:layout_height="match_parent"
+            android:id="@+id/relLayout">
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_crao"
-            android:layout_below="@+id/label_crao"
-            android:paddingBottom="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/not_available"
+                android:id="@+id/not_available_text"
+                android:textColor="@color/colorPrimaryTextFaded"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:paddingTop="20dp" />
 
-        <View android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/background_material_dark"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/list_crao"
-            android:id="@+id/divider_crao" />
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:indicator="BallTrianglePath"
+                app:indicator_color="@color/colorPrimaryTextFaded"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentEnd="false"
+                android:elevation="1dp"
+                android:paddingTop="100dp"
+                android:layout_marginTop="100dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_lcfa"
-            android:id="@+id/label_lcfa"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:layout_below="@+id/divider_crao"
-            android:textColor="@color/colorPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_crao"
+                android:id="@+id/label_crao"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:textColor="@color/colorPrimaryText" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_lcfa"
-            android:layout_below="@+id/label_lcfa"
-            android:paddingBottom="8dp" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_crao"
+                android:layout_below="@+id/label_crao"
+                android:paddingBottom="8dp" />
 
-        <View android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/background_material_dark"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/list_lcfa"
-            android:id="@+id/divider_lcfa" />
+            <View android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/background_material_dark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/list_crao"
+                android:id="@+id/divider_crao" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_fmcw"
-            android:id="@+id/label_fmcw"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:textIsSelectable="false"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:layout_below="@+id/divider_lcfa"
-            android:textColor="@color/colorPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_lcfa"
+                android:id="@+id/label_lcfa"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:layout_below="@+id/divider_crao"
+                android:textColor="@color/colorPrimaryText" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_fmcw"
-            android:layout_below="@+id/label_fmcw"
-            android:paddingBottom="8dp" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_lcfa"
+                android:layout_below="@+id/label_lcfa"
+                android:paddingBottom="8dp" />
 
-        <View android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/background_material_dark"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/list_fmcw"
-            android:id="@+id/divider_fmcw" />
+            <View android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/background_material_dark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/list_lcfa"
+                android:id="@+id/divider_lcfa" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_imsp"
-            android:id="@+id/label_imsp"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:layout_below="@+id/divider_fmcw"
-            android:textColor="@color/colorPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_fmcw"
+                android:id="@+id/label_fmcw"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:layout_below="@+id/divider_lcfa"
+                android:textColor="@color/colorPrimaryText" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_imsp"
-            android:layout_below="@+id/label_imsp"
-            android:paddingBottom="8dp" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_fmcw"
+                android:layout_below="@+id/label_fmcw"
+                android:paddingBottom="8dp" />
 
-        <View android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/background_material_dark"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/list_imsp"
-            android:id="@+id/divider_imsp" />
+            <View android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/background_material_dark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/list_fmcw"
+                android:id="@+id/divider_fmcw" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_cssc"
-            android:id="@+id/label_cssc"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:layout_below="@+id/divider_imsp"
-            android:textColor="@color/colorPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_imsp"
+                android:id="@+id/label_imsp"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:layout_below="@+id/divider_fmcw"
+                android:textColor="@color/colorPrimaryText" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_cssc"
-            android:layout_below="@+id/label_cssc"
-            android:paddingBottom="8dp" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_imsp"
+                android:layout_below="@+id/label_imsp"
+                android:paddingBottom="8dp" />
 
-        <View android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/background_material_dark"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/list_cssc"
-            android:id="@+id/divider_cssc" />
+            <View android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/background_material_dark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/list_imsp"
+                android:id="@+id/divider_imsp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_rpcf"
-            android:id="@+id/label_rocf"
-            android:textStyle="bold"
-            android:tag="sticky-nonconstant"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="16sp"
-            android:background="@color/colorBackground"
-            android:layout_below="@+id/divider_cssc"
-            android:textColor="@color/colorPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_cssc"
+                android:id="@+id/label_cssc"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:layout_below="@+id/divider_imsp"
+                android:textColor="@color/colorPrimaryText" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_rocf"
-            android:layout_below="@+id/label_rocf"
-            android:paddingBottom="8dp" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_cssc"
+                android:layout_below="@+id/label_cssc"
+                android:paddingBottom="8dp" />
 
-    </RelativeLayout>
-</com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
+            <View android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/background_material_dark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/list_cssc"
+                android:id="@+id/divider_cssc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_rpcf"
+                android:id="@+id/label_rocf"
+                android:textStyle="bold"
+                android:tag="sticky-nonconstant"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@color/colorBackground"
+                android:layout_below="@+id/divider_cssc"
+                android:textColor="@color/colorPrimaryText" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_rocf"
+                android:layout_below="@+id/label_rocf"
+                android:paddingBottom="8dp" />
+
+        </RelativeLayout>
+    </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
+</android.support.design.widget.CoordinatorLayout>
