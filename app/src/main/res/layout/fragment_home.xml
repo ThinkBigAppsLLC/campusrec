@@ -116,7 +116,9 @@
                 android:id="@+id/tweet_rainline"
                 android:layout_below="@+id/divider_rainline"
                 android:nestedScrollingEnabled="false"
-                android:isScrollContainer="false"/>
+                android:isScrollContainer="false"
+                android:headerDividersEnabled="false"
+                android:choiceMode="none" />
         </RelativeLayout>
 
         <RelativeLayout
